@@ -1,4 +1,0 @@
-#!/bin/bash
-
-swig -python agent_dir_service.i
-python setup_agent_dir_service.py build_ext --inplace

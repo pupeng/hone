@@ -26,15 +26,13 @@ def main():
     #                    datefmt='%m/%d/%Y %H:%M:%S')
     # organize the management programs
     mgmtProg = [hone_rts.HoneHostInfoJob] + sys.argv[1:]
-    #mgmtProg = sys.argv[1:]
     #debugLog('global', 'mgmt programs', mgmtProg)
     try:
         print 'Hone controller starts'
         #EvalLog('{0:6f},1,controller starts'.format(time.time()))
         hone_rts.RtsRun(mgmtProg)
     except KeyboardInterrupt:
-        #debugLog('global', 'catch keyboard interrupt')
-        pass
+        debugLog('global', 'catch keyboard interrupt')
     finally:
         #EvalLog('{0:6f},2,controller stops'.format(time.time()))
         WriteLogs()

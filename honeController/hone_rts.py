@@ -316,8 +316,9 @@ class HoneJob:
                 self.updateMiddleExe(n-1, hostEntry.hostId, 'controller')
                 if n == 1:
                     self.updateSourceExe(hostEntry.hostId, 'controller')
-        self.printAggTree()
+        #self.printAggTree()
     
+    # TODO
     def removeHostSource(self, hostEntry):
         #EvalLog('{0:6f},27,remove host source {1} from job {2}'.format(time.time(), hostEntry.hostId, self.jobId))
         if (hostEntry.hostId in self.hosts):
@@ -497,7 +498,8 @@ class HoneJob:
         #debugLog('rts', 'sendmessage', message.messageType)
         HoneHostSndModule().sendMessage(address, message)
 
-#    def updateMiddleExe_removeChild(self, middleHostId, childHostId):
+# TODO
+#    def updateMiddleChild_remove(self, middleHostId, childHostId):
 #        if (len(self.exeFlow.hostMiddleExePlan) == 0):
 #            return
 #        #EvalLog('{0:6f},41,update middle job {1}: remove child'.format(time.time(), self.jobId))
@@ -543,8 +545,7 @@ def RtsRun(mgmtProg):
         #EvalLog('{0:6f},7,start recvModule'.format(time.time()))
         hone_recvModule.recvModuleRun()
     except KeyboardInterrupt:
-        #debugLog('global', 'catch keyboard interrupt')
-        pass
+        debugLog('global', 'catch keyboard interrupt')
     finally:
         #EvalLog('{0:6f},8,exit hone runtime system'.format(time.time()))
         WriteLogs()

@@ -19,15 +19,21 @@ psutil                         0.6.1
 web10g kernel patch            2.6.38
 estats userland library        2.0.1
 
+Initial Setup:
+1. insert kernel module kpsimple on host machine
+    enter honeHostAgent/kpsimple
+    sudo make up
+2. compile c++ implementation to python modules
+    enter honeHostAgent
+    ./swig_modules
+
 Notes:
 1. start honeController:
     enter honeController directory
     run: python hone_run.py mgmtProgram
 
 2. start honeHostAgent
-    remember to insert kernel module
-    enter honeHostAgent/kpsimple
-    sudo make up
+    remember to go through 'Initial Setup'
     enter honeHostAgent
     python agentRun.py controllerIP controllerPort
 

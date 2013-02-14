@@ -37,13 +37,14 @@ class HoneCommProtocol(LineReceiver):
         if (self.hostName == None):
             self.hostName = message.hostId
         self.typeActions.get(message.messageType, \
-                             self.handleUnknownType)\
+                             self.handleUnknownType) \
                              (message)
 
     def connectionLost(self, reason):
         #EvalLog('{0:6f},11,host leaves {1}'.format(time.time(), self.hostName))
         #hone_rts.handleHostLeave(self.hostName)
         #EvalLog('{0:6f},14,done handle host leave {1}'.format(time.time(), self.hostName))
+        # TODO
         pass
 
     def handleHostJoin(self, message):
@@ -76,8 +77,7 @@ def recvModuleRun():
         #         _honeCtrlListeningPort)
         reactor.run()
     except KeyboardInterrupt:
-        #debugLog('rts', 'catch keyboard interrupt')
-        pass
+        debugLog('rts', 'catch keyboard interrupt')
     except Exception, msg:
         #debugLog('rts', 'catch unknown exception', msg)
         #logging.error('Exception: {0}'.format(msg))

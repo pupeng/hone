@@ -1,0 +1,29 @@
+'''
+Peng Sun
+agentUtil.py
+utility
+'''
+
+import inspect
+
+_AGENT_DEBUG_ = False
+_DIRSERVICE_DEBUG_ = False
+_CONTROL_DEBUG_ = False
+_EVAL_ = False
+_MEASURE_DEBUG_ = False
+_GO_DEBUG_ = False
+_STOP_SIGN_ = False
+
+def debugInfo(fileName, lineNumber, message):
+    tmp = fileName.split('/')
+    fileName = tmp[len(tmp)-1]
+    print "\nDEBUG "+fileName+', L'+lineNumber+': '+message
+
+def debugShowLineNumber():
+    return str(inspect.currentframe().f_back.f_lineno)
+
+class illegalStuff(Exception):
+    def __init__(self, message):
+        self.message = message
+    def __str__(self):
+        return self.message

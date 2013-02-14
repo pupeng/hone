@@ -14,6 +14,12 @@ Zhihong Xu, Lavanya Jose, Minlan Yu
 Supervisors:
 Jennifer Rexford, Michael J. Freedman, David Walker
 
+Public Amazon EC2 AMI:
+ami-d92ebab0                   hone-enabled Ubuntu Cloud Image 11.04
+
+Public VirtualBox VM image:
+(publish soon)
+
 Dependency:
 psutil                         0.6.1
 web10g kernel patch            2.6.38

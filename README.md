@@ -21,7 +21,7 @@ Public VirtualBox VM image:
 (publish soon)
 
 Dependency:
-psutil                         0.6.1
+psutil                         0.7.0
 web10g kernel patch            3.2
 estats userland library        included with kernel patch 3.2
 

@@ -28,31 +28,33 @@ Python                         2.7+
 ipaddr-py                      2.1.10
 
 Initial Setup:
-1. insert kernel module kpsimple on host machine
-    enter honeHostAgent/kpsimple
-    sudo make up
-2. compile c++ implementation to python modules
-    enter honeHostAgent
+1. Insert HONE kernel probe on host machine. 
+   The current kernel probe is for hone-enabled image only,
+   since we have modified kernel NETLINK to make it work. 
+     enter HostAgent/HoneKernelProbe
+     sudo make up
+2. Compile c++ implementation to python modules
+    enter HostAgent
     ./swig_modules
 
 Notes:
-1. start honeController:
-    enter honeController directory
+1. Start the HONE Controller:
+    enter Controller directory
     run: python hone_run.py mgmtProgram
 
-2. start honeHostAgent
+2. Start the HONE host agent:
     remember to go through 'Initial Setup'
-    enter honeHostAgent
+    enter HostAgent
     python agentRun.py controllerIP controllerPort
 
 3. If running on EC2
-    ec2scripts/startHoneAgent finds the EC2 internal IP of hone-controller
-    instance, and start Hone agent against it. 
+    ec2scripts/startHoneAgent finds the EC2 internal IP of the
+    instance named hone-controller, and start HONE agent against it. 
 
-4. log level:
-    change log level in honeController/hone_run.py and honeHostAgent/agentRun.py
+4. Log level:
+    change log level in Controller/hone_run.py and HostAgent/agentRun.py
     All evaluation logs are info level
 
-5. network module:
+5. Network module:
     first start floodlight controller to control the switches
-    honeController/hone_netModule.py contains functions to communicate with FL
+    Controller/hone_netModule.py contains functions to communicate with FL

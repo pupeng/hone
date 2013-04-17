@@ -25,6 +25,7 @@ psutil                         0.7.0
 web10g kernel patch            3.2
 estats userland library        included with kernel patch 3.2
 Python                         2.7+
+ipaddr-py                      2.1.10
 
 Initial Setup:
 1. insert kernel module kpsimple on host machine

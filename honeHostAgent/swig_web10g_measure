@@ -1,4 +1,0 @@
-#!/bin/bash
-
-swig -c++ -python -o web10g_measure_wrap.cpp web10g_measure.i
-python setup_web10g_measure.py build_ext --inplace

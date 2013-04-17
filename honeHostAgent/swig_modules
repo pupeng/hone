@@ -1,4 +1,0 @@
-#! /bin/bash
-
-./swig_dir_service
-./swig_web10g_measure

@@ -22,8 +22,8 @@ Public VirtualBox VM image:
 
 Dependency:
 psutil                         0.6.1
-web10g kernel patch            2.6.38
-estats userland library        2.0.1
+web10g kernel patch            3.2
+estats userland library        included with kernel patch 3.2
 
 Initial Setup:
 1. insert kernel module kpsimple on host machine

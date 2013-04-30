@@ -5,38 +5,32 @@ Run hone system
 usage: python hone_run.py mgmtprog.py
 '''
 
+import logging
 import sys
-#import logging
-import time
-import datetime
-import hone_rts
-from hone_util import *
 
-#LogLevel = logging.INFO
+import hone_rts
+from hone_util import LogUtil
 
 def main():
     if (len(sys.argv)<2):
         print "Please provide management program"
         sys.exit()
-    logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
-    logFileName = 'logs/' + logFileName + '.log'
-    SetLogFileName(logFileName)
-    #logging.basicConfig(filename=logFileName, level=LogLevel, \
-    #                    format='%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s', \
-    #                    datefmt='%m/%d/%Y %H:%M:%S')
+    # initialize logging
+    LogUtil.initLogging()
     # organize the management programs
     mgmtProg = [hone_rts.HoneHostInfoJob] + sys.argv[1:]
-    #debugLog('global', 'mgmt programs', mgmtProg)
+    logging.info('Controller takes the following programs: %s', mgmtProg)
+    LogUtil.debugLog('global', 'mgmt programs', mgmtProg)
     try:
         print 'Hone controller starts'
-        #EvalLog('{0:6f},1,controller starts'.format(time.time()))
+        LogUtil.evalLog(1, 'controller starts')
         hone_rts.RtsRun(mgmtProg)
     except KeyboardInterrupt:
-        debugLog('global', 'catch keyboard interrupt')
+        LogUtil.debugLog('global', 'catch keyboard interrupt')
     finally:
-        #EvalLog('{0:6f},2,controller stops'.format(time.time()))
-        WriteLogs()
-        print 'Hone controller stopped'
+        LogUtil.evalLog(2, 'controller stops')
+        logging.info('Controller stops.')
+        print 'Hone controller stops'
 
 if __name__ == '__main__':
     main()

@@ -26,6 +26,7 @@ web10g kernel patch            3.2
 estats userland library        included with kernel patch 3.2
 Python                         2.7+
 ipaddr-py                      2.1.10
+twisted                        13.0.0
 
 Initial Setup:
 1. Insert HONE kernel probe on host machine. 

@@ -1,6 +1,6 @@
 """
 Author: Peng Sun
-hone_hostEntry.py
+hone_job.py
 Define class HoneJob to contain job-related operations
 """
 
@@ -16,6 +16,7 @@ class HoneJob:
     def __init__(self, jobId, partitionedFlow):
         if not isinstance(partitionedFlow, HonePartitionedFlow):
             raise Exception('improper argument passed into HoneJob')
+        # construct necessary data members
         self.jobId = jobId
         self.exeFlow = partitionedFlow
         self.createTime = time.time()
@@ -25,6 +26,12 @@ class HoneJob:
         # the last element is the links to the controller
         # aggStructRecord[n] = {parentHostId : list of children host IDs}
         self.aggStructRecord = []
+        # get instance of aggTreeFormation class
+        # TODO self.aggTreeFormatter = ....
+        # register controller-side and network-side execution
+        exeModule.buildExePlan(self.jobId, self.exeFlow.progName, self.exeFlow.controllerExePlan)
+        # TODO netModule.build(...)
+
 
     def addHost(self, hostEntry):
         logging.info('job {0} add host {1}', self.jobId, hostEntry.hostId)

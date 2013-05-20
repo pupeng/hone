@@ -9,8 +9,6 @@ from hone_lib import *
 from hone_message import *
 from hone_util import *
 import ipaddr
-import logging
-import time
 
 class HonePartitionedFlow:
     def __init__(self, progName, honeDataFlow):
@@ -50,10 +48,6 @@ class HonePartitionedFlow:
                 ret = ret and True
             else:
                 ret = False
-        #debugLog('part', 'criterion: ', self.criterion, \
-        #                 'host app: ', hostEntry.appList, \
-        #                 'addr: ', hostEntry.hostAddress, \
-        #                 'result:', ret)
         return ret
 
     def addExePlan(self, dataFlow):

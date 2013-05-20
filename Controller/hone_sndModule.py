@@ -4,9 +4,9 @@ hone_sndModule.py
 module for sending commands and files to host agent
 '''
 import socket
-from hone_util import *
 from cStringIO import StringIO
 import cPickle as pickle
+import logging
 
 hostCommPort = 8877
 networkCommPort = 6633
@@ -21,10 +21,10 @@ class HoneHostSndModule:
             self.hostSock.connect((address, port))
             self.hostSock.sendall(data)
         except socket.error, msg:
-            print 'Socket connect error'
-            print msg
+            logging.error('Socket connect error {0}', msg)
         finally:
-            self.hostSock.close()
+            if self.hostSock:
+                self.hostSock.close()
             self.hostSock = None
 
     def sendMessage(self, hostAddress, message):
@@ -32,15 +32,10 @@ class HoneHostSndModule:
         pickle.dump(message, src, pickle.HIGHEST_PROTOCOL)
         data = src.getvalue() + '\r\n'
         src.close()
-        #debugLog('snd', 'sendMessage. Messagey type:', \
-        #         message.messageType, \
-        #         'jobId:', message.jobId, \
-        #         'content', message.content,\
-        #         'hostAddress', hostAddress)
         self.send(hostAddress, hostCommPort, data)
     
     def sendFile(self, hostAddress, message, fileName):
-        f = open(fileName+'.py', 'r')
+        f = open(fileName + '.py', 'r')
         fileContent = f.read()
         f.close()
         message.content = (fileName, fileContent)

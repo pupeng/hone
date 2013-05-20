@@ -11,6 +11,8 @@ import multiprocessing
 import os
 import time
 
+
+# to delete
 _GLOBAL_DEBUG_  = False
 _LIB_DEBUG_     = False
 _RTS_DEBUG_     = False
@@ -63,6 +65,7 @@ def WriteLogs():
             print >>output, log
         output.close()
         del _logs[:]
+# to delete END
 
 class LogUtil:
     _LogLevel_      = logging.INFO
@@ -86,22 +89,22 @@ class LogUtil:
                   'evaluation' : _EVALUATION_ }
     
     @staticmethod
-    def initLogging():
+    def InitLogging():
         logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
         logFileName = 'logs/' + logFileName + '.log'
         d = os.path.dirname(logFileName)
         if not os.path.expanduser(d):
             os.makedirs(d)
-        logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_, \
-                            format='%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s', \
+        logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
+                            format='%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
                             datefmt='%m/%d/%Y %H:%M:%S')
         
     @staticmethod
-    def debugLog(section, msg):
+    def DebugLog(section, msg):
         flag = LogUtil.DebugFlags.get(section, False)
         if flag:
-            logging.debug(msg)
+            print msg
 
     @staticmethod
-    def evalLog(eventId, msg):
-        LogUtil.debugLog('evaluation', '{0:6f},{1},{2}'.format(time.time(), eventId, msg))
+    def EvalLog(eventId, msg):
+        logging.debug('{0:6f},{1},{2}'.format(time.time(), eventId, msg))

@@ -9,6 +9,7 @@ import hone_exeModule as exeModule
 from hone_message import *
 from hone_sndModule import *
 from hone_partition import *
+from hone_aggTreeFormation import *
 
 ''' execution states of a job '''
 class HoneJob:
@@ -27,11 +28,10 @@ class HoneJob:
         # aggStructRecord[n] = {parentHostId : list of children host IDs}
         self.aggStructRecord = []
         # get instance of aggTreeFormation class
-        # TODO self.aggTreeFormatter = ....
+        self.treeFormatter = TreeFormatterFactory.GetNewFormatter()
         # register controller-side and network-side execution
         exeModule.buildExePlan(self.jobId, self.exeFlow.progName, self.exeFlow.controllerExePlan)
         # TODO netModule.build(...)
-
 
     def addHost(self, hostEntry):
         logging.info('job {0} add host {1}', self.jobId, hostEntry.hostId)
@@ -39,64 +39,7 @@ class HoneJob:
             self.hosts[hostEntry.hostId] = None
             self._transferExeFile(hostEntry.hostId)
             self.addAggLink(0, hostEntry.hostId, 'controller')
-
-
-        # TODO delete and move to tree class
-        m = len(self.aggTree[0])
-        n = len(self.aggTree)
-        if m == 0:
-            exeModule.buildExePlan(self.jobId, \
-                                   self.exeFlow.progName, \
-                                   self.exeFlow.controllerExePlan)
-        if not self.exeFlow.hostMiddleExePlan:
-            self.aggTree[1]['controller'].append(hostEntry.hostId)
-            for flowId in self.exeFlow.flowToCtrl:
-                self.expectedNumOfHosts[flowId] += 1
-            self.updateSourceExe(hostEntry.hostId, 'controller')
-        else:
-            if m < math.pow(BranchFactor, n - 1):
-                if n == 2:
-                    self.aggTree[1]['controller'].append(hostEntry.hostId)
-                    for flowId in self.exeFlow.flowToMiddle:
-                        self.expectedNumOfHosts[flowId] += 1
-                    self.updateSourceExe(hostEntry.hostId, 'controller')
-                else:
-                    for searchLevel in range(1, n):
-                        for (hostInLevel, hostChildren) in self.aggTree[searchLevel].iteritems():
-                            if len(hostChildren) < BranchFactor:
-                                self.updateMiddleChild_add(searchLevel, hostInLevel, hostEntry.hostId)
-                                self.updateMiddleExe(searchLevel - 1, hostEntry.hostId, hostInLevel)
-                                if searchLevel == 1:
-                                    self.updateSourceExe(hostEntry.hostId, hostInLevel)
-                                return
-                        self.updateMiddleChild_add(searchLevel, hostEntry.hostId, hostEntry.hostId)
-                        self.updateMiddleExe(searchLevel - 1, hostEntry.hostId, hostEntry.hostId)
-                        if searchLevel == 1:
-                            self.updateSourceExe(hostEntry.hostId, hostEntry.hostId)
-            else:
-                newParentHost = self.aggTree[n - 2].keys()[0]
-                for childHost in self.aggTree[n - 2].keys():
-                    self.updateMiddleChild_add(n - 1, newParentHost, childHost)
-                    self.updateMiddleExe(n - 2, childHost, newParentHost)
-                    if n == 2:
-                        self.updateSourceExe(childHost, newParentHost)
-                del self.aggTree[n - 1]['controller']
-                self.aggTree.append({'controller': [newParentHost]})
-                for flowId in self.exeFlow.flowToMiddle:
-                    self.expectedNumOfHosts[flowId] = 1
-                self.updateMiddleExe(n - 1, newParentHost, 'controller')
-                if n == 1:
-                    self.updateSourceExe(newParentHost, 'controller')
-                for level in range(1, n):
-                    self.updateMiddleChild_add(level, hostEntry.hostId, hostEntry.hostId)
-                    self.updateMiddleExe(level - 1, hostEntry.hostId, hostEntry.hostId)
-                    if level == 1:
-                        self.updateSourceExe(hostEntry.hostId, hostEntry.hostId)
-                self.updateMiddleChild_add(n, 'controller', hostEntry.hostId)
-                self.updateMiddleExe(n - 1, hostEntry.hostId, 'controller')
-                if n == 1:
-                    self.updateSourceExe(hostEntry.hostId, 'controller')
-                    #self.printAggTree()
+            self.treeFormatter.addLeaf(hostEntry)
 
     def removeHost(self, hostEntry):
         logging.info('Remove host {0} from job {1}', hostEntry.hostId, self.jobId)

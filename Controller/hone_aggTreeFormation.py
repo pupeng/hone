@@ -4,8 +4,12 @@ hone_aggTreeFormation.py
 Define factory and class to compose the aggregation tree
 """
 
-import hone_rts as rts
+import math
+
+from hone_job import *
 from hone_hostEntry import *
+
+DefaultBranchFactor = 2
 
 class TreeFormatterBase:
     ''' base class of tree formatter '''
@@ -15,24 +19,82 @@ class TreeFormatterBase:
     def removeLeaf(self, hostEntry):
         raise NotImplementedError('Derived class should implement this method')
 
+class SimpleNode:
+    def __init__(self, hostId, nodeLevel):
+        self.hostId = hostId
+        self.nodeLevel = nodeLevel
+        self.parent = None
+        self.children = []
+
+    def getHostId(self):
+        return self.hostId
+
+    def setParent(self, node):
+        assert isinstance(node, SimpleNode)
+        self.parent = node
+
+    def getParent(self):
+        return self.parent
+
+    def addChild(self, node):
+        assert isinstance(node, SimpleNode)
+        if node not in self.children:
+            self.children.append(node)
+
+    def removeChild(self, node):
+        assert isinstance(node, SimpleNode)
+        if node in self.children:
+            self.children.remove(node)
+
+    def getChildren(self):
+        return self.children
+
+    def setNodeLevel(self, nodeLevel):
+        self.nodeLevel = nodeLevel
+
+    def getNodeLevel(self):
+        return self.nodeLevel
+
 class SimpleTreeFormatter(TreeFormatterBase):
     ''' basic implementation of formatting aggregation tree by the sequence of hosts' entering the system '''
-    def __init__(self):
-        self.aggTree =
+    def __init__(self, job, branchFactor=DefaultBranchFactor):
+        self.controllerNode = SimpleNode('controller', 1)
+        self.aggTree = [[], [self.controllerNode]]
+        self.branchFactor = branchFactor
+        self.job = job
 
     def addLeaf(self, hostEntry):
+        n = len(self.aggTree)
+        node = SimpleNode(hostEntry.hostId, 0)
+        foundSpot = False
+        searchNodeLevel = 1
+        while (searchNodeLevel < n) and (not foundSpot):
+            for nodeToCheck in self.aggTree[searchNodeLevel]:
+                if len(nodeToCheck.getChildren) < self.branchFactor:
+                    nodeToCheck.addChild(node)
+                    node.setParent(nodeToCheck)
+                    self.aggTree[searchNodeLevel - 1].append(node)
+                    self.job.addAggLink(searchNodeLevel - 1, node.getHostId(), nodeToCheck.getHostId())
+                    foundSpot = True
+                    break
+            if not foundSpot:
+                selfPromoteNode = SimpleNode(node.getHostId(), node.getNodeLevel() + 1)
+                selfPromoteNode.addChild(node)
+                node.setParent(selfPromoteNode)
+                self.aggTree[searchNodeLevel - 1].append(node)
+                self.job.addAggLink(searchNodeLevel - 1, node.getHostId(), selfPromoteNode.getHostId())
+                node = selfPromoteNode
+            searchNodeLevel += 1
+        if not foundSpot:
+
+
+
         m = len(self.aggTree[0])
         n = len(self.aggTree)
-        if m == 0:
-            exeModule.buildExePlan(self.jobId, \
-                                   self.exeFlow.progName, \
-                                   self.exeFlow.controllerExePlan)
-        if not self.exeFlow.hostMiddleExePlan:
-            self.aggTree[1]['controller'].append(hostEntry.hostId)
-            for flowId in self.exeFlow.flowToCtrl:
-                self.expectedNumOfHosts[flowId] += 1
-            self.updateSourceExe(hostEntry.hostId, 'controller')
-        else:
+
+        if m < math.pow(self.branchFactor, n - 1):
+
+
             if m < math.pow(BranchFactor, n - 1):
                 if n == 2:
                     self.aggTree[1]['controller'].append(hostEntry.hostId)
@@ -83,9 +145,9 @@ class SimpleTreeFormatter(TreeFormatterBase):
 class TreeFormatterFactory:
     ''' factory method for creating concrete TreeFormatter '''
     @staticmethod
-    def GetNewFormatter(description='simple'):
+    def GetNewFormatter(job, description='simple'):
         if description == 'simple':
-            return SimpleTreeFormatter()
+            return SimpleTreeFormatter(job)
         else:
-            return SimpleTreeFormatter()
+            return SimpleTreeFormatter(job)
 

@@ -28,7 +28,7 @@ class HoneJob:
         # aggStructRecord[n] = {parentHostId : list of children host IDs}
         self.aggStructRecord = []
         # get instance of aggTreeFormation class
-        self.treeFormatter = TreeFormatterFactory.GetNewFormatter()
+        self.treeFormatter = TreeFormatterFactory.GetNewFormatter(self)
         # register controller-side and network-side execution
         exeModule.buildExePlan(self.jobId, self.exeFlow.progName, self.exeFlow.controllerExePlan)
         # TODO netModule.build(...)
@@ -118,13 +118,13 @@ class HoneJob:
         for i in reversed(range(len(self.aggTree))):
             line = ''
             for host in self.aggTree[i].iterkeys():
-                line += '{0} '.format(_hostInfo[host].hostAddress)
+                line += '{0} '.format(HostRecord[host].hostAddress)
             print line
         print '\n\n'
 
     # private methods
     def _transferExeFile(self, hostId):
-        address = rts._hostInfo[hostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
         message = HoneMessage()
         message.messageType = HoneMessageType_SendFile
         message.jobId = self.jobId
@@ -134,8 +134,8 @@ class HoneJob:
         logging.info('job {0} install source exe on host {1} to parent {2}', self.jobId, hostId, parentHostId)
         if not self.exeFlow.hostSourceExePlan:
             return
-        address = rts._hostInfo[hostId].hostAddress
-        parentAddress = rts._hostInfo[parentHostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
+        parentAddress = rts.HostRecord[parentHostId].hostAddress
         message = HoneMessage()
         message.messageType = HoneMessageType_InstallSourceJob
         message.jobId = self.jobId
@@ -149,8 +149,8 @@ class HoneJob:
         logging.info('job {0} update source exe of host {1} to parent {2}', self.jobId, hostId, parentHostId)
         if not self.exeFlow.hostSourceExePlan:
             return
-        address = rts._hostInfo[hostId].hostAddress
-        parentAddress = rts._hostInfo[parentHostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
+        parentAddress = rts.HostRecord[parentHostId].hostAddress
         message = HoneMessage()
         message.messageType = HoneMessageType_UpdateSourceJob
         message.jobId = self.jobId
@@ -161,7 +161,7 @@ class HoneJob:
         logging.info('job {0} install level-{1} middle exe on host {2}', self.jobId, level, hostId)
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
-        address = rts._hostInfo[hostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
         message = HoneMessage()
         message.messageType = HoneMessageType_InstallMiddleJob
         message.jobId = self.jobId
@@ -176,7 +176,8 @@ class HoneJob:
                      self.jobId, level, hostId, len(self.aggStructRecord[level][hostId]))
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
-        address = rts._hostInfo[hostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
+        message = HoneMessage()
         message.messageType = HoneMessageType_UpdateMiddleJob
         message.jobId = self.jobId
         message.level = level
@@ -188,8 +189,9 @@ class HoneJob:
                      self.jobId, level, hostId, parentHostId)
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
-        address = rts._hostInfo[hostId].hostAddress
-        parentAddress = rts._hostInfo[parentHostId].hostAddress
+        address = rts.HostRecord[hostId].hostAddress
+        parentAddress = rts.HostRecord[parentHostId].hostAddress
+        message = HoneMessage()
         message.messageType = HoneMessageType_UpdateMiddleJob
         message.jobId = self.jobId
         message.level = level

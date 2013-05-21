@@ -174,7 +174,7 @@ def GetControllerLocalIP():
     return s.getsockname()[0]
 
 # key: hostId, value: HostEntry
-_hostInfo = {'controller': HostEntry('controller', GetControllerLocalIP())}
+HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP())}
 
 # key: jobId, value: HoneJob
 _jobExecution = {}
@@ -219,7 +219,7 @@ def _executeMgmtMain(progName):
 def handleHostJoin(hostId, hostAddress):
     LogUtil.DebugLog('rts', 'new host joins with id {0} and address {1}'.format(hostId, hostAddress))
     entry = HostEntry(hostId, hostAddress)
-    _hostInfo[hostId] = entry
+    HostRecord[hostId] = entry
     for (jobId, job) in _jobExecution.iteritems():
         LogUtil.DebugLog('exeGen',
                          'host {0} eligible for job {1}? {2}'.format(entry.hostId, jobId, job.isHostEligible(entry)))
@@ -229,17 +229,17 @@ def handleHostJoin(hostId, hostAddress):
 
 def handleHostLeave(hostId):
     LogUtil.DebugLog('rts', 'host {0} leaves'.format(hostId))
-    if hostId in _hostInfo:
-        hostEntry = _hostInfo[hostId]
+    if hostId in HostRecord:
+        hostEntry = HostRecord[hostId]
         for jobId in hostEntry.jobs:
             _jobExecution[jobId].removeHost(hostEntry)
-        del _hostInfo[hostId]
+        del HostRecord[hostId]
 
 def handleHostInfoUpdate(message):
     LogUtil.EvalLog(21, 'handle host info update hostId {0}'.format(message.hostId))
     hostId = message.hostId
     appCL = message.content
-    hostEntry = _hostInfo[hostId]
+    hostEntry = HostRecord[hostId]
     LogUtil.DebugLog('rts', 'host info update. hostId {0}. appList {1}. add {2}. delete {3}'.format(
         hostId, hostEntry.appList, appCL.add, appCL.delete))
     hostEntry.appList = list((set(hostEntry.appList) - set(appCL.delete)) | set(appCL.add))

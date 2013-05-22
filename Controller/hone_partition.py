@@ -1,5 +1,5 @@
 '''
-Peng Sun
+Author: Peng Sun
 hone_partition.py
 partition the instance of honeDataFlow into honePartitionedFlow
 return to rts
@@ -30,42 +30,36 @@ class HonePartitionedFlow:
 
     def isHostEligible(self, hostEntry):
         ret = True
-        if (len(self.criterion['app']) == 0) \
-           or (len(set(hostEntry.appList) - set(self.criterion['app'])) \
-               < len(hostEntry.appList)):
+        if (len(self.criterion['app']) == 0) or (len(set(hostEntry.appList) - set(self.criterion['app'])) < len(hostEntry.appList)):
             ret = ret and True
         else:
             ret = False
         for ipnet in self.criterion['srcIP']:
-            if ipaddr.IPAddress(hostEntry.hostAddress) in \
-               ipaddr.IPNetwork(ipnet):
+            if ipaddr.IPAddress(hostEntry.hostAddress) in ipaddr.IPNetwork(ipnet):
                 ret = ret and True
             else:
                 ret = False
         for ipnet in self.criterion['dstIP']:
-            if ipaddr.IPAddress(hostEntry.hostAddress) in \
-               ipaddr.IPNetwork(ipnet):
+            if ipaddr.IPAddress(hostEntry.hostAddress) in ipaddr.IPNetwork(ipnet):
                 ret = ret and True
             else:
                 ret = False
         return ret
 
     def addExePlan(self, dataFlow):
-        (hostSource, hostMiddle, network, controller) = \
-            self.partition(dataFlow)
-        if (len(hostSource) > 0):
+        (hostSource, hostMiddle, network, controller) = self.partition(dataFlow)
+        if len(hostSource) > 0:
             self.hostSourceExePlan.append(FlowExePlan(dataFlow.flowId, hostSource))
-        if (len(hostMiddle) > 0):
+        if len(hostMiddle) > 0:
             self.hostMiddleExePlan.append(FlowExePlan(dataFlow.flowId, hostMiddle))
-        if (len(network) > 0):
+        if len(network) > 0:
             self.networkExePlan.append(FlowExePlan(dataFlow.flowId, network))
         self.controllerExePlan.append(FlowExePlan(dataFlow.flowId, controller))
-        if (dataFlow.flow[0].wh is not None):
+        if dataFlow.flow[0].wh is not None:
             for criteria in dataFlow.flow[0].wh:
-                if (criteria[0] in self.criterion):
+                if criteria[0] in self.criterion:
                     if (criteria[1] != '=='):
-                        raise Exception('Must give == to app or srcIP or dstIP \
-                                         in Where clause')
+                        raise Exception('Must give == to app or srcIP or dstIP in Where clause')
                     self.criterion[criteria[0]].append(criteria[2])
         for subFlow in dataFlow.subFlows:
             self.addExePlan(subFlow)
@@ -81,19 +75,17 @@ class HonePartitionedFlow:
         period = flow[0].ev
         if (self.minQueryPeriod is None) or (period < self.minQueryPeriod):
             self.minQueryPeriod = period
-        if (tableName == 'HostConnection') or (tableName == 'AppStatus') or \
-            (tableName == 'HostStatus'):
+        if (tableName == 'HostConnection') or (tableName == 'AppStatus') or (tableName == 'HostStatus'):
             numOp = 1
             while (numOp < len(flow)):
-                if (flow[numOp][0] == 'MergeHosts') or \
-                   (flow[numOp][0] == 'TreeMerge'):
+                if (flow[numOp][0] == 'MergeHosts') or (flow[numOp][0] == 'TreeMerge'):
                    break
                 numOp += 1
             if (numOp == len(flow)):
                 hostSource = flow
             else:
                 hostSource = flow[0 : numOp]
-                if (flow[numOp][0] == 'MergeHosts'):
+                if flow[numOp][0] == 'MergeHosts':
                     self.flowToCtrl.append(flowId)
                     hostSource.append(['ToCtrl'])
                     controller = flow[(numOp + 1) : ]
@@ -104,7 +96,7 @@ class HonePartitionedFlow:
                     controller = flow[numOp : ]
         else:
             network.append(flow[0])
-            controller = flow[1 : ]
+            controller = flow[1:]
         return (hostSource, hostMiddle, network, controller)
 
     def debug(self):
@@ -123,4 +115,3 @@ class HonePartitionedFlow:
             #debugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
         #debugLog('part', 'flowToCtrl', self.flowToCtrl)
         #debugLog('part', 'flowToMiddle', self.flowToMiddle)
-

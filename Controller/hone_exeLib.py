@@ -4,10 +4,11 @@ hone_frplib
 provides library for controller execution module
 '''
 
+import sys
+
+import hone_lib as lib
 import hone_freLib as freLib
 import hone_exeModule as exeModule
-import sys
-import hone_lib
 
 ########################
 # Foundation Operators #
@@ -79,19 +80,18 @@ def RegisterPolicy(f=None):
             for key in sorted(rule[0].iterkeys()):
                 value = rule[0][key]
                 cr.append((key,'==',value))
-            plan = (hone_lib.Select(['app','srcHost','dstHost','srcIP','srcPort','dstIP','dstPort']) *
-                    hone_lib.From('HostConnection') *
-                    hone_lib.Where(cr) *
-                    hone_lib.Every(1)) >> hone_lib.RateLimit(rate)
+            plan = (lib.Select(['app','srcHost','dstHost','srcIP','srcPort','dstIP','dstPort']) *
+                    lib.From('HostConnection') *
+                    lib.Where(cr) *
+                    lib.Every(1)) >> lib.RateLimit(rate)
             queueToRts.put([['ControlJob'],plan])
         #print 'control policies'
         #print rs
     return freLib.FListener(push=push)
 
-# to change
 def MergeHosts(f=None):
     def coreFunc(newData,lastData):
-        (isComplete,dataList,dataBuffer) = lastData
+        (isComplete, dataList, dataBuffer) = lastData
         if isComplete:
             dataList = [dataBuffer]
             isComplete = False
@@ -100,12 +100,12 @@ def MergeHosts(f=None):
             lastSeq = dataList[0][1]
         else:
             lastSeq = newSeq
-        if newSeq==lastSeq:
+        if newSeq == lastSeq:
             dataList.append(newData)
-        elif newSeq>lastSeq:
+        elif newSeq > lastSeq:
             isComplete = True
             dataBuffer = newData
-        return (isComplete,dataList,dataBuffer)
+        return (isComplete, dataList, dataBuffer)
     def helperFunc1(lastData):
         return lastData[0]
     def helperFunc2(lastData):
@@ -115,5 +115,3 @@ def MergeHosts(f=None):
 
 def TreeMerge(f):
     return freLib.Lift(f)
-
-

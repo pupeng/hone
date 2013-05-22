@@ -1,14 +1,15 @@
 '''
-Peng Sun
+Author: Peng Sun
 hone_lib.py
 provide library for mgmt program to create dataflow
 '''
 
-import hone_rts
-from hone_util import *
-from hone_message import *
 import inspect
 from cStringIO import StringIO
+
+import hone_rts
+from hone_util import LogUtil
+from hone_message import *
 
 globalFlowId = 0
 
@@ -152,7 +153,7 @@ def HoneQuerySyntaxCheck(q):
         raise Exception('HoneQuery must at least have a Select')
     if q.ft is None:
         raise Exception('HoneQuery must have a From table')
-    if not hone_rts.honeTableTypes.has_key(q.ft):
+    if not hone_rts.HoneTableTypes.has_key(q.ft):
         raise Exception('HoneQuery: No such From Table {}'.format(q.ft))
     varName = []
     for typ in q.var:
@@ -168,7 +169,7 @@ def HoneQuerySyntaxCheck(q):
             if not typ in varName:
                 raise Exception('HoneQuery: Groupby of not-Selected columns')
     for typ in varName:
-        if not (typ in hone_rts.honeTableTypes[q.ft]):
+        if not (typ in hone_rts.HoneTableTypes[q.ft]):
             raise Exception('HoneQuery No type {} in Table {}'.format(typ, q.ft))
     if q.agg is not None:
         for (typ, op) in q.agg:

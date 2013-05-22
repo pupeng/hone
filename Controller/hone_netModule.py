@@ -1,11 +1,17 @@
+'''
+Author: Peng Sun
+hone_netModule.py
+Network module of HONE to communicate with the network
+Provide a concrete implementation to chat with a FloodLight controller
+'''
+
 from subprocess import check_output
 import json
 import os
 
 def GetLinks():
     links = []
-    result = check_output('curl -s http://localhost:8080/wm/topology/links/json', \
-                         shell=True, executable='/bin/bash')
+    result = check_output('curl -s http://localhost:8080/wm/topology/links/json', shell=True, executable='/bin/bash')
     switchLinks = json.loads(result)
     for link in switchLinks:
         sswitch = str(link['src-switch'])
@@ -13,7 +19,7 @@ def GetLinks():
         dswitch = str(link['dst-switch'])
         dport = link['dst-port']
         links.append([sswitch, sport, dswitch, dport])
-    result = check_output('curl -s http://localhost:8080/wm/device/', \
+    result = check_output('curl -s http://localhost:8080/wm/device/',
                          shell=True, executable='/bin/bash')
     hostLinks = json.loads(result)
     for link in hostLinks:
@@ -27,8 +33,7 @@ def GetLinks():
     return links
 
 def GetSwitchStats(switchId, statsType):
-    command = 'curl -s http://localhost:8080/wm/core/switch/{0}/{1}/json'.format(\
-              switchId, statsType)
+    command = 'curl -s http://localhost:8080/wm/core/switch/{0}/{1}/json'.format(switchId, statsType)
     result = check_output(command, shell=True, executable='/bin/bash')
     stats = json.loads(result)
     return stats[switchId]
@@ -39,8 +44,7 @@ def GetRoute(switchIdA, portA, switchIdB, portB):
     return routes
 
 def GetSwitchProperties():
-    result = check_output('curl -s http://localhost:8080/wm/core/controller/switches/json', \
-                         shell=True, executable='/bin/bash')
+    result = check_output('curl -s http://localhost:8080/wm/core/controller/switches/json', shell=True, executable='/bin/bash')
     switches = json.loads(result)
     switchProperties = {}
     for switch in switches:

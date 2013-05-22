@@ -1,5 +1,5 @@
 '''
-Peng Sun
+Author: Peng Sun
 hone_message.py
 define the message between agent and controller
 define all classes for serialization
@@ -38,4 +38,3 @@ class FlowExePlan(object):
     def __init__(self, flowId, exePlan):
         self.flowId = flowId
         self.exePlan = exePlan
-

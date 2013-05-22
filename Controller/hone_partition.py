@@ -26,7 +26,6 @@ class HonePartitionedFlow:
         self.flowToMiddle = []
         self.minQueryPeriod= None
         self.addExePlan(honeDataFlow)
-        self.debug()
 
     def isHostEligible(self, hostEntry):
         ret = True

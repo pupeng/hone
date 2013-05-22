@@ -40,34 +40,13 @@ class HoneJob:
             self._transferExeFile(hostEntry.hostId)
             self.addAggLink(0, hostEntry.hostId, 'controller')
             self.treeFormatter.addLeaf(hostEntry)
+            self.DisplayAggTree()
 
     def removeHost(self, hostEntry):
         logging.info('Remove host {0} from job {1}', hostEntry.hostId, self.jobId)
         if hostEntry.hostId in self.hosts:
             del self.hosts[hostEntry.hostId]
-
-
-        # TODO add calls to tree class
-        #        if (hostEntry.hostId in self.hostMiddle):
-        #            if (len(self.hostMiddle[hostEntry.hostId]) > 1):
-        #                newMiddleHost = self.hostMiddle[hostEntry.hostId][1]
-        #                newMiddleChildren = self.hostMiddle[hostEntry.hostId][1:]
-        #                self.removeMiddleExe(hostEntry.hostId)
-        #                self.updateMiddleExe(newMiddleHost, newMiddleChildren)
-        #                for host in newMiddleChildren:
-        #                    self.updateSourceExe(host, newMiddleHost)
-        #            else:
-        #                self.removeMiddleExe(hostEntry.hostId)
-        #        else:
-        #            middleHost = self.hostSource[hostEntry.hostId]
-        #            self.updateMiddleExe_removeChild(middleHost, hostEntry.hostId)
-        #        self.removeSourceExe(hostEntry.hostId)
-        #debugLog('exeMod', 'removeHostSource in jobId: ' + str(self.jobId), \
-        #         'host source len:' + str(len(self.hostSource)), \
-        #         self.hostSource, \
-        #         'host middle len:' + str(len(self.hostMiddle)), \
-        #         self.hostMiddle)
-        #EvalLog('{0:6f},28,done remove host source {1} from job {2}'.format(time.time(), hostEntry.hostId, self.jobId))
+            self.treeFormatter.removeLeaf(hostEntry)
 
     def isHostEligible(self, hostEntry):
         return self.exeFlow.isHostEligible(hostEntry)
@@ -107,20 +86,8 @@ class HoneJob:
         else:
             return len(self.aggStructRecord[len(self.aggStructRecord) - 1]['controller'])
 
-    # TODO delete
-    def printAggTree(self):
-        name = 1
-        hostName = {'controller': 'controller'}
-        for host in self.aggTree[0].iterkeys():
-            hostName[host] = 'host{0}'.format(name)
-            name += 1
-        print 'current agg tree:'
-        for i in reversed(range(len(self.aggTree))):
-            line = ''
-            for host in self.aggTree[i].iterkeys():
-                line += '{0} '.format(HostRecord[host].hostAddress)
-            print line
-        print '\n\n'
+    def DisplayAggTree(self):
+        LogUtil.DebugLog('rts', self.treeFormatter.displayTree())
 
     # private methods
     def _transferExeFile(self, hostId):

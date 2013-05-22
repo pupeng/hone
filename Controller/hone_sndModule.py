@@ -21,7 +21,7 @@ class HoneHostSndModule:
             self.hostSock.connect((address, port))
             self.hostSock.sendall(data)
         except socket.error, msg:
-            logging.error('Socket connect error {0}', msg)
+            logging.error('Socket connect error {0}'.format(msg))
         finally:
             if self.hostSock:
                 self.hostSock.close()

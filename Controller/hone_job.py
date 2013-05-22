@@ -34,7 +34,7 @@ class HoneJob:
         # TODO netModule.build(...)
 
     def addHost(self, hostEntry):
-        logging.info('job {0} add host {1}', self.jobId, hostEntry.hostId)
+        logging.info('job {0} add host {1}'.format(self.jobId, hostEntry.hostId))
         if hostEntry.hostId not in self.hosts:
             self.hosts[hostEntry.hostId] = None
             self._transferExeFile(hostEntry.hostId)
@@ -43,7 +43,7 @@ class HoneJob:
             self.DisplayAggTree()
 
     def removeHost(self, hostEntry):
-        logging.info('Remove host {0} from job {1}', hostEntry.hostId, self.jobId)
+        logging.info('Remove host {0} from job {1}'.format(hostEntry.hostId, self.jobId))
         if hostEntry.hostId in self.hosts:
             del self.hosts[hostEntry.hostId]
             self.treeFormatter.removeLeaf(hostEntry)
@@ -52,8 +52,7 @@ class HoneJob:
         return self.exeFlow.isHostEligible(hostEntry)
 
     def addAggLink(self, level, childHostId, parentHostId):
-        logging.info('job {0} add a level-{3} link from host {1} to host {2}',
-                     self.jobId, childHostId, parentHostId, level)
+        logging.info('job {0} add a level-{3} link from host {1} to host {2}'.format(self.jobId, childHostId, parentHostId, level))
         while len(self.aggStructRecord) <= level:
             self.aggStructRecord.append({})
         if parentHostId not in self.aggStructRecord[level]:
@@ -72,8 +71,8 @@ class HoneJob:
             self._updateMiddleExe_Parent(childHostId, level - 1, parentHostId)
 
     def removeAggLink(self, level, childHostId, parentHostId):
-        logging.info('job {0} remove a level-{1} link from host {2} to host {3}',
-                     self.jobId, level, childHostId, parentHostId)
+        logging.info('job {0} remove a level-{1} link from host {2} to host {3}'.format(
+                     self.jobId, level, childHostId, parentHostId))
         if childHostId in self.aggStructRecord[level][parentHostId]:
             self.aggStructRecord[level][parentHostId].remove(childHostId)
             self._updateMiddleExe_NumOfChildren(parentHostId, level)
@@ -98,7 +97,7 @@ class HoneJob:
         HoneHostSndModule().sendFile(address, message, self.exeFlow.progName)
 
     def _installSourceExe(self, hostId, parentHostId):
-        logging.info('job {0} install source exe on host {1} to parent {2}', self.jobId, hostId, parentHostId)
+        logging.info('job {0} install source exe on host {1} to parent {2}'.format(self.jobId, hostId, parentHostId))
         if not self.exeFlow.hostSourceExePlan:
             return
         address = rts.HostRecord[hostId].hostAddress
@@ -113,7 +112,7 @@ class HoneJob:
         HoneHostSndModule().sendMessage(address, message)
 
     def _updateSourceExe(self, hostId, parentHostId):
-        logging.info('job {0} update source exe of host {1} to parent {2}', self.jobId, hostId, parentHostId)
+        logging.info('job {0} update source exe of host {1} to parent {2}'.format(self.jobId, hostId, parentHostId))
         if not self.exeFlow.hostSourceExePlan:
             return
         address = rts.HostRecord[hostId].hostAddress
@@ -125,7 +124,7 @@ class HoneJob:
         HoneHostSndModule().sendMessage(address, message)
 
     def _installMiddleExe(self, hostId, level):
-        logging.info('job {0} install level-{1} middle exe on host {2}', self.jobId, level, hostId)
+        logging.info('job {0} install level-{1} middle exe on host {2}'.format(self.jobId, level, hostId))
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
         address = rts.HostRecord[hostId].hostAddress
@@ -139,8 +138,8 @@ class HoneJob:
         HoneHostSndModule().sendMessage(address, message)
 
     def _updateMiddleExe_NumOfChildren(self, hostId, level):
-        logging.info('job {0} update level-{1} middle exe on host {2} to update number of children to {3}',
-                     self.jobId, level, hostId, len(self.aggStructRecord[level][hostId]))
+        logging.info('job {0} update level-{1} middle exe on host {2} to update number of children to {3}'.format(
+                     self.jobId, level, hostId, len(self.aggStructRecord[level][hostId])))
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
         address = rts.HostRecord[hostId].hostAddress
@@ -152,8 +151,8 @@ class HoneJob:
         HoneHostSndModule().sendMessage(address, message)
 
     def _updateMiddleExe_Parent(self, hostId, level, parentHostId):
-        logging.info('job {0} update level-{1} middle exe on host {2} to update parent address to {3}',
-                     self.jobId, level, hostId, parentHostId)
+        logging.info('job {0} update level-{1} middle exe on host {2} to update parent address to {3}'.format(
+                     self.jobId, level, hostId, parentHostId))
         if (not self.exeFlow.hostMiddleExePlan) or (hostId == 'controller'):
             return
         address = rts.HostRecord[hostId].hostAddress

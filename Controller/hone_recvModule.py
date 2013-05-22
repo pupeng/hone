@@ -52,7 +52,7 @@ class HoneCommProtocol(LineReceiver):
             rts.handleStatsIn(message)
 
     def handleUnknownType(self, message):
-        logging.warning('Got unknown message type', message.messageType)
+        logging.warning('Got unknown message type {0}'.format(message.messageType))
 
 class HoneCommFactory(Factory):
     def buildProtocol(self, addr):
@@ -67,7 +67,7 @@ def recvModuleRun():
     except KeyboardInterrupt:
         LogUtil.DebugLog('rts', 'catch keyboard interrupt')
     except Exception, msg:
-        logging.error('Exception', msg)
+        logging.error('Exception {0}'.format(msg))
         print 'Exception: ', msg
     finally:
         logging.info('Exit from hone_recvModule')

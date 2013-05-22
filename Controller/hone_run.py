@@ -19,7 +19,7 @@ def main():
     LogUtil.InitLogging()
     # organize the management programs
     mgmtProg = [hone_rts.HoneHostInfoJob] + sys.argv[1:]
-    logging.info('Controller starts with the following programs: %s', mgmtProg)
+    logging.info('Controller starts with the following programs: {0}'.format(mgmtProg))
     LogUtil.DebugLog('global', 'mgmt programs {0}'.format(mgmtProg))
     try:
         print 'HONE controller starts.'

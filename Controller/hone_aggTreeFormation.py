@@ -80,7 +80,7 @@ class SimpleTreeFormatter(TreeFormatterBase):
         searchNodeLevel = 1
         while (searchNodeLevel < n) and (not foundSpot):
             for nodeToCheck in self.aggTree[searchNodeLevel]:
-                if len(nodeToCheck.getChildren) < self.branchFactor:
+                if len(nodeToCheck.getChildren()) < self.branchFactor:
                     nodeToCheck.addChild(node)
                     node.setParent(nodeToCheck)
                     self.aggTree[searchNodeLevel - 1].append(node)

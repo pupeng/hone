@@ -65,6 +65,6 @@ def main():
 
 if __name__ == '__main__':
     dataflow = main()
-    print dataflow.myFlow
+    print dataflow.flow
     for eachSubFlow in dataflow.subFlows:
-        print eachSubFlow.myFlow
+        print eachSubFlow.flow

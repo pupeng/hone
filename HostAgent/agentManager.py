@@ -122,11 +122,11 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         global stopSchedule
         stopSchedule = True
         agentProcMeasure.cleanup()
-        dirServiceProcess.stop()
+        dirServiceProcess.terminate()
         dirServiceProcess.join()
         rcvModuleProcess.terminate()
         rcvModuleProcess.join()
-        WriteLogs()
+        #WriteLogs()
         print 'Exit from agent manager'
 
 def scheduleLoopRun():

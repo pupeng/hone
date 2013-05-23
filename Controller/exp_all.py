@@ -148,6 +148,7 @@ def query3():
          Every(1000))
     return q
 
+
 def GetLen(x):
     print 'Data length: {0}'.format(len(x))
     if x:

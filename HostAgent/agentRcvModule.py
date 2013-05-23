@@ -24,11 +24,6 @@ import agentMiddleLib
 
 _honeHostListeningPort = 8877
 middleJobTable = {}
-
-#sourceJobTable = None
-#newSourceJobList = None
-#socketCriteria = None
-
 sourceJobQueue = None
 socketCriteriaQueue = None
 
@@ -351,8 +346,8 @@ class HoneCommProtocolHost(LineReceiver):
         #EvalLog('{0:6f},79,done handleMiddleStatsIn for jobId {1}'.format(time.time(), message.jobId))
     
     def handleUnknownType(self, message):
-        print 'Agent receives unknown message. type: ' + \
-              str(message.messageType) + '. content: ' + repr(message.content)
+        logging.warning('Agent receives unknown message. type: {0}. content: {1}'.format(message.messageType, repr(message.content)))
+
 
 class HoneCommFactoryHost(Factory):
     def __init__(self):
@@ -379,11 +374,10 @@ class RcvModuleProcess(StoppableProcess):
             #         _honeHostListeningPort)
             reactor.run()
         except Exception as e:
-            #debugLog('rcvMod', 'Got exception', e)
-            #logging.warning('rcvModule got exception {0}'.format(e))
-            pass
+            logging.warning('rcvModule got exception {0}'.format(e))
         finally:
             #EvalLog('{0:6f},66,rcvModule exits'.format(time.time()))
-            WriteLogs()
-            print 'Exit from agentRcvModule'
+            #WriteLogs()
+            logging.info('Exit from agentRcvModule')
+            print 'Exit from agentRcvModule.'
 

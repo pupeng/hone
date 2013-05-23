@@ -278,23 +278,22 @@ def connMeasureRun(jobFlowToM, nothing):
     statsToMPy = {}
     for jobFlow in jobFlowToM:
         #debugLog('conn', 'jobFlow: ', jobFlow, 'sk list:', agentManager.sourceJobSkList[jobFlow])
-        if jobFlow not in agentManager.sourceJobSkList:
-            continue
-        for sockfd in agentManager.sourceJobSkList[jobFlow]:
-            sk = agentManager.socketTable[sockfd]
-            if sk.cid:
-                skToMByCid[sk.cid] = sk.sockfd
-            else:
-                theTuple = sk.GetTuple()
-                skToMByTuple[theTuple] = sk.sockfd
-            if sockfd not in skWithJobFlow:
-                skWithJobFlow[sockfd] = []
-            skWithJobFlow[sockfd].append(jobFlow)
-        sourceJob = agentManager.sourceJobTable[jobFlow]
-        for name in sourceJob.measureStats:
-            if name in web10g_types_dict:
-                statsToM.append(web10g_var_location[web10g_types_dict[name]])
-                statsToMPy[web10g_var_location[web10g_types_dict[name]]] = None
+        if jobFlow in agentManager.sourceJobSkList:
+            for sockfd in agentManager.sourceJobSkList[jobFlow]:
+                sk = agentManager.socketTable[sockfd]
+                if sk.cid:
+                    skToMByCid[sk.cid] = sk.sockfd
+                else:
+                    theTuple = sk.GetTuple()
+                    skToMByTuple[theTuple] = sk.sockfd
+                if sockfd not in skWithJobFlow:
+                    skWithJobFlow[sockfd] = []
+                skWithJobFlow[sockfd].append(jobFlow)
+            sourceJob = agentManager.sourceJobTable[jobFlow]
+            for name in sourceJob.measureStats:
+                if name in web10g_types_dict:
+                    statsToM.append(web10g_var_location[web10g_types_dict[name]])
+                    statsToMPy[web10g_var_location[web10g_types_dict[name]]] = None
     #debugLog('conn', 'skToMByCid: ', skToMByCid, 'skToMByTuple:', skToMByTuple)
     # take snapshot via web10G
     statsToMPy = sorted(statsToMPy.keys())

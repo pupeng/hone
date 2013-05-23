@@ -18,7 +18,6 @@ from agentTypes import *
 from agent_dir_service import agent_dir_service_run, agent_dir_service_recv, agent_dir_service_cleanup
 
 class DirServiceProcess(StoppableProcess):
-    #def __init__(self, passedSocketCriteriaQueue, passedSocketTable, passedSourceJobSkList):
     def __init__(self, passedSocketCriteriaQueue, passedSocketQueue):
         super(DirServiceProcess, self).__init__()
         self.socketCriteriaQueue = passedSocketCriteriaQueue

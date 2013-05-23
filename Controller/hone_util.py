@@ -44,7 +44,7 @@ class LogUtil:
         if not os.path.expanduser(d):
             os.makedirs(d)
         logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
-                            format='%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
+                            format='%(levelname)8s,%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
                             datefmt='%m/%d/%Y %H:%M:%S')
         
     @staticmethod

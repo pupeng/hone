@@ -6,11 +6,14 @@ Host agent send module
 send stats, hostJoin, etc to the controller
 '''
 
-import socket, sys, random
+import socket
+import sys
+import logging
+import cPickle as pickle
 from uuid import getnode as get_mac
 from cStringIO import StringIO
-import cPickle as pickle
-from agentUtil import debugLog
+
+from agentUtil import LogUtil
 from hone_message import *
 
 ctrlCommPort = 8866
@@ -26,6 +29,7 @@ class HostAgentSndSocket:
             #message.hostId = str(random.randint(0, 1000000))
             self.sendMessage(message)
         except socket.error, msg:
+            logging.error('connection to controller error: {0}'.format(msg))
             print 'connect error '
             print msg
             if self.hostSock:
@@ -35,9 +39,9 @@ class HostAgentSndSocket:
             if self.hostSock:
                 self.hostSock.close()
             self.hostSock = None
-            pass
         if self.hostSock is None:
-            print 'socket error in HostAgentSndSocket'
+            logging.error('Connection to controller error in HostAgentSndSocket. Agent will stop.')
+            print 'Connection to controller error in HostAgentSndSocket. Agent will stop.'
             sys.exit()
     
     def sendMessage(self, message):
@@ -46,11 +50,11 @@ class HostAgentSndSocket:
             pickle.dump(message, src, pickle.HIGHEST_PROTOCOL)
             data = src.getvalue() + '\r\n'
             src.close()
-        #debugLog('sndModule', 'send message. messageType:', \
-        #         message.messageType, 'jobId', message.jobId, \
-        #         'flowId:', message.flowId, 'sequence:', \
-        #         message.sequence, 'content:', message.content)
             self.hostSock.sendall(data)
+            #debugLog('sndModule', 'send message. messageType:', \
+            #         message.messageType, 'jobId', message.jobId, \
+            #         'flowId:', message.flowId, 'sequence:', \
+            #         message.sequence, 'content:', message.content)
     
     def closeSocket(self):
         self.hostSock.close()
@@ -64,6 +68,7 @@ class HostAgentRelaySndSocket:
             self.hostSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.hostSock.connect((middleAddress, port))
         except socket.error, msg:
+            logging.warning('Relay connection to middle error: {0}'.format(msg))
             print 'connect error '
             print msg
             if self.hostSock:
@@ -72,6 +77,7 @@ class HostAgentRelaySndSocket:
         except Exception:
             self.hostSock = None
         if self.hostSock is None:
+            logging.warning('socket error in HostAgentRelaySndSocket')
             print 'socket error in HostAgentRelaySndSocket'
 
     def sendMessage(self, message):
@@ -80,8 +86,8 @@ class HostAgentRelaySndSocket:
             pickle.dump(message, src, pickle.HIGHEST_PROTOCOL)
             data = src.getvalue() + '\r\n'
             src.close()
-        #debugLog('sndModule', 'send message. messageType:',\
-        #    message.messageType, 'jobId', message.jobId,\
-        #    'flowId:', message.flowId, 'sequence:',\
-        #    message.sequence, 'content:', message.content)
             self.hostSock.sendall(data)
+            #debugLog('sndModule', 'send message. messageType:',\
+            #    message.messageType, 'jobId', message.jobId,\
+            #    'flowId:', message.flowId, 'sequence:',\
+            #    message.sequence, 'content:', message.content)

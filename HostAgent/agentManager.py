@@ -109,13 +109,13 @@ def agentManagerRun(ctrlAddress, ctrlPort):
             #debugLog('manager', 'one round of main loop')
             #for id in sourceJobTable.keys():
                 #debugLog('manager', 'jobId@flowId: ', id, 'sourceJob: ', sourceJobTable[id].debug())
-#            #debugLog('manager', 'socketTable', socketTable)
-#            #debugLog('manager', 'sourceJobSkList', sourceJobSkList)
-#            #debugLog('manager', 'time: ', time.time())
+            #debugLog('manager', 'socketTable', socketTable)
+            #debugLog('manager', 'sourceJobSkList', sourceJobSkList)
+            #debugLog('manager', 'time: ', time.time())
             #EvalLog('{0:6f},56,done one round of main loop. start to sleep {1} seconds'.format(time.time(), minRunInterval))
-            WriteLogs()
             time.sleep(minRunInterval)
     except KeyboardInterrupt:
+        logging.info('Catch KeyboardInterrupt in agent manager main loop')
         print 'Catch KeyboardInterrupt in agent manager main loop'
         #EvalLog('{0:6f},57,catch keyboard interrupt. start to clean up'.format(time.time()))
     finally:
@@ -127,7 +127,7 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         dirServiceProcess.join()
         rcvModuleProcess.terminate()
         rcvModuleProcess.join()
-        #WriteLogs()
+        logging.info('Agent manager cleans every up, and is ready to stop.')
         print 'Exit from agent manager'
 
 def scheduleLoopRun():
@@ -135,13 +135,14 @@ def scheduleLoopRun():
     #EvalLog('{0:6f},59,start one round of schedule loop'.format(time.time()))
     global evalTimestamp
     global measureLatency
-    EvalLog('{0:6f},125,{1}'.format(time.time(), evalTimestamp))
-    EvalLog('{0:6f},127,{1}'.format(time.time(), measureLatency))
-    evalTimestamp = '{0:6f}'.format(time.time())
-    measureLatency = '{0:6f}'.format(time.time())
+    LogUtil.EvalLog('JobExecutionLoop', evalTimestamp)
+    LogUtil.EvalLog('MeasureLatency', measureLatency)
+    evalTimestamp = 'Begin${0:6f}'.format(time.time())
+    measureLatency = 'Begin${0:6f}'.format(time.time())
     if stopSchedule:
         #debugLog('schedule', 'catch stop signal')
         #EvalLog('{0:6f},60,schedule loop catches stop signal and exit'.format(time.time()))
+        logging.info('schedule loop should stop now.')
         return
     # next loop
     currentTime = time.time()
@@ -177,7 +178,7 @@ def scheduleLoopRun():
     #                     'connMeasureJobFlow:', connMeasureJobFlow, \
     #                     'procMeasureJobFlow:', procMeasureJobFlow, \
     #                     'machineMeasureJobFlow:', machineMeasureJobFlow)
-    evalTimestamp += '#{0:6f}'.format(time.time())
+    evalTimestamp += '#ScheduleDone${0:6f}'.format(time.time())
     if IsLazyTableEnabled():
         if connMeasureJobFlow:
             connThread = Thread(target=agentConnMeasure.connMeasureRun, args=(connMeasureJobFlow, None))
@@ -206,9 +207,6 @@ def scheduleLoopRun():
         procThread.join()
         machineThread.join()
         #EvalLog('{0:6f},108,No lazy materialization. done one round of schedule loop.'.format(time.time()))
-    #evalTime += '#{0:6f}'.format(time.time())
-    #EvalLog('{0:6f},117,{1}'.format(time.time(), evalTime))
-    #WriteLogs()
 
 def registerComputePart(sourceJob):
     #debugLog('job', sourceJob.jobId, sourceJob.flowId, sourceJob.computePart)
@@ -228,6 +226,7 @@ def _registerComputePart(sourceJob, computePart):
     except ImportError, msg:
         # user-defined function not ready yet
         #debugLog('job', 'Error loading user module: ', sourceJob.progName)
+        logging.warning('hone application file is not shipped yet. program name {0}'.format(sourceJob.progName))
         if not jobQueueForFile.has_key(sourceJob.jobId):
             jobQueueForFile[sourceJob.jobId] = []
         jobQueueForFile[sourceJob.jobId].append((sourceJob.flowId, sourceJob.computePart))
@@ -239,7 +238,7 @@ def _registerComputePart(sourceJob, computePart):
         (ef, complete) = _processOp(operator, sourceJob.jobId, sourceJob.flowId, sourceJob.progName, e)
         #debugLog('job', 'process operator: ', operator, 'complete? ', complete, 'ef', ef)
         if complete:
-            if (ef.__class__.__name__=='FEvent'):
+            if ef.__class__.__name__=='FEvent':
                 e = ef
             else:
                 e = e >> ef
@@ -264,11 +263,11 @@ def _registerComputePart(sourceJob, computePart):
         if not jobQueueForMerge[sourceJob.jobId]:
             del jobQueueForMerge[sourceJob.jobId]
 
-def _processOp(operator, jobId, flowId, progName, e):
+def _processOp(operator, jobId, flowId, progName, event):
     #debugLog('job', 'operator: ', operator,\
     #    'jobId: ', jobId,\
     #    'flowId: ', flowId,\
-    #    'event: ', e)
+    #    'event: ', event)
     if not operator:
         print 'return None'
         return (None, True)
@@ -278,24 +277,24 @@ def _processOp(operator, jobId, flowId, progName, e):
         mgmtFunc = getattr(mgmtModule, opType)
         #debugLog('job', 'mgmtFunc: ', opType)
         return (mgmtFunc, True)
-    elif opType=='WC':
+    elif opType == 'WC':
         opFunc = getattr(agentLib, opType)
         attr = operator[1]
         op = operator[2]
         value = operator[3]
         #debugLog('job', 'where complex: ', attr, op, value)
         return (opFunc(attr,op,value), True)
-    elif opType=='GB':
+    elif opType == 'GB':
         opFunc = getattr(agentLib, opType)
         attr = operator[1:]
         #debugLog('lib', 'groupby: ', attr)
         return (opFunc(attr), True)
-    elif opType=='AGG':
+    elif opType == 'AGG':
         opFunc = getattr(agentLib, opType)
         attr = operator[1:]
         #debugLog('lib', 'AGG', attr)
         return (opFunc(attr), True)
-    elif opType=='ToCtrl':
+    elif opType == 'ToCtrl':
         opFunc = getattr(agentLib, opType)
         #debugLog('lib', 'ToCtrl', )
         return (opFunc(jobId, flowId), True)
@@ -303,18 +302,18 @@ def _processOp(operator, jobId, flowId, progName, e):
         opFunc = getattr(agentLib, opType)
         #debugLog('lib', 'ToMiddle')
         return (opFunc(jobId, flowId), True)
-    elif opType=='MergeStreamsForSet':
+    elif opType == 'MergeStreamsForSet':
         opFunc = getattr(agentLib, opType)
         subFlowId = operator[1]
         if (jobId in eventAndGoFunc) and (subFlowId in eventAndGoFunc[jobId]):
             (subEvent, _) = eventAndGoFunc[jobId][subFlowId]
-            return (opFunc(e, subEvent), True)
+            return (opFunc(event, subEvent), True)
         else:
             return (subFlowId, False)
-    elif (opType=='ReduceStreamSet') or (opType=='ReduceList'):
+    elif (opType == 'ReduceStreamSet') or (opType == 'ReduceList'):
         opFunc = getattr(agentLib, opType)
         init = operator[1]
-        (f, subcomplete) = _processOp(operator[2:], jobId, flowId, progName, e)
+        (f, subcomplete) = _processOp(operator[2:], jobId, flowId, progName, event)
         if subcomplete:
             #debugLog('lib', 'Reduce: ', opType, operator[2:])
             return (opFunc(f, init), True)
@@ -326,7 +325,7 @@ def _processOp(operator, jobId, flowId, progName, e):
         return (opFunc(jobId), True)
     else:
         opFunc = getattr(agentLib,opType)
-        (f, subcomplete) = _processOp(operator[1:], jobId, flowId, progName, e)
+        (f, subcomplete) = _processOp(operator[1:], jobId, flowId, progName, event)
         if subcomplete:
             #debugLog('lib', 'other: ', opType, operator[1:])
             return (opFunc(f), True)

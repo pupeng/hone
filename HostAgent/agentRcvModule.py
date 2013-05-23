@@ -233,6 +233,7 @@ def _processOp(operator, jobId, flowId, level, progName, e):
         else:
             return (f, False)
 
+
 class HoneCommProtocolHost(LineReceiver):
     '''the protocol between controller and host agent'''
     def __init__(self, factory):
@@ -276,11 +277,6 @@ class HoneCommProtocolHost(LineReceiver):
         #EvalLog('{0:6f},70,start handleSourceJobUpdate jobId {1}'.format(time.time(), message.jobId))
         item = (IPCType['UpdateSourceJob'], (message.jobId, message.content))
         sourceJobQueue.put(item)
-#        for key in sourceJobTable.iterkeys():
-#            if keyContainJobId(key, message.jobId):
-#                sourceJob = sourceJobTable[key]
-#                sourceJob.middleAddress = message.content
-#                sourceJobTable[key] = sourceJob
         #EvalLog('{0:6f},71,done handleSourceJobUpdate jobId {1}'.format(time.time(), message.jobId))
 
     def handleMiddleJob(self, message):
@@ -295,8 +291,7 @@ class HoneCommProtocolHost(LineReceiver):
             middleJob.parentAddress = parentAddress
             buildMiddleJob(middleJob, flowExePlan.exePlan)
         #EvalLog('{0:6f},73,done handleMiddleJob jobId {1}'.format(time.time(), message.jobId))
-        #for key, middleJob in middleJobTable.iteritems():
-        #    print key, middleJob.debug()
+        logging.info('install middle job id {0} level {1}'.format(message.jobId, message.level))
 
     def handleMiddleJobUpdate(self, message):
         #debugLog('rcvMod', 'update middle job.', 'jobId:', message.jobId, \
@@ -312,8 +307,7 @@ class HoneCommProtocolHost(LineReceiver):
                 middleJobTable[key].expectedNumOfChild = numOfChildren
                 if parentAddress:
                     middleJobTable[key].parentAddress = parentAddress
-        #for key, middleJob in middleJobTable.iteritems():
-            #debugLog('rcvMod', 'middleJobTable', key, middleJob.debug())
+        logging.info('update middle job id {0} level {1} with content {2}'.format(message.jobId, message.level, message.content))
 
     def handleFileTransfer(self, message):
         #debugLog('rcvMod', 'transfer program file. jobId:', message.jobId)
@@ -359,6 +353,7 @@ class HoneCommFactoryHost(Factory):
     def buildProtocol(self, addr):
         return HoneCommProtocolHost(self)
 
+
 class RcvModuleProcess(StoppableProcess):
     def __init__(self, passedSourceJobQueue, passedSocketCriteriaQueue):
         super(RcvModuleProcess, self).__init__()
@@ -372,15 +367,12 @@ class RcvModuleProcess(StoppableProcess):
         print 'hone agent rcvModule starts to run.'
         #EvalLog('{0:6f},65,rcvModule starts to run'.format(time.time()))
         try:
-            reactor.listenTCP(_honeHostListeningPort, \
-                              HoneCommFactoryHost())
+            reactor.listenTCP(_honeHostListeningPort, HoneCommFactoryHost())
             #debugLog('rcvMod', 'agentRcvModule starts on port ', \
             #         _honeHostListeningPort)
             reactor.run()
         except Exception as e:
-            logging.warning('rcvModule got exception {0}'.format(e))
+            logging.warning('agentRcvModule got exception {0}'.format(e))
         finally:
-            #EvalLog('{0:6f},66,rcvModule exits'.format(time.time()))
-            #WriteLogs()
             logging.info('Exit from agentRcvModule')
             print 'Exit from agentRcvModule.'

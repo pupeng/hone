@@ -19,9 +19,6 @@ def main():
         print 'Usage: python agentRun.py controllerIP controllerPort'
         sys.exit()
     LogUtil.InitLogging()
-    #logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
-    #logFileName = 'logs/' + logFileName + '.log'
-    #agentUtil.SetLogFileName(logFileName)
     ctrlAddress = sys.argv[1]
     ctrlPort = sys.argv[2]
     if ctrlAddress != 'localhost':

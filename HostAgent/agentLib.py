@@ -4,12 +4,14 @@ agentLib.py
 library for executing jobs
 '''
 
-import time, os
+import time
+import os
 from uuid import getnode as get_mac
+
 import agentFreLib as freLib
 import agentControlModule
-from agentUtil import *
 import agentManager
+from agentUtil import *
 from agentSndModule import *
 from hone_message import *
 
@@ -70,7 +72,7 @@ def ReduceList(f, init):
     return newFunc
 
 # MergeSet: (Set of Streams a, Set of Streams b) -> Set of Streams (a,b)
-# to change!!!
+# TODO long-term issue on changing how Merge() works
 def MergeStreamsForSet(a, b):
     return freLib.Merge(a, b)
     
@@ -170,10 +172,9 @@ def ToCtrl(jobID, flowId):
             message.sequence = sequence
             message.content = x
             #debugLog('lib', 'send message to controller')
-            agentManager.evalTimestamp += '#{0}${1}${3}${2:6f}$ToCtrl'.format(jobID, flowId, time.time(), sequence)
+            agentManager.evalTimestamp += '#StartToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
             agentManager.agentSndModule.sendMessage(message)
-            agentManager.evalTimestamp += '#{0}${1}${3}${2:6f}$ToCtrl'.format(jobID, flowId, time.time(), sequence)
-            #EvalLog('{0:6f},122,{1}'.format(time.time(), evalTime))
+            agentManager.evalTimestamp += '#DoneToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
     return freLib.FListener(push=push)
 
 def ToMiddle(jobId, flowId):
@@ -192,18 +193,18 @@ def ToMiddle(jobId, flowId):
                 message.level = 1
                 message.sequence = sequence
                 message.content = x
-                evalTime = '{0}#{1}#{2:6f}#{3}'.format(jobId, flowId, time.time(), sequence)
+                sndTimestamp = 'Begin${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
                 if middleAddress == agentManager.CtrlAddress:
                     port = ControllerPort
                 else:
                     port = HostRelayPort
                 #debugLog('lib', 'send message to middle address {0}'.format(middleAddress), 'level 1')
                 sndSocket = HostAgentRelaySndSocket(middleAddress, port)
-                agentManager.evalTimestamp += '#{0}${1}${3}${2:6f}$ToMiddle'.format(jobId, flowId, time.time(), sequence)
+                agentManager.evalTimestamp += '#StartToMiddle${0:6f}${1}${2}${3}${4}'.format(time.time(), jobId, flowId, sequence, middleAddress)
                 sndSocket.sendMessage(message)
-                agentManager.evalTimestamp += '#{0}${1}${3}${2:6f}$ToMiddle'.format(jobId, flowId, time.time(), sequence)
-                evalTime += '#{0:6f}'.format(time.time())
-                EvalLog('{0:6f},123,{1}'.format(time.time(), evalTime))
+                agentManager.evalTimestamp += '#DoneToMiddle${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
+                sndTimestamp += 'End${0:6f}'.format(time.time())
+                LogUtil.EvalLog('ToMiddleOneRound', sndTimestamp)
     return freLib.FListener(push=push)
 
 # rate limit
@@ -222,4 +223,3 @@ def RateLimit(jobID):
 
 def TreeMerge(f):
     return MapStreamSet(f)
-

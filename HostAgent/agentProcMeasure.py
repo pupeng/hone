@@ -7,14 +7,15 @@ CPU memory measurement
 
 import traceback
 import psutil
-#import logging
+import logging
 import time
 from subprocess import check_output
 from multiprocessing import Pool
 from threading import Thread
 from uuid import getnode as get_mac
-from agentUtil import *
+
 import agentManager
+from agentUtil import *
 
 def cpuWorker(pid):
     cpu = 0
@@ -22,9 +23,9 @@ def cpuWorker(pid):
         proc = psutil.Process(pid)
         proc.get_cpu_percent(interval=None)
         cpu = proc.get_cpu_percent(interval=0.05)
-    except Exception:
+    except Exception, msg:
         #debugLog('proc', 'psutil exception', 'pid: ', pid)
-        pass
+        logging.warning('psutil cpu measure exception: pid {0}. msg {1}'.format(pid, msg))
     return (pid, cpu)
 
 def memWorker(pid):
@@ -32,9 +33,9 @@ def memWorker(pid):
     try:
         proc = psutil.Process(pid)
         mem = proc.get_memory_percent()
-    except Exception:
+    except Exception, msg:
         #debugLog('proc', 'psutil exception', 'pid: ', pid)
-        pass
+        logging.warning('psutil memory measure exception: pid {0}. msg {1}'.format(pid, msg))
     return (pid, mem)
 
 cpuWorkerPool = Pool(10)
@@ -57,12 +58,14 @@ def procMeasureRun(jobFlowToM, nothing):
                 pidAndAppNames = check_output('ps -A | grep ' + appName + '| cut -b 1-5,24-', shell=True, executable='/bin/bash')
             except Exception:
                 #debugLog('proc', 'check_output exception')
+                logging.warning('exception in getting the application''s pid. app name: {0}'.format(appName))
                 traceback.print_exc()
         else:
             try:
                 pidAndAppNames = check_output('ps -A | cut -b 1-5,24-', shell=True, executable='/bin/bash')
             except Exception:
                 #debugLog('proc', 'check_output exception')
+                logging.warning('exception in getting the whole application list')
                 traceback.print_exc()
         if pidAndAppNames:
             pidAndAppNames = map((lambda x: x.lstrip(' ').rstrip(' ').split(' ')), pidAndAppNames.rstrip('\n').split('\n'))
@@ -135,7 +138,7 @@ def procMeasureRun(jobFlowToM, nothing):
     #evalTime += '#{0:6f}'.format(time.time())
     #EvalLog('{0:6f},119,{1}'.format(time.time(), evalTime))
     #WriteLogs()
-    agentManager.measureLatency += '#{0:6f}'.format(time.time())
+    agentManager.measureLatency += '#DoneOneRoundProcMeasure${0:6f}'.format(time.time())
 
 def procMeasureRunAll(jobFlowToM, nothing):
     #EvalLog('{0:6f},110,no lazy m: start procMeasure for jobFlows {1}'.format(time.time(), jobFlowToM))
@@ -192,7 +195,7 @@ def procMeasureRunAll(jobFlowToM, nothing):
             goThread.daemon = True
             goThread.start()
     #EvalLog('{0:6f},111,no lazy m: done one round of procMeasureAll for jobFlows {1}. Number of pids: {2} {3}'.format(time.time(), jobFlowToM, len(pidsForCpuM), len(pidsForMemM)))
-    agentManager.measureLatency += '#{0:6f}'.format(time.time())
+    agentManager.measureLatency += '#DoneOneRoundProcMeasureAll${0:6f}'.format(time.time())
 
 def machineMeasureRun(jobFlowToM, nothing):
     #debugLog('proc', 'machineMeasureRun. jobFlowToM:', jobFlowToM)
@@ -218,7 +221,7 @@ def machineMeasureRun(jobFlowToM, nothing):
             goThread.daemon = True
             goThread.start()
     #EvalLog('{0:6f},105,done one round of machineMeasure for jobFlows {1}'.format(time.time(), jobFlowToM))
-    agentManager.measureLatency += '#{0:6f}'.format(time.time())
+    agentManager.measureLatency += '#DoneOneRoundMachineMeasure${0:6f}'.format(time.time())
 
 def runGo(goFunc, data, jobId, flowId):
     #evalTime = '{0}#{1}#{2:6f}'.format(jobId, flowId, time.time())
@@ -227,6 +230,7 @@ def runGo(goFunc, data, jobId, flowId):
         goFunc(data)
         #evalTime += '#{0:6f}'.format(time.time())
     except Exception, msg:
+        logging.warning('go thread caught exception {0}'.format(msg))
         print 'go thread caught exception'
         print msg
         traceback.print_exc()
@@ -244,4 +248,4 @@ def cleanup():
         cpuWorkerPool.terminate()
         memWorkerPool.terminate()
     except Exception:
-        pass
+        logging.warning('exception when cleaning up cpuWorkerPool and memWorkerPool')

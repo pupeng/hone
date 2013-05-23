@@ -8,11 +8,11 @@ see the C implementation in agent_dir_service.c
 '''
 
 import time
-import multiprocessing
 import fnmatch
 import ipaddr
 import traceback
-#import logging
+import logging
+
 from agentUtil import *
 from agentTypes import *
 from agent_dir_service import agent_dir_service_run, agent_dir_service_recv, agent_dir_service_cleanup
@@ -28,6 +28,7 @@ class DirServiceProcess(StoppableProcess):
          
     def run(self):
         print 'agentDirService starts'
+        logging.info('agentDirService starts')
         #EvalLog('{0:6f},88,dirService starts'.format(time.time()))
         try:
             agent_dir_service_run()
@@ -71,13 +72,13 @@ class DirServiceProcess(StoppableProcess):
                         print 'unknown kernel message: {0}'.format(message)
                 time.sleep(0.001)
         except Exception as e:
+            logging.error('agentDirService exception {0}'.format(e))
             print 'Got exception in dir service process: {0}'.format(e)
             traceback.print_exc()
         finally:
             #EvalLog('{0:6f},89,dirService exits'.format(time.time()))
             agent_dir_service_cleanup()
             #EvalLog('{0:6f},90,done kernel communication cleanup'.format(time.time()))
-            WriteLogs()
             print 'Exit from agentDirService'
 
     def passSocketCriteria(self, message):
@@ -137,13 +138,12 @@ class DirServiceProcess(StoppableProcess):
         return ret
 
 if __name__ == '__main__':
-    dirServiceProcess = DirServiceProcess({}, {}, {})
+    dirServiceProcess = DirServiceProcess({}, {})
     try:
         dirServiceProcess.start()
         dirServiceProcess.join()
     except KeyboardInterrupt:
-        #debugLog('dir', 'catch keyboardinterrupt')
         dirServiceProcess.stop()
         dirServiceProcess.join()
     finally:
-        print 'Exit from main'
+        print 'Exit from agentDirService self test'

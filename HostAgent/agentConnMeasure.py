@@ -9,9 +9,10 @@ import time
 import traceback
 from threading import Thread
 from uuid import getnode as get_mac
-from agentUtil import *
+
 import agentManager
 import agent_web10g_measure as web10g
+from agentUtil import *
 
 web10g_types_dict = {
 'ThruOctetsReceived' : 'ThruOctetsReceived',
@@ -269,7 +270,7 @@ web10g_string_type_var = [1, 4]
 
 def connMeasureRun(jobFlowToM, nothing):
     #debugLog('conn', 'job flow to measure in conn:', jobFlowToM)
-    connTime = '{0:6f}'.format(time.time())
+    connMeasureTimestamp = 'Begin${0:6f}'.format(time.time())
     #EvalLog('{0:6f},91,start connMeasure of jobFlows: {1}'.format(time.time(), jobFlowToM))
     skToMByCid = web10g.IntStringDict()
     skToMByTuple = web10g.StringStringDict()
@@ -278,7 +279,7 @@ def connMeasureRun(jobFlowToM, nothing):
     statsToMPy = {}
     for jobFlow in jobFlowToM:
         #debugLog('conn', 'jobFlow: ', jobFlow, 'sk list:', agentManager.sourceJobSkList[jobFlow])
-        if (jobFlow in agentManager.sourceJobSkList):
+        if jobFlow in agentManager.sourceJobSkList:
             for sockfd in agentManager.sourceJobSkList[jobFlow]:
                 sk = agentManager.socketTable[sockfd]
                 if sk.cid:
@@ -297,9 +298,8 @@ def connMeasureRun(jobFlowToM, nothing):
     #debugLog('conn', 'skToMByCid: ', skToMByCid, 'skToMByTuple:', skToMByTuple)
     # take snapshot via web10G
     statsToMPy = sorted(statsToMPy.keys())
-    connTime += '#{0}${1:6f}'.format((skToMByCid.size() + skToMByTuple.size()), time.time())
-    agentManager.evalTimestamp += '#{0}${1:6f}'.format((skToMByCid.size() + skToMByTuple.size()), time.time())
-    #EvalLog('{0:6f},92,start web10g measurement for {1}, {2}'.format(time.time(), skToMByCid.size(), skToMByTuple.size()))
+    connMeasureTimestamp += '#DoneFindSk${0:6f}${1}'.format(time.time(), (skToMByCid.size() + skToMByTuple.size()))
+    agentManager.evalTimestamp += '#DoneFindSk${0:6f}${1}'.format(time.time(), (skToMByCid.size() + skToMByTuple.size()))
     if IsLazyTableEnabled():
         if skToMByCid.size() or skToMByTuple.size():
             skSnapshot = web10g.measure(skToMByCid, skToMByTuple, statsToM)
@@ -308,9 +308,8 @@ def connMeasureRun(jobFlowToM, nothing):
     else:
         skSnapshot = web10g.measure(skToMByCid, skToMByTuple, statsToM)
         #EvalLog('{0:6f},109,no lazy m: number of sockets for measurement: {1}'.format(time.time(), len(skSnapshot.keys())))
-    connTime += '#{0}${1:6f}'.format((skToMByCid.size() + skToMByTuple.size()), time.time())
-    agentManager.evalTimestamp += '#{0}${1:6f}'.format((skToMByCid.size() + skToMByTuple.size()), time.time())
-    #EvalLog('{0:6f},93,done web10g measurement'.format(time.time()))
+    connMeasureTimestamp += '#DoneWeb10GMeasure${0:6f}${1}'.format(time.time(), (skToMByCid.size() + skToMByTuple.size()))
+    agentManager.evalTimestamp += '#DoneWeb10GMeasure${0:6f}${1}'.format(time.time(), (skToMByCid.size() + skToMByTuple.size()))
     # generate measure results for runJobs
     sockStats = {}
     for jobFlow in jobFlowToM:
@@ -356,17 +355,18 @@ def connMeasureRun(jobFlowToM, nothing):
             goThread.start()
     #evalTime += '#{0:6f}'.format(time.time())
     #EvalLog('{0:6f},96,done one round of conn measurement for jobFlows {1}'.format(time.time(), jobFlowToM))
-    connTime += '#{0:6f}'.format(time.time())
-    agentManager.measureLatency += '#{0:6f}'.format(time.time())
-    EvalLog('{0:6f},114,{1}'.format(time.time(), connTime))
+    connMeasureTimestamp += '#DoneOneRoundConnMeasure${0:6f}'.format(time.time())
+    agentManager.measureLatency += '#DoneOneRoundConnMeasure${0:6f}'.format(time.time())
+    LogUtil.EvalLog('OneRoundOfConnMeasure', connMeasureTimestamp)
 
 def runGo(goFunc, data, jobId, flowId):
-    agentManager.evalTimestamp += '#{0}${1}${2:6f}'.format(jobId, flowId, time.time())
+    agentManager.evalTimestamp += '#StartRunGoOfJobFlow${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
     try:
         #EvalLog('{0:6f},94,start go function for jobId {1} flowId {2}'.format(time.time(), jobId, flowId))
         goFunc(data)
         #evalTime += '#{0:6f}'.format(time.time())
     except Exception, msg:
+        logging.warning('go thread of jobId {0} flowId {1} caught exception: {2}'.format(jobId, flowId, msg))
         print 'go thread caught exception'
         print msg
         traceback.print_exc()

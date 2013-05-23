@@ -4,13 +4,14 @@ agentLib.py
 library for executing jobs
 '''
 
+from uuid import getnode as get_mac
+
+import agentRcvModule
+import agentManager
 import agentFreLib as freLib
 from agentUtil import *
-from hone_message import *
-import agentRcvModule
 from agentSndModule import *
-import agentManager
-from uuid import getnode as get_mac
+from hone_message import *
 
 HostId = get_mac()
 
@@ -40,4 +41,5 @@ def ToUpperLevel(jobId, flowId, level):
                 #debugLog('lib', 'send message to middle {0}'.format(parentAddress), 'level {0}'.format(message.level), 'port', port)
                 sndSocket = HostAgentRelaySndSocket(parentAddress, port)
                 sndSocket.sendMessage(message)
+                LogUtil.EvalLog('ToUpperLevel', 'jobId {0} flowId {1} level {2} parent address {3}'.format(jobId, flowId, level, parentAddress))
     return freLib.FListener(push=push)

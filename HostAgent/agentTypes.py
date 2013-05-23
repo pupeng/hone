@@ -1,3 +1,10 @@
+'''
+Peng Sun
+agentTypes
+
+Multiple helper classes
+'''
+
 import multiprocessing
 import heapq
 
@@ -106,4 +113,3 @@ class JobFlowMinQueue:
 
     def debug(self):
         return self.queue
-

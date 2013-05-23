@@ -138,11 +138,11 @@ def query():
          Every(1000))
     return q
 
-def noOp(x):
+def GetLen(x):
     print len(x)
     if x:
         print x[0]
     return x
 
 def main():
-    return (query()>>MapStreamSet(noOp))
+    return (query()>>MapStreamSet(GetLen)>>MergeHosts()>>Print(GetLen))

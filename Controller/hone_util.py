@@ -36,10 +36,7 @@ class LogUtil:
     
     @staticmethod
     def InitLogging():
-        if not os.path.exists('logs'):
-            os.makedirs('logs')
-        logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
-        logFileName = 'logs/' + logFileName + '.log'
+        logFileName = 'logs/controller_{0}.log'.format(str(datetime.datetime.now()).translate(None, ' :-.'))
         d = os.path.dirname(logFileName)
         if not os.path.expanduser(d):
             os.makedirs(d)

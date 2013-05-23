@@ -9,6 +9,7 @@ import multiprocessing
 import logging
 import os
 import datetime
+from uuid import getnode as get_mac
 
 _LAZY_M_ENABLED_ = True
 
@@ -71,10 +72,8 @@ class LogUtil:
 
     @staticmethod
     def InitLogging():
-        if not os.path.exists('logs'):
-            os.makedirs('logs')
-        logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
-        logFileName = 'logs/' + logFileName + '.log'
+        hostId = get_mac()
+        logFileName = 'logs/agent_{0}_{1}.log'.format(hostId, str(datetime.datetime.now()).translate(None, ' :-.'))
         d = os.path.dirname(logFileName)
         if not os.path.expanduser(d):
             os.makedirs(d)

@@ -127,7 +127,7 @@ class SimpleTreeFormatter(TreeFormatterBase):
                 message += 'Level {0:2} node. ID: {1}. IP: {2}.\n'.format(i, node.getHostId(), node.getHostAddress())
                 message += '            Children nodes: \n'
                 for child in node.getChildren():
-                    message += '            Child ID: {1}. IP: {2}.\n'.format(child.getHostId(), child.getHostAddress())
+                    message += '            Child ID: {0}. IP: {1}.\n'.format(child.getHostId(), child.getHostAddress())
                 message += '\n'
         return message
 

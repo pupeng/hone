@@ -17,6 +17,8 @@ def query():
 
 def noOp(x):
     print len(x)
+    if x:
+        print x[0]
     return x
 
 def main():

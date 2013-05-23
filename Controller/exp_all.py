@@ -150,6 +150,8 @@ def query3():
 
 def GetLen(x):
     print 'Data length: {0}'.format(len(x))
+    if x:
+        print x[0]
     return x
 
 def main():

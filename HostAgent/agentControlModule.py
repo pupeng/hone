@@ -4,10 +4,11 @@ agentControlModule
 Traffic control mechanism
 '''
 
+import fnmatch
 from subprocess import call, check_output
 from multiprocessing import Queue, Lock
-import fnmatch
-from agentUtil import _CONTROL_DEBUG_
+
+from agentUtil import LogUtil
 
 interface = None
 tcLock = None
@@ -29,22 +30,18 @@ def initTrafficControl():
     global interface
     interface = check_output("ifconfig | grep -B1 192.168.17 | head -n1 | awk \'{print $1}\'",shell=True,executable='/bin/bash')
     interface = interface.split('\n')[0]
-    if _CONTROL_DEBUG_:
-        print 'the interface'
-        print repr(interface)
+    LogUtil.DebugLog('control', 'the interface', repr(interface))
     cmd_clear_rule(interface)
     cmd_add_qdisc(interface)
     cmd_add_root(interface)
     
 def cmd_add_qdisc(interface):
     call("/sbin/tc qdisc add dev "+interface+" root handle 1: htb", shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_add_qdisc'
+    LogUtil.DebugLog('control', 'done cmd_add_gdisc')
 
 def cmd_add_root(interface):
     call("/sbin/tc class add dev "+interface+" parent 1: classid 1:fffe htb rate 1000mbps", shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_add_root'
+    LogUtil.DebugLog('control', 'done cmd_add_root')
 
 def cmd_add_queue(interface, queueID, rate):
     #print "/sbin/tc class add dev "+interface+" parent 1:fffe classid 1:"+queueID+" htb rate "+rate+"kbps"
@@ -53,37 +50,31 @@ def cmd_add_queue(interface, queueID, rate):
         rate = 1000
     call("/sbin/tc class add dev "+interface+" parent 1:fffe classid 1:"+queueID+" htb rate "+str(rate)+"kbps", shell=True, executable='/bin/bash')
     call("/sbin/tc filter add dev "+interface+" protocol ip parent 1: prio 0 handle "+queueID+" fw flowid 1:"+queueID, shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_add_queue'
+    LogUtil.DebugLog('control', 'done cmd_add_queue')
 
 def cmd_add_rule(rule):
     call("iptables -A "+rule, shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_add_rule'
+    LogUtil.DebugLog('control', 'done cmd_add_rule')
 
 def cmd_modify_queue(interface, queueID, rate):
     rate = int(rate)
     if rate<1000:
         rate = 1000
     call("/sbin/tc class change dev "+interface+" parent 1:fffe classid 1:"+str(queueID)+" htb rate "+str(rate)+"kbps", shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_modify_queue'
+    LogUtil.DebugLog('control', 'done cmd_modify_queue')
 
 def cmd_del_queue(interface, queueID):
     call("/sbin/tc class del dev "+interface+" parent 1:fffe classid 1:"+str(queueID)+" > /dev/null", shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_del_queue'
+    LogUtil.DebugLog('control', 'done cmd_del_queue')
     
 def cmd_show_class(interface, className):
     call("/sbin/tc -s class show dev "+interface+" | grep "+className, shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_show_class'
+    LogUtil.DebugLog('control', 'done cmd_show_class')
     
 def cmd_clear_rule(interface):
     call("/sbin/tc qdisc del dev "+interface+" root &> /dev/null", shell=True, executable='/bin/bash')
     call("/sbin/iptables --flush &> /dev/null", shell=True, executable='/bin/bash')
-    if _CONTROL_DEBUG_:
-        print 'done cmd_clear_rule'
+    LogUtil.DebugLog('control', 'done cmd_clear_rule')
 
 def controlModuleRun(loggingLock, newControlJobQueue):
     global tcLock
@@ -107,11 +98,7 @@ def controlModuleRun(loggingLock, newControlJobQueue):
         print 'Exit from agentControlModule'
             
 def trafficControl(criteria, queueID, rate):
-    if _CONTROL_DEBUG_:
-        print 'in controlModule trafficControl'
-        print criteria
-        print queueID
-        print rate
+    LogUtil.DebugLog('control', criteria, queueID, rate)
     global controlPolicy
     global iptablesRules
     app = None
@@ -133,9 +120,7 @@ def trafficControl(criteria, queueID, rate):
         elif key=='dstPort':
             dport = str(value)
     policyMatch = (app,saddr,sport,daddr,dport)
-    if _CONTROL_DEBUG_:
-        print 'policyMatch'
-        print policyMatch
+    LogUtil.DebugLog('control', 'policyMatch', policyMatch)
     if controlPolicy.has_key(policyMatch):
         #print 'point A'
         (queueID, oldRate) = controlPolicy[policyMatch]
@@ -170,14 +155,12 @@ def trafficControl(criteria, queueID, rate):
             #iptablesRule.append('-m owner --pid-owner '+pid)
         iptablesRule.append('-j MARK --set-mark '+queueID)
         iptablesRule = ' '.join(iptablesRule)
-        if _CONTROL_DEBUG_:
-            print iptablesRule
+        LogUtil.DebugLog('control', iptablesRule)
         iptablesRules[policyMatch] = iptablesRule
         cmd_add_rule(iptablesRule)  
         
 if __name__=='__main__':
     initTrafficControl()
-
     action = 'rateLimit'
     criteria = {'dport': '5000',
                 'app': 'sshd'}

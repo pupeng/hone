@@ -44,7 +44,7 @@ def composeMiddleJobKey(jobId, flowId, level):
 
 
 class LogUtil:
-    _LogLevel_  = logging.INFO
+    _LogLevel_  = logging.DEBUG
     _MAN_DEBUG_ = False
     _SND_DEBUG_ = False
     _RCV_DEBUG_ = False

@@ -278,7 +278,7 @@ def connMeasureRun(jobFlowToM, nothing):
     statsToMPy = {}
     for jobFlow in jobFlowToM:
         #debugLog('conn', 'jobFlow: ', jobFlow, 'sk list:', agentManager.sourceJobSkList[jobFlow])
-        if jobFlow in agentManager.sourceJobSkList:
+        if (jobFlow in agentManager.sourceJobSkList):
             for sockfd in agentManager.sourceJobSkList[jobFlow]:
                 sk = agentManager.socketTable[sockfd]
                 if sk.cid:

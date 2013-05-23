@@ -5,10 +5,11 @@ agentManager.py
 Brain of hone host agent
 '''
 
-from multiprocessing import Manager, Queue
-from threading import Timer, Thread
 import logging
 import time
+from multiprocessing import Manager, Queue
+from threading import Timer, Thread
+
 from agentUtil import LogUtil
 from agentTypes import *
 from agentSndModule import *

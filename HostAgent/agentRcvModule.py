@@ -5,16 +5,16 @@ agentRcvModule
 Host agent receiver module
 '''
 
+import sys
+import traceback
+import logging
 from twisted.internet.protocol import Factory
 from twisted.protocols.basic import LineReceiver
 from twisted.internet import reactor
 from cStringIO import StringIO
 import cPickle as pickle
-import multiprocessing
-#import logging
-import time
-import sys, traceback
 from threading import Thread
+
 from agentUtil import *
 from hone_message import *
 from agentTypes import *
@@ -266,6 +266,8 @@ class HoneCommProtocolHost(LineReceiver):
             sourceJob.createTime = createTime
             sourceJob.progName = progName
             buildSourceJob(sourceJob, flowExePlan.exePlan)
+        logging.info('install source job. ID: {0}. middleAddress: {1}. createTime: {2}. progName: {3}.'.format(
+            message.jobId, middleAddress, createTime, progName))
         #EvalLog('{0:6f},69,done handling source jobId {1}'.format(time.time(), message.jobId))
 
     def handleSourceJobUpdate(self, message):
@@ -323,6 +325,7 @@ class HoneCommProtocolHost(LineReceiver):
         fileOutput.close()
         if not sys.modules.has_key(moduleName):
             __import__(moduleName)
+        logging.info('receive a new file for job {0} with name {1}'.format(message.jobId, moduleName))
         #EvalLog('{0:6f},77,done receiving file for jobId {1}'.format(time.time(), message.jobId))
 
     def handleMiddleStatsIn(self, message):
@@ -365,6 +368,7 @@ class RcvModuleProcess(StoppableProcess):
         socketCriteriaQueue = passedSocketCriteriaQueue
 
     def run(self):
+        logging.info('agentRcvModule starts')
         print 'hone agent rcvModule starts to run.'
         #EvalLog('{0:6f},65,rcvModule starts to run'.format(time.time()))
         try:
@@ -380,4 +384,3 @@ class RcvModuleProcess(StoppableProcess):
             #WriteLogs()
             logging.info('Exit from agentRcvModule')
             print 'Exit from agentRcvModule.'
-

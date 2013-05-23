@@ -6,7 +6,10 @@ utility
 
 import inspect
 import multiprocessing
-#import logging
+import logging
+import os
+import datetime
+import time
 
 _LAZY_M_ENABLED_ = True
 
@@ -98,4 +101,60 @@ def WriteLogs():
             print >>output, log
         output.close()
         del _logs[:]
-    
+
+class LogUtil:
+    _LogLevel_  = logging.INFO
+    _MAN_DEBUG_ = False
+    _SND_DEBUG_ = False
+    _RCV_DEBUG_ = False
+    _CONTROL_DEBUG_ = False
+    _DIRSERVICE_DEBUG_ = False
+    _LIB_DEBUG_ = False
+    _JOB_BUILD_DEBUG_ = False
+    _SCH_DEBUG_ = False
+    _CONN_DEBUG_ = False
+    _PROC_DEBUG_ = False
+
+    LoggingLock = multiprocessing.Lock()
+
+    DebugFlags = {'manager' : _MAN_DEBUG_,
+                   'sndMod'  : _SND_DEBUG_,
+                   'rcvMod'  : _RCV_DEBUG_,
+                   'control' : _CONTROL_DEBUG_,
+                   'dir'     : _DIRSERVICE_DEBUG_,
+                   'lib'     : _LIB_DEBUG_,
+                   'job'     : _JOB_BUILD_DEBUG_,
+                   'schedule': _SCH_DEBUG_,
+                   'conn'    : _CONN_DEBUG_,
+                   'proc'    : _PROC_DEBUG_}
+
+    @staticmethod
+    def InitLogging():
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
+        logFileName = str(datetime.datetime.now()).translate(None, ' :-.')
+        logFileName = 'logs/' + logFileName + '.log'
+        d = os.path.dirname(logFileName)
+        if not os.path.expanduser(d):
+            os.makedirs(d)
+        logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
+                            format='%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
+                            datefmt='%m/%d/%Y %H:%M:%S')
+
+    @staticmethod
+    def DebugLog(section, *args):
+        flag = LogUtil.DebugFlags.get(section, False)
+        if flag:
+            LogUtil.LoggingLock.acquire()
+            _, fileName, lineNumber, _, _, _ = inspect.stack()[1]
+            tmp = fileName.split('/')
+            fileName = tmp[len(tmp) - 1]
+            print '\nDEBUG ' + fileName + ', L' + str(lineNumber) + ': '
+            for i in range(0, len(args)):
+                print args[i]
+            print '\n'
+            LogUtil.LoggingLock.release()
+
+    @staticmethod
+    def EvalLog(eventId, msg):
+        logging.debug('{0:6f},{1},{2}'.format(time.time(), eventId, msg))

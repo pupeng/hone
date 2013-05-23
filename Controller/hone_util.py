@@ -8,6 +8,8 @@ import datetime
 import logging
 import os
 import time
+import multiprocessing
+import inspect
 
 class LogUtil:
     _LogLevel_      = logging.INFO
@@ -20,6 +22,8 @@ class LogUtil:
     _SND_DEBUG_     = False
     _CONTROL_DEBUG_ = False
     _EVALUATION_    = False
+
+    LoggingLock = multiprocessing.Lock()
     
     DebugFlags = {'global' : _GLOBAL_DEBUG_,
                   'lib'    : _LIB_DEBUG_,
@@ -44,10 +48,18 @@ class LogUtil:
                             datefmt='%m/%d/%Y %H:%M:%S')
         
     @staticmethod
-    def DebugLog(section, msg):
+    def DebugLog(section, *args):
         flag = LogUtil.DebugFlags.get(section, False)
         if flag:
-            print msg
+            LogUtil.LoggingLock.acquire()
+            _, fileName, lineNumber, _, _, _ = inspect.stack()[1]
+            tmp = fileName.split('/')
+            fileName = tmp[len(tmp) - 1]
+            print '\nDEBUG ' + fileName + ', L' + str(lineNumber) + ': '
+            for i in range(0, len(args)):
+                print args[i]
+            print '\n'
+            LogUtil.LoggingLock.release()
 
     @staticmethod
     def EvalLog(eventId, msg):

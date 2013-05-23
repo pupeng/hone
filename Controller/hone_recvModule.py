@@ -48,7 +48,7 @@ class HoneCommProtocol(LineReceiver):
         if (message.jobId == rts.HoneHostInfoJobId):
             rts.handleHostInfoUpdate(message)
         else:
-            #rts.evalTimestamp += '#{0}${2}${3}${1:6f}$StatsIn'.format(message.jobId, time.time(), message.flowId, message.sequence)
+            rts.evalTimestamp += '#NewStatsIn${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
             rts.handleStatsIn(message)
 
     def handleUnknownType(self, message):

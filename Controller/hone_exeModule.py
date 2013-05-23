@@ -130,7 +130,7 @@ def processOp(operator, progName, jobID, event):
                       
 def handleStatsIn(message, expectedNum):
     #debugLog('exeMod', 'statsBuffer:', statsBuffer)
-    rts.evalTimestamp += '#GetNewStats${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
+    #rts.evalTimestamp += '#GetNewStats${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
     hostId = message.hostId
     jobId = message.jobId
     flowId = message.flowId

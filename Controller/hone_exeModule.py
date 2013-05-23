@@ -7,11 +7,12 @@ Execution module on the controller
 import sys
 import traceback
 import logging
+import time
 from threading import Thread
 
 from hone_util import LogUtil
 import hone_exeLib
-#import hone_rts as rts
+import hone_rts as rts
 
 jobGoFun = {} # key: jobID, value: a dictionary: key: flowIndex, value: go
 jobEvent = {} # key: jobID, value: a dictionary: key: flowIndex, value: event
@@ -31,7 +32,7 @@ class MergedData:
         LogUtil.DebugLog('exeMod', 'sequence: {0}. data: {1}. expectedNum: {2}.'.format(sequence, data, expectedNum))
         LogUtil.DebugLog('exeMod', 'MergedData class self check. lastSeq: {0}. seenHosts: {1}. bufferedData: {2}'.format(
             self.lastSeq, self.seenHosts, self.bufferedData))
-        #rts.evalTimestamp += '#{0}${1}${3}${2:6f}$Buffer'.format(self.jobId, self.flowId, time.time(), sequence)
+        rts.evalTimestamp += '#AddNewDataToBuffer${0:6f}${1}${2}${3}'.format(time.time(), self.jobId, self.flowId, sequence)
         if self.lastSeq is None:
             self.lastSeq = sequence
         if sequence > self.lastSeq:
@@ -49,7 +50,7 @@ class MergedData:
     def releaseData(self):
         #EvalLog('{0:6f},46,release data seq {1} to jobId {2} flowId {3}'.format(time.time(), self.lastSeq, self.jobId, self.flowId))
         #EvalLog('{0:6f},123,{1}'.format(time.time(), self.evalTime))
-        #hone_rts.evalTimestamp += '#{0}${1}${3}${2:6f}$Release'.format(self.jobId, self.flowId, time.time(), self.lastSeq)
+        rts.evalTimestamp += '#ReleaseBuffer${0:6f}${1}${2}${3}'.format(time.time(), self.jobId, self.flowId, self.lastSeq)
         dataToRelease = self.bufferedData[:]
         self.lastSeq = None
         del self.seenHosts[:]
@@ -61,18 +62,17 @@ class MergedData:
 
 def runGo(goFunc, data, jobId, flowId):
     try:
-        #EvalLog('{0:6f},47,start go func for jobId {1} flowId {2}'.format(time.time(), jobId, flowId))
-        #hone_rts.evalTimestamp += '#{0}${1}$0${2:6f}$Start'.format(jobId, flowId, time.time())
+        rts.evalTimestamp += '#StartRunGo${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
         goFunc(data)
-        #hone_rts.evalTimestamp += '#{0}${1}$0${2:6f}$End'.format(jobId, flowId, time.time())
     except Exception, msg:
+        logging.warning('Go thread caught exception. jobID {0}. flowID {1}'.format(jobId, flowId))
         print 'go thread caught exception'
         print msg
         traceback.print_exc()
     finally:
-        #EvalLog('{0:6f},48,done go func for jobId {1} flowId {2}'.format(time.time(), jobId, flowId))
-        #EvalLog('{0:6f},126,{1}'.format(time.time(), hone_rts.evalTimestamp))
-        #rts.evalTimestamp = ''
+        rts.evalTimestamp += '#DoneRunGo${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
+        LogUtil.EvalLog('ControllerExecution', rts.evalTimestamp)
+        rts.evalTimestamp = 'Begin'
         pass
                             
 def buildExePlan(jobId, progName, controllerExePlan):
@@ -131,6 +131,7 @@ def processOp(operator, progName, jobID, event):
                       
 def handleStatsIn(message, expectedNum):
     #debugLog('exeMod', 'statsBuffer:', statsBuffer)
+    rts.evalTimestamp += '#GetNewStats${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
     hostId = message.hostId
     jobId = message.jobId
     flowId = message.flowId

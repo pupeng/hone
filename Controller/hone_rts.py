@@ -18,7 +18,7 @@ from hone_util import LogUtil
 from hone_hostEntry import *
 from hone_job import *
 
-evalTimestamp = ''
+evalTimestamp = 'Begin'
 
 ''' supported statistics '''
 HoneTableTypes = {'HostConnection': ['app', 'srcHost', 'BytesWritten',
@@ -183,7 +183,7 @@ _jobExecution = {}
 def RtsRun(mgmtProg):
     print 'HONE runtime system starts.'
     logging.info('hone rts starts')
-    LogUtil.EvalLog(3, 'runtime system starts to run')
+    LogUtil.EvalLog('rts', 'runtime system starts to run')
     mgmtDataflow = map(_executeMgmtMain, mgmtProg)
     LogUtil.DebugLog('global', 'mgmtDataFlow')
     for (eachProgName, eachFlow) in mgmtDataflow:
@@ -197,7 +197,7 @@ def RtsRun(mgmtProg):
         newJob = HoneJob(newJobId, partitionedFlow)
         _jobExecution[newJobId] = newJob
     try:
-        LogUtil.EvalLog(7, 'start recvModule')
+        LogUtil.EvalLog('StartRecvModule', 'start recvModule')
         recvModule.recvModuleRun()
     except KeyboardInterrupt:
         LogUtil.DebugLog('global', 'catch keyboard keyboard interrupt')
@@ -236,7 +236,7 @@ def handleHostLeave(hostId):
         del HostRecord[hostId]
 
 def handleHostInfoUpdate(message):
-    LogUtil.EvalLog(21, 'handle host info update hostId {0}'.format(message.hostId))
+    #LogUtil.EvalLog('HostInfoUpdate', 'handle host info update hostId {0}'.format(message.hostId))
     hostId = message.hostId
     appCL = message.content
     hostEntry = HostRecord[hostId]
@@ -251,7 +251,7 @@ def handleHostInfoUpdate(message):
         elif (jobId not in hostEntry.jobs) and eligible:
             hostEntry.addJob(jobId)
             job.addHost(hostEntry)
-            LogUtil.EvalLog(22, 'done update host info of {0}'.format(hostId))
+            #LogUtil.EvalLog('DoneHostInfoUpdate', 'done update host info of {0}'.format(hostId))
 
 def handleStatsIn(message):
     LogUtil.DebugLog('rts', 'new stats come in for job {0} flow {1} sequence {2} content {3}'.format(

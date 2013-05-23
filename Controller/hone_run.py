@@ -23,12 +23,12 @@ def main():
     LogUtil.DebugLog('global', 'mgmt programs {0}'.format(mgmtProg))
     try:
         print 'HONE controller starts.'
-        LogUtil.EvalLog(1, 'controller starts')
+        LogUtil.EvalLog('StartController', 'controller starts')
         hone_rts.RtsRun(mgmtProg)
     except KeyboardInterrupt:
         LogUtil.DebugLog('global', 'catch keyboard interrupt')
     finally:
-        LogUtil.EvalLog(2, 'controller stops')
+        LogUtil.EvalLog('StopController', 'controller stops')
         logging.info('Controller stops')
         print 'HONE controller stops.'
 

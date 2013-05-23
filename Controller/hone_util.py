@@ -63,4 +63,4 @@ class LogUtil:
 
     @staticmethod
     def EvalLog(eventId, msg):
-        logging.debug('{0:6f},{1},{2}'.format(time.time(), eventId, msg))
+        logging.debug('{0},{1}'.format(eventId, msg))

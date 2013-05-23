@@ -5,9 +5,9 @@ Purpose:
 debug
 '''
 
+import time
+
 from hone_lib import *
-from math import *
-import time, sys
 
 def CpuMemQuery():
     q = (Select(['app','cpu','memory'])*
@@ -17,10 +17,9 @@ def CpuMemQuery():
     return q
 
 def SumCpuMem(table):
-    #print table
     cpuSum = []
     memSum = []
-    for [app, cpu, mem] in table:
+    for [_, cpu, mem] in table:
         cpuSum.append(cpu)
         memSum.append(mem)
     return (sum(cpuSum), sum(memSum))
@@ -32,9 +31,9 @@ def HostPrint(cpuMem):
     return cpuMem
 
 def main():
-    stream = (CpuMemQuery() >> \
-              MapStreamSet(SumCpuMem) >> \
+    stream = (CpuMemQuery() >>
+              MapStreamSet(SumCpuMem) >>
               MapStreamSet(HostPrint))
-              #MergeHosts() >> \
+              #MergeHosts() >>
               #Print())
     return stream

@@ -73,7 +73,6 @@ def runGo(goFunc, data, jobId, flowId):
         rts.evalTimestamp += '#DoneRunGo${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
         LogUtil.EvalLog('ControllerExecution', rts.evalTimestamp)
         rts.evalTimestamp = 'Begin'
-        pass
                             
 def buildExePlan(jobId, progName, controllerExePlan):
     if jobEvent.has_key(jobId):

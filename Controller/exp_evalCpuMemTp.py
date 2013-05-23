@@ -104,7 +104,6 @@ def CtrlCpuMem(data):
         output.close()
     except Exception, msg:
         print msg
-        pass
 
 def main():
     cpuStream = (cpuMemQuery() >> \

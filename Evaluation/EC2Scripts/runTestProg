@@ -1,0 +1,18 @@
+#! /bin/bash
+
+if [ $# -lt 3 ]; then
+    echo "Usage: runTestProg instanceName port number"
+    echo "For example: runTestProg hone-host-02 9000 10"
+    exit
+fi
+
+#instance=`ec2-describe-instances | grep $1 | cut -f3`
+#echo "Server Instance is " $instance
+
+#internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
+internalIP=10.77.21.197
+echo "Server internal IP " $internalIP
+
+cd $HOME/hone_develop/test_prog
+make
+./test_prog $internalIP $2 $3

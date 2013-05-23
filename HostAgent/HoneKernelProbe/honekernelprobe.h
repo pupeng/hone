@@ -6,8 +6,8 @@
  *      Author: zhihongx, pengsun
  */
 
-#ifndef KPSIMPLE_H_
-#define KPSIMPLE_H_
+#ifndef _HONE_KERNEL_PROBE_H_
+#define _HONE_KERNEL_PROBE_H_
 
 #include <linux/sched.h>
 #include <linux/socket.h>
@@ -48,4 +48,4 @@ struct nlclose {
     char app[16];
 };
 
-#endif /* KPSIMPLE_H_ */
+#endif /* _HONE_KERNEL_PROBE_H_ */

@@ -5,12 +5,11 @@ agentManager.py
 Brain of hone host agent
 '''
 
-import os
 from multiprocessing import Manager, Queue
 from threading import Timer, Thread
-#import logging
+import logging
 import time
-from agentUtil import *
+from agentUtil import LogUtil
 from agentTypes import *
 from agentSndModule import *
 from agentRcvModule import *
@@ -37,7 +36,7 @@ measureLatency = ''
 CtrlAddress = None
 
 def agentManagerRun(ctrlAddress, ctrlPort):
-    #debugLog('manager', 'start to run agent manager. pid: ', os.getpid())
+    LogUtil.DebugLog('manager', 'start to run agent manager')
     #EvalLog('{0:6f},50,agentManager starts in pid {1}'.format(time.time(), os.getpid()))
     global CtrlAddress
     CtrlAddress = ctrlAddress

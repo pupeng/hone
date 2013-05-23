@@ -121,7 +121,7 @@ class SimpleTreeFormatter(TreeFormatterBase):
         logging.warning('Node deletion in aggregation tree is not implemented yet!')
 
     def displayTree(self):
-        message = ''
+        message = 'jobID: {0}\n'.format(self.job.jobId)
         for i in reversed(range(1, len(self.aggTree))):
             for node in self.aggTree[i]:
                 message += 'Level {0:2} node. ID: {1}. IP: {2}.\n'.format(i, node.getHostId(), node.getHostAddress())

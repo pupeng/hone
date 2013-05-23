@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
-#include "kpsimple/kpsimple.h"
+#include "HoneKernelProbe/honekernelprobe.h"
     
 #define NETLINK_HONE 30
 #define NL_SIZE 256

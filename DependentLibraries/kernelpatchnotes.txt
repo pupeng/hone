@@ -1,0 +1,25 @@
+Base image: Ubuntu 11.04 Cloud Image (Linux 2.6.38)
+
+Get dependency:
+sudo apt-get build-dep linux-image-$(uname -r)
+sudo apt-get install libncurses5-dev libncurses5 fakeroot build-essential kernel-package
+
+Get source:
+sudo apt-get source linux-image-$(uname -r)
+
+Patch:
+patch -p1 < [path-to-web10g-dir]/web10g-[version-name].patch
+
+Change netlink
+add NETLINK_HONE 30 to include/linux/netlink.h
+
+Edit config:
+make mrproper
+make menuconfig
+
+Compile:
+make-kpkg clean
+make-kpkg --initrd --append-to-version=-hone-ec2 kernel-image kernel-headers
+
+
+

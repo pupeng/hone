@@ -1,0 +1,16 @@
+#! /bin/bash
+
+if [ $# -lt 4 ]; then
+    echo "Usage: runIperfClient instanceName port length number"
+    echo "For example: runIperfClient hone-host-02 5001 120 10"
+    exit
+fi
+
+#instance=`ec2-describe-instances | grep $1 | cut -f3`
+#echo "Server Instance is " $instance
+
+#internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
+internalIP=10.118.19.26
+echo "Server internal IP " $internalIP
+
+iperf -c $internalIP -p $2 -w 1k -P $4 -t $3 -i $3

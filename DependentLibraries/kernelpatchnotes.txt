@@ -1,0 +1,27 @@
+Base image: Ubuntu 11.04 Cloud Image (Linux 2.6.38)
+
+Get dependency:
+sudo apt-get build-dep linux-image-$(uname -r)
+sudo apt-get install libncurses5-dev libncurses5 fakeroot build-essential kernel-package
+
+Get source:
+sudo apt-get source linux-image-$(uname -r)
+
+Patch:
+patch -p1 < [path-to-web10g-dir]/web10g-[version-name].patch
+
+Change netlink
+add NETLINK_HONE 30 to include/linux/netlink.h
+
+Change version number:
+edit debian/changelog and debian.master/changelog
+
+Edit config:
+chmod a+x debian/scripts/*
+chmod a+x debian/scripts/misc/*
+fakeroot debian/rules clean
+fakeroot debian/rules editconfigs
+
+Compile:
+fakeroot debian/rules clean
+fakeroot debian/rules binary-headers binary-generic

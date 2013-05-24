@@ -1,0 +1,6 @@
+#! /bin/bash
+
+for num in $(eval echo {9001..9020..1})
+do
+    python stressTestServer.py $num &
+done

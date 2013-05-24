@@ -1,16 +1,16 @@
-obj-m += honekernelprobe.o
+obj-m += kpsimple.o
 
 PWD := $(shell pwd)
 
-up: honekernelprobe.ko
-	insmod honekernelprobe.ko
+up: kpsimple.ko
+	insmod kpsimple.ko
 
 down: 
-	rmmod honekernelprobe
+	rmmod kpsimple
 
 clear: down clean
 
-honekernelprobe.ko: honekernelprobe.c honekernelprobe.h
+kpsimple.ko: kpsimple.c kpsimple.h
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules	
 
 clean:

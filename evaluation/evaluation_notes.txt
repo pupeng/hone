@@ -1,0 +1,53 @@
+Exp1:
+Test conn measurement overhead
+
+run startServer on a server machine
+runExp1 will launch 1k to 10k connections to the server
+Controllor runs exp_connMeasureOverhead
+(Controller should disable hone_hostinfo for better performance)
+
+Repeat with exp_connMeasureOverhead and exp_evalCpuMem on controller
+to get CPU and memory usages.
+
+
+Exp2:
+Test lazy materialization
+
+start background connection 1000, test_prog 1000
+
+Steps:
+2. controller run exp_all
+3. ./runExp2 all
+5. controller run exp_lmConnStats7 app
+6. ./runExp2 connStats7
+7. controller run exp_lmConnStatsAll app
+8. ./runExp2 connStatsAll
+9. controller run exp_lmAppCpuAll
+10. ./runExp2 appCpuAll
+11. controller run exp_lmAppMemAll
+12. ./runExp2 appMemAll
+13. controller run exp_lmAppTestProg
+14. ./runExp2 appTestProg
+
+Exp4:
+End-to-end responsiveness test
+
+q1:
+start iperf server on one host.
+run iperf client with 100 connnections.
+controller run exp_exp4q1.py
+start agent
+last for 5m
+
+Repeat with controller running exp_exp4q1.py and exp_evalCpuMemTp
+Get CPU and memory usage on both agent and controller
+
+Don't overwrite the agent.log and controller.log
+
+
+Exp5:
+MergeHosts test
+
+controller run exp_exp4q1.py
+
+disable hostinfo

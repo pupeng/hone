@@ -1,2 +1,3 @@
 HONE research project
 Copyright (c) 2011-2013 Peng Sun
+All Rights Reserved.

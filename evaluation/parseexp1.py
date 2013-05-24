@@ -21,22 +21,26 @@ def parseForConnMeasureOverhead(logFileName):
     context = context[len(context) - 1]
     context = context.split('.')
     context = context[len(context) - 2]
+    print context
     logs.pop(len(logs) - 1)
     logs = map(lambda x: x.split(','), logs)
-    logs = map(lambda x: [x[1], x[2]], logs)
-    logs = map(lambda x: [x[0]] + x[1].split('#'), logs)
-    logs = filter(lambda x: len(x) == 5, logs)
+    logs = filter(lambda x: x[5] == 'OneRoundOfConnMeasure', logs)
+    logs = map(lambda x: x[6].split('#'), logs)
+    logs = map(lambda y: map(lambda x : x.split('$'), y), logs)
     results = []
     for log in logs:
-        event = int(log[0])
-        if event == 114:
-            result = []
-            for timestamp in log[1:]:
-                if (len(timestamp.split('$')) == 1):
-                    result.append(float(timestamp))
-                else:
-                    result.append(float(timestamp.split('$')[1]))
-            results.append(result)            
+        result = []
+        for event in log:
+            timestamp = float(event[1])
+            result.append(timestamp)
+        results.append(result)            
+        #if event == 114:
+        #    result = []
+        #    for timestamp in log[1:]:
+        #        if (len(timestamp.split('$')) == 1):
+        #            result.append(float(timestamp))
+        #        else:
+        #            result.append(float(timestamp.split('$')[1]))
     results = map(getDifference, results)
     prepare = map(lambda x: x[1], results)
     measure = map(lambda x: x[2], results)
@@ -48,13 +52,13 @@ def parseForConnMeasureOverhead(logFileName):
           min(measure), max(measure), stddev(measure))
     print "avg:{0} min:{1} max:{2} std:{3}".format(average(distrib), \
           min(distrib), max(distrib), stddev(distrib))
-    output = open('exp1/connOverhead_' + context + '.txt', 'w')
+    output = open('exp1data/connOverhead_' + context + '.txt', 'w')
     for result in results:
         print >>output, '{0} {1} {2} {3}'.format(result[0], result[1], result[2], result[3])
     output.close()
 
 def getDifference(x):
-    x = map(lambda x: x*1000, x)
+    x = map(lambda x : x*1000, x)
     for i in reversed(range(1, len(x))):
         x[i] = x[i] - x[i - 1]
     x[0] = 0.0

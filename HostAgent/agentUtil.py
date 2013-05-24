@@ -72,11 +72,10 @@ class LogUtil:
 
     @staticmethod
     def InitLogging():
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
         hostId = get_mac()
         logFileName = 'logs/agent_{0}_{1}.log'.format(hostId, str(datetime.datetime.now()).translate(None, ' :-.'))
-        d = os.path.dirname(logFileName)
-        if not os.path.expanduser(d):
-            os.makedirs(d)
         logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
                             format='%(levelname)8s,%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
                             datefmt='%m/%d/%Y %H:%M:%S')

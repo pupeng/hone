@@ -13,13 +13,15 @@ patch -p1 < [path-to-web10g-dir]/web10g-[version-name].patch
 Change netlink
 add NETLINK_HONE 30 to include/linux/netlink.h
 
+Change version number:
+edit debian/changelog and debian.master/changelog
+
 Edit config:
-make mrproper
-make menuconfig
+chmod a+x debian/scripts/*
+chmod a+x debian/scripts/misc/*
+fakeroot debian/rules clean
+fakeroot debian/rules editconfigs
 
 Compile:
-make-kpkg clean
-make-kpkg --initrd --append-to-version=-hone-ec2 kernel-image kernel-headers
-
-
-
+fakeroot debian/rules clean
+fakeroot debian/rules binary-headers binary-generic

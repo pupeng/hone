@@ -1,5 +1,6 @@
 /*
- * honekernelprobe.c
+ * kpsimple.c
+ * HONE kernel probe
  *
  *  Created on: Dec 10, 2011
  *  Modified on: Apr 17, 2013
@@ -21,7 +22,7 @@
 #include <net/sock.h>
 #include <net/net_namespace.h>
 #include <net/inet_sock.h>
-#include "honekernelprobe.h"
+#include "kpsimple.h"
 
 #define MY_NIPQUAD(addr) \
     ((unsigned char *)&addr)[0], \

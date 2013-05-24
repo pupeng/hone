@@ -9,9 +9,7 @@ Author:
 Peng Sun
 
 Contributors:
-Zhihong Xu, Lavanya Jose, Minlan Yu
-
-Supervisors:
+Zhihong Xu, Lavanya Jose, Minlan Yu, 
 Jennifer Rexford, Michael J. Freedman, David Walker
 
 Public Amazon EC2 AMI:

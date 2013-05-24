@@ -18,7 +18,8 @@ def main():
     # initialize logging
     LogUtil.InitLogging()
     # organize the management programs
-    mgmtProg = [hone_rts.HoneHostInfoJob] + sys.argv[1:]
+    #mgmtProg = [hone_rts.HoneHostInfoJob] + sys.argv[1:]
+    mgmtProg = sys.argv[1:]
     logging.info('Controller starts with the following programs: {0}'.format(mgmtProg))
     LogUtil.DebugLog('global', 'mgmt programs {0}'.format(mgmtProg))
     try:

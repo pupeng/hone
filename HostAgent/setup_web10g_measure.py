@@ -1,7 +1,8 @@
-'''
-Peng Sun
-use swig to convert the C implementation of web10g measure to python module
-'''
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# use swig to convert the C implementation of web10g measure to python module
 
 from distutils.core import setup, Extension
 

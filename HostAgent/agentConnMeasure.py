@@ -1,9 +1,9 @@
-'''
-Peng Sun
-agentConnMeasure.py
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
 
-Measure connection-level statistics (TCP, via web10G)
-'''
+# agentConnMeasure.py
+# Measure connection-level statistics (TCP, via web10G)
 
 import time
 import traceback

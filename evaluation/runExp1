@@ -4,31 +4,31 @@
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=10.196.15.223
+testserverIP=127.0.0.1
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {6..6..1})
+for num in $(eval echo {0..0..1})
 do
     echo $num
     temp=`expr $num + 1`
     result=`expr 1000 \* $temp`
-    rm ../honeHostAgent/logs/*
-    cd ../ec2scripts
+    rm ../HostAgent/logs/*
+    cd ec2scripts
     ./startHoneAgent &
-    for port in $(eval echo {9000..`expr 9000 + $num`..1})
+    for port in $(eval echo {9001..`expr 9001 + $num`..1})
     do
         ../test_prog/test_prog $testserverIP $port 1000 &> /dev/null &
     done
     sleep 5m
     killall python
     killall test_prog
-    cd ../honeHostAgent
-    file=`ls logs/*.log`
-    cp $file ../evaluation/exp1/conn$result.log
-    file=`ls logs/*.txt`
-    cp $file ../evaluation/exp1/cpumem_conn$result.txt
-    cd ../evaluation
-    python parseexp1.py exp1/conn$result.log
+    #cd ../HostAgent
+    #file=`ls logs/*.log`
+    #cp $file ../evaluation/exp1data/conn$result.log
+    #file=`ls logs/*.txt`
+    #cp $file ../evaluation/exp1/cpumem_conn$result.txt
+    #cd ../evaluation
+    #python parseexp1.py exp1/conn$result.log
     echo "done " $num
     sleep 10s
 done

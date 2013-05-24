@@ -4,8 +4,8 @@
 #echo "Controller Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.83.95.6
+internalIP=127.0.0.1
 echo "Controller internal IP " $internalIP
 
-cd $HOME/hone_develop/honeHostAgent
+cd $HOME/hone/HostAgent
 python agentRun.py $internalIP 8866

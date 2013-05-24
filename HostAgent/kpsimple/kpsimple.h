@@ -1,5 +1,5 @@
 /*
- * honekernelprobe.h
+ * kpsimple.h
  *
  *  Created on: Dec 10, 2011
  *  Modified on: Apr 17, 2013

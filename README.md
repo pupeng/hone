@@ -32,7 +32,7 @@ Initial Setup:
 1. Insert HONE kernel probe on host machine. 
    The current kernel probe is for hone-enabled image only,
    since we have modified kernel NETLINK to make it work. 
-     enter HostAgent/HoneKernelProbe
+     enter HostAgent/kpsimple
      sudo make up
 2. Compile c++ implementation to python modules
     enter HostAgent

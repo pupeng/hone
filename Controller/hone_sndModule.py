@@ -1,8 +1,10 @@
-'''
-Peng Sun
-hone_sndModule.py
-module for sending commands and files to host agent
-'''
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# hone_sndModule.py
+# module for sending commands and files to host agent
+
 import socket
 from cStringIO import StringIO
 import cPickle as pickle

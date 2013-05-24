@@ -1,8 +1,9 @@
-"""
-Author: Peng Sun
-hone_aggTreeFormation.py
-Define factory and class to compose the aggregation tree
-"""
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# hone_aggTreeFormation.py
+# Define factory and class to compose the aggregation tree
 
 import logging
 

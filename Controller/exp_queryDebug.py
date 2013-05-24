@@ -1,8 +1,9 @@
-'''
-Peng Sun
-example.py
-An example management program for debugging HONE development
-'''
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# HONE application 
+# An example management program for debugging HONE development
 
 from hone_lib import *
 import inspect

@@ -1,8 +1,9 @@
-"""
-Author: Peng Sun
-hone_job.py
-Define class HoneJob to contain job-related operations
-"""
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# hone_job.py
+# Define class HoneJob to contain job-related operations
 
 import hone_rts as rts
 import hone_exeModule as exeModule

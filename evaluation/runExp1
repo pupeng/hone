@@ -4,7 +4,7 @@
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=127.0.0.1
+testserverIP=10.152.183.185
 echo "Server internal IP " $testserverIP
 
 for num in $(eval echo {0..0..1})

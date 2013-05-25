@@ -16,7 +16,7 @@ cd evaluation/ec2scripts
 cd ../../Controller
 rm logs/*
 echo $job
-python hone_run.py $job &> $HOME/controllerCommand.log &
+python hone_run.py $job &
 sleep 10m
 
 killall python

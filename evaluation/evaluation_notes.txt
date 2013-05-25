@@ -57,6 +57,11 @@ Don't overwrite the agent.log and controller.log
 Exp5:
 MergeHosts test
 
+Remember:
+change runTestProg server IP
+change startHoneAgent controller IP
+change runExp5 controller IP
+
 controller run exp_exp4q1.py
 disable hostinfo
 

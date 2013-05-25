@@ -119,7 +119,12 @@ class SimpleTreeFormatter(TreeFormatterBase):
 
     def removeLeaf(self, hostEntry):
         # TODO add handler for deletion of nodes
-        logging.warning('Node deletion in aggregation tree is not implemented yet!')
+        logging.warning('Node deletion in aggregation tree is not fully implemented yet!')
+        for node in self.aggTree[0]:
+            if node.getHostId() == hostEntry.hostId:
+                node.getParent().removeChild(node)
+                self.aggTree[0].remove(node)
+                self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
 
     def displayTree(self):
         message = 'jobID: {0}\n'.format(self.job.jobId)

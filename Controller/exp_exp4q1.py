@@ -3,7 +3,6 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# Exp3 E2E test
 # Sum throughputs of iperf across hosts
 
 from hone_lib import *
@@ -14,7 +13,7 @@ import time
 def connQuery():
     q = (Select(['app','srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
-         #Where([('app', '==', 'test_prog')]) *
+         Where([('app', '==', 'test_prog')]) *
          Every(1000))
     return q
 
@@ -51,10 +50,9 @@ def GlobalAgg(data):
     return sum(data)
 
 def main():
-    connStream = (connQuery() >> \
-                  ReduceStreamSet(CalcTM, {}) >> \
-                  MapStreamSet(LocalAgg) >> \
-                  MergeHosts() >> \
+    connStream = (connQuery() >> 
+                  ReduceStreamSet(CalcTM, {}) >> 
+                  MapStreamSet(LocalAgg) >> 
+                  MergeHosts() >> 
                   MapStream(GlobalAgg))
     return connStream
-

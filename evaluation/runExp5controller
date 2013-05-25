@@ -1,0 +1,27 @@
+#! /bin/bash
+
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+echo "runExp5 on controller"
+job=exp_exp4q1
+
+cd $HOME/hone
+git pull
+
+cd evaluation/ec2scripts
+sudo ./adjustClock
+
+cd ../../Controller
+rm logs/*
+echo $job
+python hone_run.py $job &
+sleep 10m
+
+killall python
+
+file=`ls logs/*.log`
+cp $file ../evaluation/exp5data/controller-temp.log
+
+echo "done exp5 on controller"

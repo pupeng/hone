@@ -1,0 +1,50 @@
+#! /bin/bash
+
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# runExp5
+# start exp5 on host
+# launch test application's connections to test server
+
+if [ $# -lt 1 ]
+then
+    echo "give test server port to connect"
+    exit
+fi
+
+controllerIP=10.149.24.31
+
+sudo service rsyslog stop
+
+cd $HOME/hone
+git pull
+
+cd HostAgent/kpsimple
+sudo insmod kpsimple.ko
+
+cd ..
+rm logs/*
+
+cd ../evaluation/ec2scripts
+port=$1
+./adjustClock &> $HOME/clock.log
+./startHoneAgent &> $HOME/agentCommand.log &
+./runTestProg test-server $port 100 &> $HOME/testProgCommand.log &
+sleep 8m
+
+killall python
+
+export EC2_KEYPAIR=home-keypair
+export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem
+export EC2_CERT=$HOME/.ssh/cert-ec2.pem
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
+selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
+selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
+
+cd ../../HostAgent
+file=`ls logs/*.log`
+scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem ubuntu@$controllerIP:~/hone/evaluation/exp5data/$selfname-temp.log
+
+echo "done exp5"

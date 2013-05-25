@@ -11,7 +11,7 @@
 testserverIP=10.142.141.28
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {0..0..1})
+for num in $(eval echo {0..9..1})
 do
     echo $num
     temp=`expr $num + 1`
@@ -32,7 +32,7 @@ do
     cp $file ../evaluation/exp1data/conn$result.log
     #file=`ls logs/*.txt`
     #cp $file ../evaluation/exp1data/cpumem_conn$result.txt
-    #cd ../evaluation
+    cd ../evaluation
     python parseexp1.py exp1data/conn$result.log
     echo "done " $num
     sleep 10s

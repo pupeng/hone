@@ -1,11 +1,9 @@
-'''
-HONE application
-Author: Peng Sun
-Purpose:
-Exp3 E2E test
-Query 1 
-Sum throughputs of iperf across hosts
-'''
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+# HONE application
+# Exp6: evaluate the aggregation tree
 
 from hone_lib import *
 from subprocess import check_output

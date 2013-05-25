@@ -1,11 +1,11 @@
-'''
-Peng Sun
-agentDirService.py
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
 
-Directory service
-wrap the C implementation of directory service, and communicate with agentConnMeasure
-see the C implementation in agent_dir_service.c
-'''
+# agentDirService.py
+# Directory service
+# wrap the C implementation of directory service, and communicate with agentConnMeasure
+# see the C implementation in agent_dir_service.c
 
 import time
 import fnmatch

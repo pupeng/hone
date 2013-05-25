@@ -1,10 +1,14 @@
 #! /bin/bash
 
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
 #instance=`ec2-describe-instances | grep hone-controller | cut -f3`
 #echo "Controller Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.166.61.47
+internalIP=10.149.5.139
 echo "Controller internal IP " $internalIP
 
 cd $HOME/hone/HostAgent

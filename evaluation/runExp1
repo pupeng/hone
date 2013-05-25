@@ -1,13 +1,17 @@
 #! /bin/bash
 
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
 #instance=`ec2-describe-instances | grep $1 | cut -f3`
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=10.152.183.185
+testserverIP=10.149.2.78
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {0..0..1})
+for num in $(eval echo {0..5..1})
 do
     echo $num
     temp=`expr $num + 1`

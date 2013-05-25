@@ -30,11 +30,17 @@ rm logs/*
 cd ../evaluation/ec2scripts
 port=$1
 ./adjustClock &> $HOME/clock.log
+echo clock synchronization done
 ./startHoneAgent &> $HOME/agentCommand.log &
+echo HONE agent starts
 ./runTestProg test-server $port 100 &> $HOME/testProgCommand.log &
-sleep 8m
+echo connections start
+sleep 2m
 
 killall python
+killall test_prog
+echo HONE agent stops
+echo connection stop
 
 export EC2_KEYPAIR=home-keypair
 export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem
@@ -44,7 +50,8 @@ selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
 selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
 
 cd ../../HostAgent
-file=`ls logs/*.log`
-scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem ubuntu@$controllerIP:~/hone/evaluation/exp5data/$selfname-temp.log
+file=`ls logs/*.eval`
+scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem $file ubuntu@$controllerIP:~/hone/evaluation/exp5data/$selfname-temp.log
+echo result transferred to controller
 
 echo "done exp5"

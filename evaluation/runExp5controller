@@ -4,19 +4,19 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the COPYRIGHT file.
 
-echo "runExp5 on controller"
+echo "run exp5 on controller"
 job=exp_exp4q1
 
 cd $HOME/hone
 git pull
 
 cd evaluation/ec2scripts
-sudo ./adjustClock
+./adjustClock
 
 cd ../../Controller
 rm logs/*
 echo $job
-python hone_run.py $job &
+python hone_run.py $job &> $HOME/controllerCommand.log &
 sleep 10m
 
 killall python

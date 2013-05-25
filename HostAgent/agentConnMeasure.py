@@ -375,7 +375,7 @@ def runGo(goFunc, data, jobId, flowId):
         #evalTime += '#{0:6f}'.format(time.time())
         #EvalLog('{0:6f},118,{1}'.format(time.time(), evalTime))
         #WriteLogs()
-        pass
+        LogUtil.OutputEvalLog()
 
 if __name__ == '__main__':
     for key in web10g_types_dict.iterkeys():

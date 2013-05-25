@@ -127,7 +127,7 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         dirServiceProcess.join()
         rcvModuleProcess.terminate()
         rcvModuleProcess.join()
-        logging.info('Agent manager cleans every up, and is ready to stop.')
+        logging.info('Agent manager cleans everything up, and is ready to stop.')
         print 'Exit from agent manager'
 
 def scheduleLoopRun():

@@ -60,6 +60,8 @@ class LogUtil:
 
     LoggingLock = multiprocessing.Lock()
 
+    LogFileName = ''
+
     DebugFlags = {'manager' : _MAN_DEBUG_,
                    'sndMod'  : _SND_DEBUG_,
                    'rcvMod'  : _RCV_DEBUG_,
@@ -71,13 +73,15 @@ class LogUtil:
                    'conn'    : _CONN_DEBUG_,
                    'proc'    : _PROC_DEBUG_}
 
+    EvalData = []
+
     @staticmethod
     def InitLogging():
         if not os.path.exists('logs'):
             os.makedirs('logs')
         hostId = get_mac()
-        logFileName = 'logs/agent_{0}_{1}.log'.format(hostId, str(datetime.datetime.now()).translate(None, ' :-.'))
-        logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
+        LogUtil.LogFileName = 'logs/agent_{0}_{1}.log'.format(hostId, str(datetime.datetime.now()).translate(None, ' :-.'))
+        logging.basicConfig(filename=LogUtil.LogFileName, level=LogUtil._LogLevel_,
                             format='%(levelname)8s,%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
                             datefmt='%m/%d/%Y %H:%M:%S')
 
@@ -97,8 +101,16 @@ class LogUtil:
 
     @staticmethod
     def EvalLog(eventId, msg):
-        logging.debug('{0},{1}'.format(eventId, msg))
+        #logging.debug('{0},{1}'.format(eventId, msg))
+        LogUtil.EvalData.append('{0},{1}'.format(eventId, msg))
 
+    @staticmethod
+    def OutputEvalLog():
+        output = open(LogUtil.LogFileName + '.eval', 'a')
+        for data in LogUtil.EvalData:
+            print >>output, data
+        output.close()
+        LogUtil.EvalData = []
 
 # _loggingLock = multiprocessing.Lock()
 #

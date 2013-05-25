@@ -2,6 +2,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the COPYRIGHT file.
 
+General:
+Change controller and test server IPs in scripts
+to avoid intensively calling AWS CLI. 
+
 Exp1:
 Test conn measurement overhead
 
@@ -54,5 +58,15 @@ Exp5:
 MergeHosts test
 
 controller run exp_exp4q1.py
-
 disable hostinfo
+
+host executes runExp5
+controller executes runExp5Controller
+
+Step1:
+launch ec2 instances (launchHostInstances)
+list all name-IP mapping of EC2 instances (listAllEc2Instances.py)
+
+Step2:
+launch runExp5 and runExp5Controller on all instances
+(startExp5EC2.py)

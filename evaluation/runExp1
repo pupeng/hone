@@ -4,10 +4,10 @@
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=10.152.183.185
+testserverIP=10.149.2.78
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {0..0..1})
+for num in $(eval echo {0..5..1})
 do
     echo $num
     temp=`expr $num + 1`

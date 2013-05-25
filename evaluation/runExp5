@@ -30,7 +30,7 @@ rm logs/*
 cd ../evaluation/ec2scripts
 port=$1
 ./adjustClock &> $HOME/clock.log
-echo clock synchronizatino done
+echo clock synchronization done
 ./startHoneAgent &> $HOME/agentCommand.log &
 echo HONE agent starts
 ./runTestProg test-server $port 100 &> $HOME/testProgCommand.log &

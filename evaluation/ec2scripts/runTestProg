@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
 if [ $# -lt 3 ]; then
     echo "Usage: runTestProg instanceName port number"
     echo "For example: runTestProg hone-host-02 9000 10"
@@ -13,6 +17,6 @@ fi
 internalIP=10.77.21.197
 echo "Server internal IP " $internalIP
 
-cd $HOME/hone_develop/test_prog
+cd $HOME/hone/evaluation/test_prog
 make
 ./test_prog $internalIP $2 $3

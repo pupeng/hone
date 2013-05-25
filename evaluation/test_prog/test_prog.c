@@ -54,7 +54,7 @@ void* one_client_run(void* arg) {
     for (i = 0; i < 30000; i++)
     {
         n = send(sockfd, msg, strlen(msg), 0);
-        usleep(10000);
+        usleep(10000000);
     }
     close(sockfd);
 }  

@@ -24,6 +24,7 @@ def parseForConnMeasureOverhead(logFileName):
     context = context.split('.')
     context = context[len(context) - 2]
     print context
+    expectNumOfConn = int(context.translate(None, 'conn'))
     logs.pop(len(logs) - 1)
     logs = map(lambda x: x.split(','), logs)
     logs = filter(lambda x : len(x) > 1, logs)
@@ -33,13 +34,16 @@ def parseForConnMeasureOverhead(logFileName):
     results = []
     number = []
     for log in logs:
+        num = 0
         result = []
         for event in log:
             timestamp = float(event[1])
-            result.append(timestamp)
             if event[0] == 'DoneFindSk':
-                number.append(int(event[2]))
-        results.append(result)            
+                num = int(event[2])
+                number.append(num)
+            result.append(timestamp)
+        if num >= expectNumOfConn:
+            results.append(result)            
     results = map(getDifference, results)
     prepare = map(lambda x: x[1], results)
     measure = map(lambda x: x[2], results)

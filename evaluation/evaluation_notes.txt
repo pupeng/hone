@@ -8,7 +8,8 @@ Test conn measurement overhead
 run startServer on a server machine
 runExp1 will launch 1k to 10k connections to the server
 Controllor runs exp_connMeasureOverhead
-(Controller should disable hone_hostinfo for better performance)
+(Controller should disable hone_hostinfo)
+(Agent should service rsyslog stop)
 
 Repeat with exp_connMeasureOverhead and exp_evalCpuMem on controller
 to get CPU and memory usages.

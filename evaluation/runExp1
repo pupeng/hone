@@ -8,10 +8,10 @@
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=10.142.141.28
+testserverIP=10.149.2.20
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {0..9..1})
+for num in $(eval echo {4..4..1})
 do
     echo $num
     temp=`expr $num + 1`
@@ -24,14 +24,14 @@ do
     do
         ./test_prog/test_prog $testserverIP $port 1000 &> /dev/null &
     done
-    sleep 5m
+    sleep 3m
     killall python
     killall test_prog
     cd ../HostAgent
     file=`ls logs/*.eval`
     cp $file ../evaluation/exp1data/conn$result.log
-    #file=`ls logs/*.txt`
-    #cp $file ../evaluation/exp1data/cpumem_conn$result.txt
+    file=`ls logs/*CpuMem.txt`
+    cp $file ../evaluation/exp1data/cpumem_conn$result.txt
     cd ../evaluation
     python parseexp1.py exp1data/conn$result.log
     echo "done " $num

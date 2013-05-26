@@ -25,6 +25,8 @@ class LogUtil:
     _EVALUATION_    = False
 
     LoggingLock = multiprocessing.Lock()
+
+    LogFileName = ''
     
     DebugFlags = {'global' : _GLOBAL_DEBUG_,
                   'lib'    : _LIB_DEBUG_,
@@ -34,13 +36,15 @@ class LogUtil:
                   'exeMod' : _EXEMOD_DEBUG_,
                   'snd'    : _SND_DEBUG_,
                   'evaluation' : _EVALUATION_ }
+
+    EvalData = []
     
     @staticmethod
     def InitLogging():
         if not os.path.exists('logs'):
             os.makedirs('logs')
-        logFileName = 'logs/controller_{0}.log'.format(str(datetime.datetime.now()).translate(None, ' :-.'))
-        logging.basicConfig(filename=logFileName, level=LogUtil._LogLevel_,
+        LogUtil.LogFileName = 'logs/controller_{0}.log'.format(str(datetime.datetime.now()).translate(None, ' :-.'))
+        logging.basicConfig(filename=LogUtil.LogFileName, level=LogUtil._LogLevel_,
                             format='%(levelname)8s,%(asctime)s.%(msecs).3d,%(module)17s,%(funcName)21s,%(lineno)3d,%(message)s',
                             datefmt='%m/%d/%Y %H:%M:%S')
         
@@ -60,4 +64,13 @@ class LogUtil:
 
     @staticmethod
     def EvalLog(eventId, msg):
-        logging.debug('{0},{1}'.format(eventId, msg))
+        #logging.debug('{0},{1}'.format(eventId, msg))
+        LogUtil.EvalData.append('{0},{1}'.format(eventId, msg))
+
+    @staticmethod
+    def OutputEvalLog():
+        output = open(LogUtil.LogFileName + '.eval', 'a')
+        for data in LogUtil.EvalData:
+            print >>output, data
+        output.close()
+        LogUtil.EvalData = []

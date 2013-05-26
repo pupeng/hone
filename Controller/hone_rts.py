@@ -203,6 +203,7 @@ def RtsRun(mgmtProg):
     except KeyboardInterrupt:
         LogUtil.DebugLog('global', 'catch keyboard keyboard interrupt')
     finally:
+        LogUtil.OutputEvalLog()
         print 'Exit from hone_rts'
 
 ''' process each mgmt prog '''

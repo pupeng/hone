@@ -11,7 +11,7 @@
 testserverIP=10.149.2.20
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {4..4..1})
+for num in $(eval echo {4..4})
 do
     echo $num
     temp=`expr $num + 1`

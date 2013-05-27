@@ -76,3 +76,8 @@ list all name-IP mapping of EC2 instances (listAllEc2Instances.py)
 Step2:
 launch runExp5 and runExp5Controller on all instances
 (startExp5EC2.py)
+
+Step3:
+log in to controller. Based on the scale of experiment, move data files to
+corresponding folder. 
+Launch the parser to check the results. 

@@ -23,5 +23,6 @@ killall python
 
 file=`ls logs/*.eval`
 cp $file ../evaluation/exp5data/controller-temp.log
+echo result transferred to exp5data
 
 echo "done exp5 on controller"

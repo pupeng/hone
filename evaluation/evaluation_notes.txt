@@ -61,6 +61,7 @@ Remember:
 change runTestProg server IP
 change startHoneAgent controller IP
 change runExp5 controller IP
+start server on test-server
 
 controller run exp_exp4q1.py
 disable hostinfo

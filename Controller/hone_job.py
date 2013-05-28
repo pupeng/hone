@@ -87,7 +87,7 @@ class HoneJob:
             return len(self.aggStructRecord[len(self.aggStructRecord) - 1]['controller'])
 
     def DisplayAggTree(self):
-        LogUtil.DebugLog('rts', self.treeFormatter.displayTree())
+        LogUtil.DebugLog('tree', self.treeFormatter.displayTree())
 
     # private methods
     def _transferExeFile(self, hostId):

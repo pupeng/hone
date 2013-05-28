@@ -23,6 +23,7 @@ class LogUtil:
     _SND_DEBUG_     = False
     _CONTROL_DEBUG_ = False
     _EVALUATION_    = False
+    _TREE_FORMATION_ = True
 
     LoggingLock = multiprocessing.Lock()
 
@@ -35,7 +36,8 @@ class LogUtil:
                   'exeGen' : _EXEGEN_DEBUG_,
                   'exeMod' : _EXEMOD_DEBUG_,
                   'snd'    : _SND_DEBUG_,
-                  'evaluation' : _EVALUATION_ }
+                  'evaluation' : _EVALUATION_,
+                  'tree'   : _TREE_FORMATION_ }
 
     EvalData = []
     

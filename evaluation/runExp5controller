@@ -17,7 +17,7 @@ cd ../../Controller
 rm logs/*
 echo $job
 python hone_run.py $job &
-sleep 10m
+sleep 15m
 
 killall python
 

@@ -33,7 +33,7 @@ echo clock synchronization done
 echo HONE agent starts
 ./runTestProg test-server $port 100 &> $HOME/testProgCommand.log &
 echo connections start
-sleep 5m
+sleep 7m
 
 killall python
 killall test_prog

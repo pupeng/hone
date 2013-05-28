@@ -7,8 +7,6 @@
 echo "run exp5 on controller"
 job=exp_exp4q1
 
-rm $HOME/*.log
-
 cd $HOME/hone
 git pull
 

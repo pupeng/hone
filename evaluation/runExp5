@@ -14,9 +14,11 @@ then
     exit
 fi
 
-controllerIP=10.145.188.7
+controllerIP=10.166.2.249
 
 sudo service rsyslog stop
+
+rm $HOME/*.log
 
 cd $HOME/hone
 git pull

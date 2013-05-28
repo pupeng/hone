@@ -8,10 +8,12 @@
 #echo "Server Instance is " $instance
 
 #testserverIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-testserverIP=10.149.2.20
+testserverIP=10.154.148.150
 echo "Server internal IP " $testserverIP
 
-for num in $(eval echo {4..4})
+sudo service rsyslog stop
+
+for num in $(eval echo {7..7})
 do
     echo $num
     temp=`expr $num + 1`
@@ -30,8 +32,8 @@ do
     cd ../HostAgent
     file=`ls logs/*.eval`
     cp $file ../evaluation/exp1data/conn$result.log
-    file=`ls logs/*CpuMem.txt`
-    cp $file ../evaluation/exp1data/cpumem_conn$result.txt
+    #file=`ls logs/*CpuMem.txt`
+    #cp $file ../evaluation/exp1data/cpumem_conn$result.txt
     cd ../evaluation
     python parseexp1.py exp1data/conn$result.log
     echo "done " $num

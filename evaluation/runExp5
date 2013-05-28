@@ -14,8 +14,6 @@ then
     exit
 fi
 
-controllerIP=10.166.2.249
-
 sudo service rsyslog stop
 
 cd $HOME/hone
@@ -46,8 +44,12 @@ export EC2_KEYPAIR=home-keypair
 export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem
 export EC2_CERT=$HOME/.ssh/cert-ec2.pem
 export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
+
 selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
 selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
+
+controllerInstance=`ec2-describe-instances | grep controller | cut -f3`
+controllerIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
 
 cd ../../HostAgent
 file=`ls logs/*.eval`

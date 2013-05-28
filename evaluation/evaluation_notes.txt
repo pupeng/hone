@@ -81,3 +81,18 @@ Step3:
 log in to controller. Based on the scale of experiment, move data files to
 corresponding folder. 
 Launch the parser to check the results. 
+
+
+Exp6:
+aggregation test
+
+Remember:
+Do all the things till Step1 in Exp5
+
+Step2:
+launch runExp6 and runExp6controller on all instances
+(startExp6EC2.py)
+
+Step3:
+On controller, move data files to corresponding folders.
+Launch parser to check the results. 

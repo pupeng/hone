@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# Copyright (c) 2011-2013 Peng Sun. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the COPYRIGHT file.
+
+echo "runExp6 on controller"
+job=exp_exp6 exp_evalCpuMemTp
+
+cd $HOME/hone
+git pull
+
+cd evaluation/ec2scripts
+./adjustClock
+
+cd ../../Controller
+rm logs/*
+echo $job
+python hone_run.py $job &
+sleep 15m
+
+killall python
+
+file=`ls logs/*.eval`
+cp $file ../evaluation/exp6data/controller-temp.log
+echo "result transferred to exp6data"
+
+echo "done exp6 on controller"

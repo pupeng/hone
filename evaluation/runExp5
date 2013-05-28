@@ -49,7 +49,7 @@ selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
 selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
 
 controllerInstance=`ec2-describe-instances | grep controller | cut -f3`
-controllerIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
+controllerIP=`ec2-describe-instances $controllerInstance | grep INSTANCE | cut -f18`
 echo $controllerIP
 
 cd ../../HostAgent/logs

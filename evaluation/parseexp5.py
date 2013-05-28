@@ -36,7 +36,8 @@ def parse(number):
     ctrlLogs = filter(lambda x : x[0] == 'ControllerExecution', ctrlLogs)
     ctrlLogs = map(lambda x : x[1].split('#'), ctrlLogs)
     ctrlLogs = map(lambda y: map(lambda x : x.split('$'), y), ctrlLogs)
-    ctrlLogs = filter(lambda x : len(x) == (4 + int(number) * 2), ctrlLogs)
+    bar = int(int(number) * 0.9)
+    ctrlLogs = filter(lambda x : len(x) > (4 + bar * 2), ctrlLogs)
     mergeTime = []
     for log in ctrlLogs:
         log.pop(0)

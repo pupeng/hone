@@ -316,12 +316,12 @@ class HoneCommProtocolHost(LineReceiver):
     def handleMiddleStatsIn(self, message):
         #EvalLog('{0:6f},78,start handleMiddleStatsIn for jobId {1}'.format(time.time(), message.jobId))
         key = composeMiddleJobKey(message.jobId, message.flowId, message.level)
-        #debugLog('rcvMod', 'new stats from child to middle. jobId:', message.jobId, \
-        #         'flowId', message.flowId, 'level', message.level, \
-        #         'peer', self.transport.getPeer()[1], \
-        #         'content: ', message.content, \
-        #         'expectNumOfChild', middleJobTable[key].expectedNumOfChild, \
-        #         'middleJobTable', middleJobTable)
+        LogUtil.DebugLog('rcvMod', 'new stats from child to middle. jobId:', message.jobId,
+                 'flowId', message.flowId, 'level', message.level,
+                 'peer', self.transport.getPeer()[1],
+                 'content', message.content,
+                 'expectNumOfChild', middleJobTable[key].expectedNumOfChild,
+                 'middleJobTable', middleJobTable)
         if key in middleJobTable:
             expectNumOfChild = middleJobTable[key].expectedNumOfChild
             if message.jobId not in self.factory.statsBuffer:

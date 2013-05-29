@@ -21,7 +21,7 @@ HostRelayPort = 8877
 
 def ToUpperLevel(jobId, flowId, level):
     def push(x):
-        #debugLog('lib', 'in ToUpperLevel', jobId, flowId, level)
+        LogUtil.DebugLog('lib', 'in ToUpperLevel', jobId, flowId, level)
         if x or isinstance(x, (int,long,float,complex)):
             key = composeMiddleJobKey(jobId, flowId, level)
             if key in agentRcvModule.middleJobTable:

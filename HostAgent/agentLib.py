@@ -161,7 +161,7 @@ def AGG(attr):
 # send to controller
 def ToCtrl(jobID, flowId):
     def push(x):
-        #debugLog('lib', 'in ToCtrl', jobID, flowId, x)
+        LogUtil.DebugLog('lib', 'in ToCtrl', jobID, flowId, x)
         if x or isinstance(x, (int,long,float,complex)):
             key = composeKey(jobID, flowId)
             sequence = agentManager.sourceJobTable[key].lastSequence
@@ -180,7 +180,7 @@ def ToCtrl(jobID, flowId):
 
 def ToMiddle(jobId, flowId):
     def push(x):
-        #debugLog('lib', 'in ToMiddle', jobId, flowId, x)
+        LogUtil.DebugLog('lib', 'in ToMiddle', jobId, flowId, x)
         if x or isinstance(x, (int,long,float,complex)):
             key = composeKey(jobId, flowId)
             if key in agentManager.sourceJobTable:

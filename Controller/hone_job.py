@@ -54,8 +54,6 @@ class HoneJob:
 
     def addAggLink(self, level, childHostId, parentHostId):
         logging.info('job {0} add a level-{3} link from host {1} to host {2}'.format(self.jobId, childHostId, parentHostId, level))
-        LogUtil.DebugLog('tree', 'addAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
-                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord: ', self.aggStructRecord)
         while len(self.aggStructRecord) <= level:
             self.aggStructRecord.append({})
         if parentHostId not in self.aggStructRecord[level]:
@@ -72,17 +70,19 @@ class HoneJob:
                 self.hosts[childHostId] = True
         else:
             self._updateMiddleExe_Parent(childHostId, level - 1, parentHostId)
+        LogUtil.DebugLog('tree', 'addAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
+                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord: ', self.aggStructRecord)
 
     def removeAggLink(self, level, childHostId, parentHostId):
         logging.info('job {0} remove a level-{1} link from host {2} to host {3}'.format(
                      self.jobId, level, childHostId, parentHostId))
-        LogUtil.DebugLog('tree', 'removeAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
-                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord:', self.aggStructRecord)
         if childHostId in self.aggStructRecord[level][parentHostId]:
             self.aggStructRecord[level][parentHostId].remove(childHostId)
             self._updateMiddleExe_NumOfChildren(parentHostId, level)
             if len(self.aggStructRecord[level][parentHostId]) == 0:
                 del self.aggStructRecord[level][parentHostId]
+        LogUtil.DebugLog('tree', 'removeAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
+                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord:', self.aggStructRecord)
 
     def GetExpectedNumOfHosts(self, flowId):
         if flowId in self.exeFlow.flowToCtrl:

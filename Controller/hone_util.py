@@ -23,7 +23,7 @@ class LogUtil:
     _SND_DEBUG_     = False
     _CONTROL_DEBUG_ = False
     _EVALUATION_    = False
-    _TREE_FORMATION_ = False
+    _TREE_FORMATION_ = True
 
     LoggingLock = multiprocessing.Lock()
 

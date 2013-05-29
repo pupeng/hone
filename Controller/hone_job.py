@@ -39,7 +39,7 @@ class HoneJob:
         if hostEntry.hostId not in self.hosts:
             self.hosts[hostEntry.hostId] = None
             self._transferExeFile(hostEntry.hostId)
-            self.addAggLink(0, hostEntry.hostId, 'controller')
+            #self.addAggLink(0, hostEntry.hostId, 'controller')
             self.treeFormatter.addLeaf(hostEntry)
             self.DisplayAggTree()
 

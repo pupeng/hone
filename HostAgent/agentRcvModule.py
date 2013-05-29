@@ -139,7 +139,7 @@ def buildMiddleJob(middleJob, flowExePlan):
     except ImportError, msg:
         # user-defined function not ready yet
         #debugLog('job', 'Error loading user module: ', middleJob.progName)
-        #logging.error('Error loading user module {0}'.format(middleJob.progName))
+        logging.error('Error loading user module {0}'.format(middleJob.progName))
         return
     #EvalLog('{0:6f},82,build middle job for jobId {1} flowId {2}'.format(time.time(), middleJob.jobId, middleJob.flowId))
     e, go = agentFreLib.RawEvent()
@@ -279,26 +279,23 @@ class HoneCommProtocolHost(LineReceiver):
     def handleMiddleJob(self, message):
         LogUtil.DebugLog('rcvMod', 'new middle job. jobId:', message.jobId, 'content:', message.content)
         #EvalLog('{0:6f},72,start handleMiddleJob jobId {1}'.format(time.time(), message.jobId))
-        (numOfChildren, parentAddress, progName, exePlan) = message.content
+        (numOfChildren, progName, exePlan) = message.content
         for flowExePlan in exePlan:
             middleJob = MiddleJob(message.jobId, flowExePlan.flowId, message.level)
             middleJob.expectedNumOfChild = numOfChildren
             middleJob.progName = progName
-            middleJob.parentAddress = parentAddress
+            middleJob.parentAddress = None
             buildMiddleJob(middleJob, flowExePlan.exePlan)
         #EvalLog('{0:6f},73,done handleMiddleJob jobId {1}'.format(time.time(), message.jobId))
         logging.info('install middle job id {0} level {1}'.format(message.jobId, message.level))
 
     def handleMiddleJobUpdate(self, message):
         LogUtil.DebugLog('rcvMod', 'update middle job.', 'jobId:', message.jobId, 'level', message.level, 'content:', message.content)
-        if message.level == 0:
-            (_, parentAddress) = message.content
-            item = (IPCType['UpdateSourceJob'], (message.jobId, parentAddress))
-            sourceJobQueue.put(item)
         for key in middleJobTable.iterkeys():
             if middleJobKeyContainJobIdAndLevel(key, message.jobId, message.level):
                 (numOfChildren, parentAddress) = message.content
-                middleJobTable[key].expectedNumOfChild = numOfChildren
+                if numOfChildren:
+                    middleJobTable[key].expectedNumOfChild = numOfChildren
                 if parentAddress:
                     middleJobTable[key].parentAddress = parentAddress
         logging.info('update middle job id {0} level {1} with content {2}'.format(message.jobId, message.level, message.content))

@@ -36,11 +36,10 @@ def ToUpperLevel(jobId, flowId, level):
                 message.sequence = sequence
                 message.content = x
                 if parentAddress == agentManager.CtrlAddress:
-                    port = ControllerPort
-                else:
+                    agentManager.sndToCtrl.sendMessage(message)
+                elif parentAddress:
                     port = HostRelayPort
-                #debugLog('lib', 'send message to middle {0}'.format(parentAddress), 'level {0}'.format(message.level), 'port', port)
-                sndSocket = HostAgentRelaySndSocket(parentAddress, port)
-                sndSocket.sendMessage(message)
+                    sndSocket = HostAgentRelaySndSocket(parentAddress, port)
+                    sndSocket.sendMessage(message)
                 LogUtil.EvalLog('ToUpperLevel', 'jobId {0} flowId {1} level {2} parent address {3}'.format(jobId, flowId, level, parentAddress))
     return freLib.FListener(push=push)

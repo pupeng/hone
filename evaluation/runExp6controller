@@ -26,6 +26,9 @@ killall python
 cd logs
 file=`ls *.eval`
 cp $file ../../evaluation/exp6data/controller-temp.log
+
+cd $HOME
+cp exp6controller.log hone/evaluation/exp6data
 echo "result transferred to exp6data"
 
 echo "done exp6 on controller"

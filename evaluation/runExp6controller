@@ -7,6 +7,8 @@
 echo "runExp6 on controller"
 job=exp_exp6
 
+sudo service rsyslog stop
+
 cd $HOME/hone
 git pull
 

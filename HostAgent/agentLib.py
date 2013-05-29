@@ -190,7 +190,7 @@ def ToMiddle(jobId, flowId):
                 message.hostId = HostId
                 message.jobId = jobId
                 message.flowId = flowId
-                message.level = 1
+                message.level = 0
                 message.sequence = sequence
                 message.content = x
                 sndTimestamp = 'Begin${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)

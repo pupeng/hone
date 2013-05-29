@@ -27,6 +27,7 @@ class HonePartitionedFlow:
         self.flowToMiddle = []
         self.minQueryPeriod= None
         self.addExePlan(honeDataFlow)
+        self.debug()
 
     def isHostEligible(self, hostEntry):
         ret = True
@@ -100,18 +101,17 @@ class HonePartitionedFlow:
         return (hostSource, hostMiddle, network, controller)
 
     def debug(self):
-        pass
-        #debugLog('part', 'host source')
-        #for flowExePlan in self.hostSourceExePlan:
-            #debugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
-        #debugLog('part', 'host middle')
-        #for flowExePlan in self.hostMiddleExePlan:
-            #debugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
-        #debugLog('part', 'network')
-        #for flowExePlan in self.networkExePlan:
-            #debugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
-        #debugLog('part', 'controller')
-        #for flowExePlan in self.controllerExePlan:
-            #debugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
-        #debugLog('part', 'flowToCtrl', self.flowToCtrl)
-        #debugLog('part', 'flowToMiddle', self.flowToMiddle)
+        LogUtil.DebugLog('part', 'host source')
+        for flowExePlan in self.hostSourceExePlan:
+            LogUtil.DebugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
+        LogUtil.DebugLog('part', 'host middle')
+        for flowExePlan in self.hostMiddleExePlan:
+            LogUtil.DebugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
+        LogUtil.DebugLog('part', 'network')
+        for flowExePlan in self.networkExePlan:
+            LogUtil.DebugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
+        LogUtil.DebugLog('part', 'controller')
+        for flowExePlan in self.controllerExePlan:
+            LogUtil.DebugLog('part', 'flowId:', flowExePlan.flowId, flowExePlan.exePlan)
+        LogUtil.DebugLog('part', 'flowToCtrl', self.flowToCtrl)
+        LogUtil.DebugLog('part', 'flowToMiddle', self.flowToMiddle)

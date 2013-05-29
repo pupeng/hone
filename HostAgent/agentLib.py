@@ -161,7 +161,6 @@ def AGG(attr):
 # send to controller
 def ToCtrl(jobID, flowId):
     def push(x):
-        LogUtil.DebugLog('lib', 'in ToCtrl', jobID, flowId, x)
         if x or isinstance(x, (int,long,float,complex)):
             key = composeKey(jobID, flowId)
             sequence = agentManager.sourceJobTable[key].lastSequence
@@ -176,11 +175,11 @@ def ToCtrl(jobID, flowId):
             agentManager.evalTimestamp += '#StartToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
             agentManager.sndToCtrl.sendMessage(message)
             agentManager.evalTimestamp += '#DoneToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
+            LogUtil.DebugLog('lib', 'in ToCtrl', jobID, flowId, sequence)
     return freLib.FListener(push=push)
 
 def ToMiddle(jobId, flowId):
     def push(x):
-        LogUtil.DebugLog('lib', 'in ToMiddle', jobId, flowId, x)
         if x or isinstance(x, (int,long,float,complex)):
             key = composeKey(jobId, flowId)
             if key in agentManager.sourceJobTable:
@@ -205,6 +204,7 @@ def ToMiddle(jobId, flowId):
                 agentManager.evalTimestamp += '#DoneToMiddle${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
                 sndTimestamp += 'End${0:6f}'.format(time.time())
                 LogUtil.EvalLog('ToMiddleOneRound', sndTimestamp)
+                LogUtil.DebugLog('lib', 'in ToMiddle', jobId, flowId, sequence, middleAddress)
     return freLib.FListener(push=push)
 
 # rate limit

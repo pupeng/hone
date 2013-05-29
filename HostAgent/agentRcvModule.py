@@ -256,9 +256,7 @@ class HoneCommProtocolHost(LineReceiver):
                             (message)
     
     def handleSourceJob(self, message):
-        #debugLog('rcvMod', 'new source job. jobId:', message.jobId, \
-        #         'content:', message.content)
-        #EvalLog('{0:6f},68,receive new source job of jobId {1}'.format(time.time(), message.jobId))
+        LogUtil.DebugLog('rcvMod', 'new source job. jobId:', message.jobId, 'content:', message.content)
         (middleAddress, createTime, progName, exePlan) = message.content
         for flowExePlan in exePlan:
             #debugLog('rcvMod', 'new flow exe plan', flowExePlan.exePlan)
@@ -272,16 +270,14 @@ class HoneCommProtocolHost(LineReceiver):
         #EvalLog('{0:6f},69,done handling source jobId {1}'.format(time.time(), message.jobId))
 
     def handleSourceJobUpdate(self, message):
-        #debugLog('rcvMod', 'update source job. jobId:', message.jobId, \
-        #         'content:', message.content)
+        LogUtil.DebugLog('rcvMod', 'update source job. jobId:', message.jobId, 'content:', message.content)
         #EvalLog('{0:6f},70,start handleSourceJobUpdate jobId {1}'.format(time.time(), message.jobId))
         item = (IPCType['UpdateSourceJob'], (message.jobId, message.content))
         sourceJobQueue.put(item)
         #EvalLog('{0:6f},71,done handleSourceJobUpdate jobId {1}'.format(time.time(), message.jobId))
 
     def handleMiddleJob(self, message):
-        #debugLog('rcvMod', 'new middle job. jobId:', message.jobId, \
-        #         'content:', message.content)
+        LogUtil.DebugLog('rcvMod', 'new middle job. jobId:', message.jobId, 'content:', message.content)
         #EvalLog('{0:6f},72,start handleMiddleJob jobId {1}'.format(time.time(), message.jobId))
         (numOfChildren, parentAddress, progName, exePlan) = message.content
         for flowExePlan in exePlan:
@@ -294,9 +290,7 @@ class HoneCommProtocolHost(LineReceiver):
         logging.info('install middle job id {0} level {1}'.format(message.jobId, message.level))
 
     def handleMiddleJobUpdate(self, message):
-        #debugLog('rcvMod', 'update middle job.', 'jobId:', message.jobId, \
-        #         'level', message.level, \
-        #         'content:', message.content)
+        LogUtil.DebugLog('rcvMod', 'update middle job.', 'jobId:', message.jobId, 'level', message.level, 'content:', message.content)
         if message.level == 0:
             (_, parentAddress) = message.content
             item = (IPCType['UpdateSourceJob'], (message.jobId, parentAddress))

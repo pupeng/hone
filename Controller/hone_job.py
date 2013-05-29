@@ -137,7 +137,7 @@ class HoneJob:
         message.messageType = HoneMessageType_InstallMiddleJob
         message.jobId = self.jobId
         message.level = level
-        message.content = (len(self.aggStructRecord[level][address]),
+        message.content = (len(self.aggStructRecord[level][hostId]),
                            self.exeFlow.progName,
                            self.exeFlow.hostMiddleExePlan)
         HoneHostSndModule().sendMessage(address, message)

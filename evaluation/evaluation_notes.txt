@@ -91,6 +91,8 @@ Do all the things till Step1 in Exp5
 
 Step2:
 launch runExp6 and runExp6controller on all instances
+controller runs exp_exp6
+controller runs exp_evalCpuMemTp to log the cpu and memory usages
 (startExp6EC2.py)
 
 Step3:

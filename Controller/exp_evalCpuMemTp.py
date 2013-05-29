@@ -26,7 +26,7 @@ def sumCpuMem(table):
         memSum.append(mem)
     return (sum(cpuSum), sum(memSum))
 
-def CpuMemPrint(cpuMem):
+def cpuMemPrint(cpuMem):
     (cpu, mem) = cpuMem
     output = open('logs/agentCpuMem.txt', 'a')
     print >>output, '{0:6f} {1} {2}'.format(time.time(), cpu, mem)
@@ -84,7 +84,7 @@ def TpPrint(throughput):
 def HeartBeat(data):
     return 'HeartBeat'
 
-def CtrlCpuMem(data):
+def ctrlCpuMem(data):
     print data
     try:
         pids = check_output('ps -a | grep python | cut -b1-5', shell=True, executable='/bin/bash')
@@ -106,17 +106,17 @@ def CtrlCpuMem(data):
         print msg
 
 def main():
-    cpuStream = (cpuMemQuery() >> \
-                 MapStreamSet(sumCpuMem) >> \
-                 MapStreamSet(CpuMemPrint))
-    connStream = (connQuery() >> \
-                  ReduceStreamSet(CalcTM, {}) >> \
-                  MapStreamSet(LocalAgg) >> \
+    cpuStream = (cpuMemQuery() >>
+                 MapStreamSet(sumCpuMem) >>
+                 MapStreamSet(cpuMemPrint))
+    connStream = (connQuery() >>
+                  ReduceStreamSet(CalcTM, {}) >>
+                  MapStreamSet(LocalAgg) >>
                   MapStreamSet(TpPrint))
     #stream = (MergeStreamsForSet(cpuStream, connStream) >> \
-    stream = (cpuStream >> \
-              MapStreamSet(HeartBeat) >> \
-              MergeHosts() >> \
-              MapStream(CtrlCpuMem))
+    stream = (cpuStream >>
+              MapStreamSet(HeartBeat) >>
+              MergeHosts() >>
+              MapStream(ctrlCpuMem))
     return stream
 

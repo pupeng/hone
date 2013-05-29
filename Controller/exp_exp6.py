@@ -54,10 +54,10 @@ def myPrint(data):
     print 'global agg: {0}'.format(data)
 
 def main():
-    connStream = (connQuery() >> \
-                  ReduceStreamSet(CalcTM, {}) >> \
-                  MapStreamSet(LocalAgg) >> \
-                  TreeMerge(IntermediateAgg) >> \
+    connStream = (connQuery() >>
+                  ReduceStreamSet(CalcTM, {}) >>
+                  MapStreamSet(LocalAgg) >>
+                  TreeMerge(IntermediateAgg) >>
                   Print(myPrint))
     return connStream
 

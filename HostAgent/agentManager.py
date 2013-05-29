@@ -18,7 +18,7 @@ from agentDirService import *
 import agentConnMeasure
 import agentProcMeasure
 
-agentSndModule = None
+sndToCtrl = None
 sourceJobTable = None
 socketTable = None
 sourceJobSkList = None
@@ -59,8 +59,8 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         # wait for rcv module to boot
         #EvalLog('{0:6f},52,wait {1} seconds for rcvModule to boot'.format(time.time(), minRunInterval))
         time.sleep(minRunInterval)
-        global agentSndModule
-        agentSndModule = HostAgentSndSocket(ctrlAddress, ctrlPort)
+        global sndToCtrl
+        sndToCtrl = HostAgentSndSocket(ctrlAddress, ctrlPort)
         scheduleLoop = Timer(minRunInterval, scheduleLoopRun)
         scheduleLoop.start()
         time.sleep(minRunInterval / 2.0)

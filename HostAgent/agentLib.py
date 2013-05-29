@@ -174,7 +174,7 @@ def ToCtrl(jobID, flowId):
             message.content = x
             #debugLog('lib', 'send message to controller')
             agentManager.evalTimestamp += '#StartToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
-            agentManager.agentSndModule.sendMessage(message)
+            agentManager.sndToCtrl.sendMessage(message)
             agentManager.evalTimestamp += '#DoneToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
     return freLib.FListener(push=push)
 
@@ -196,11 +196,10 @@ def ToMiddle(jobId, flowId):
                 message.content = x
                 sndTimestamp = 'Begin${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
                 if middleAddress == agentManager.CtrlAddress:
-                    port = ControllerPort
+                    sndSocket = agentManager.sndToCtrl
                 else:
                     port = HostRelayPort
-                #debugLog('lib', 'send message to middle address {0}'.format(middleAddress), 'level 1')
-                sndSocket = HostAgentRelaySndSocket(middleAddress, port)
+                    sndSocket = HostAgentRelaySndSocket(middleAddress, port)
                 agentManager.evalTimestamp += '#StartToMiddle${0:6f}${1}${2}${3}${4}'.format(time.time(), jobId, flowId, sequence, middleAddress)
                 sndSocket.sendMessage(message)
                 agentManager.evalTimestamp += '#DoneToMiddle${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)

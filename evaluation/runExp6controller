@@ -23,8 +23,9 @@ sleep 15m
 
 killall python
 
-file=`ls logs/*.eval`
-cp $file ../evaluation/exp6data/controller-temp.log
+cd logs
+file=`ls *.eval`
+cp $file ../../evaluation/exp6data/controller-temp.log
 echo "result transferred to exp6data"
 
 echo "done exp6 on controller"

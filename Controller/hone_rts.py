@@ -220,6 +220,7 @@ def _executeMgmtMain(progName):
 
 def handleHostJoin(hostId, hostAddress):
     LogUtil.DebugLog('rts', 'new host joins with id {0} and address {1}'.format(hostId, hostAddress))
+    logging.info('new host joins with id {0} and address {1}'.format(hostId, hostAddress))
     entry = HostEntry(hostId, hostAddress)
     HostRecord[hostId] = entry
     for (jobId, job) in _jobExecution.iteritems():
@@ -230,6 +231,7 @@ def handleHostJoin(hostId, hostAddress):
 
 def handleHostLeave(hostId):
     LogUtil.DebugLog('rts', 'host {0} leaves'.format(hostId))
+    logging.info('host {0} leaves'.format(hostId))
     if hostId in HostRecord:
         hostEntry = HostRecord[hostId]
         for jobId in hostEntry.jobs:

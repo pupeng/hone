@@ -18,7 +18,6 @@ from agentDirService import *
 import agentConnMeasure
 import agentProcMeasure
 
-sndToCtrl = None
 sourceJobTable = None
 socketTable = None
 sourceJobSkList = None
@@ -35,6 +34,7 @@ evalTimestamp = ''
 measureLatency = ''
 
 CtrlAddress = None
+sndToCtrl = None
 
 def agentManagerRun(ctrlAddress, ctrlPort):
     LogUtil.DebugLog('manager', 'start to run agent manager')

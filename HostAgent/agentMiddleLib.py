@@ -36,9 +36,10 @@ def ToUpperLevel(jobId, flowId, level):
                 message.sequence = sequence
                 message.content = x
                 if parentAddress == agentManager.CtrlAddress:
-                    agentManager.sndToCtrl.sendMessage(message)
-                elif parentAddress:
+                    port = ControllerPort
+                else:
                     port = HostRelayPort
+                if parentAddress:
                     sndSocket = HostAgentRelaySndSocket(parentAddress, port)
                     sndSocket.sendMessage(message)
                 agentRcvModule.middleEvalTimestamp += '#DoneToUpperLevel${0:6f}${1}${2}${3}${4}${5}'.format(time.time(), jobId, flowId, message.level, message.sequence, parentAddress)

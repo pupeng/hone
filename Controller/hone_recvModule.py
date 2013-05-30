@@ -19,14 +19,18 @@ import logging
 
 _honeCtrlListeningPort = 8866
 
+class HostConnectionTypes:
+    AgentDirect, Relay = range(2)
+
 class HoneCommProtocol(LineReceiver):
     ''' the protocol between controller and host agent '''
     def __init__(self):
         self.hostName = None
+        self.connectionType = None
         self.typeActions = {
             HoneMessageType_HostJoin : self.handleHostJoin,
             HoneMessageType_StatsIn  : self.handleStatsIn,
-            HoneMessageType_RelayStatsIn: self.handleStatsIn}
+            HoneMessageType_RelayStatsIn: self.handleRelayStatsIn}
     
     ''' receive a new line from agent. Data in the line is HoneMessage '''
     def lineReceived(self, line):
@@ -38,10 +42,11 @@ class HoneCommProtocol(LineReceiver):
         self.typeActions.get(message.messageType, self.handleUnknownType)(message)
 
     def connectionLost(self, reason):
-        if self.hostName:
+        if self.hostName and (self.connectionType == HostConnectionTypes.AgentDirect):
             rts.handleHostLeave(self.hostName)
 
     def handleHostJoin(self, message):
+        self.connectionType = HostConnectionTypes.AgentDirect
         hostAddress = self.transport.getPeer().host
         rts.handleHostJoin(message.hostId, hostAddress)
         
@@ -51,6 +56,11 @@ class HoneCommProtocol(LineReceiver):
         else:
             rts.evalTimestamp += '#NewStatsIn${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
             rts.handleStatsIn(message)
+
+    def handleRelayStatsIn(self, message):
+        self.connectionType = HostConnectionTypes.Relay
+        rts.evalTimestamp += '#NewStatsIn${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
+        rts.handleStatsIn(message)
 
     def handleUnknownType(self, message):
         logging.warning('Got unknown message type {0}'.format(message.messageType))

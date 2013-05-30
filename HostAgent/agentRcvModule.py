@@ -8,6 +8,7 @@
 import sys
 import traceback
 import logging
+import time
 from twisted.internet.protocol import Factory
 from twisted.protocols.basic import LineReceiver
 from twisted.internet import reactor
@@ -26,6 +27,7 @@ _honeHostListeningPort = 8877
 middleJobTable = {}
 sourceJobQueue = None
 socketCriteriaQueue = None
+middleEvalTimestamp = 'Begin'
 
 class MergedData:
     def __init__(self, jobId, flowId, level):
@@ -61,6 +63,8 @@ class MergedData:
 
     def releaseData(self):
         #debugLog('job', 'releaseData', 'seq', self.lastSeq)
+        global middleEvalTimestamp
+        middleEvalTimestamp += '#ReleaseBuffer${0:6f}${1}${2}${3}${4}'.format(time.time(), self.jobId, self.flowId, self.level, self.lastSeq)
         key = composeMiddleJobKey(self.jobId, self.flowId, self.level)
         middleJobTable[key].lastSeq = self.lastSeq
         dataToRelease = self.bufferedData[:]
@@ -85,8 +89,10 @@ def runGo(goFunc, data, jobFlowLevel):
         print msg
         traceback.print_exc()
     finally:
-        #EvalLog('{0:6f},87,done go function for jobFlow {1}'.format(time.time(), jobFlow))
-        pass
+        global middleEvalTimestamp
+        LogUtil.EvalLog('MiddleExecution', middleEvalTimestamp)
+        middleEvalTimestamp = 'Begin'
+        LogUtil.OutputEvalLog()
 
 def buildSourceJob(sourceJob, exePlan):
     #EvalLog('{0:6f},80,build source job exe plan jobId {1} flowId {2}'.format(time.time(), sourceJob.jobId, sourceJob.flowId))
@@ -315,6 +321,8 @@ class HoneCommProtocolHost(LineReceiver):
 
     def handleMiddleStatsIn(self, message):
         #EvalLog('{0:6f},78,start handleMiddleStatsIn for jobId {1}'.format(time.time(), message.jobId))
+        global middleEvalTimestamp
+        middleEvalTimestamp += '#NewMiddleStats${0:6f}${1}${2}${3}${4}${5}'.format(time.time(), message.jobId, message.flowId, message.level, message.sequence, self.transport.getPeer()[1])
         key = composeMiddleJobKey(message.jobId, message.flowId, message.level)
         # LogUtil.DebugLog('rcvMod', 'new stats from child to middle. jobId:', message.jobId,
         #          'flowId', message.flowId, 'level', message.level,

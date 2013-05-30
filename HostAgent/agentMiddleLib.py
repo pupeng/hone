@@ -5,6 +5,7 @@
 # agentLib.py
 # library for executing jobs
 
+import time
 from uuid import getnode as get_mac
 
 import agentRcvModule
@@ -40,6 +41,6 @@ def ToUpperLevel(jobId, flowId, level):
                     port = HostRelayPort
                     sndSocket = HostAgentRelaySndSocket(parentAddress, port)
                     sndSocket.sendMessage(message)
-                LogUtil.EvalLog('ToUpperLevel', 'jobId {0} flowId {1} level {2} parent address {3}'.format(jobId, flowId, level, parentAddress))
+                agentRcvModule.middleEvalTimestamp += '#DoneToUpperLevel${0:6f}${1}${2}${3}${4}${5}'.format(time.time(), jobId, flowId, message.level, message.sequence, parentAddress)
                 # LogUtil.DebugLog('lib', 'in ToUpperLevel', jobId, flowId, level, sequence)
     return freLib.FListener(push=push)

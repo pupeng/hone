@@ -8,7 +8,7 @@
 #echo "Controller Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.145.187.80
+internalIP=10.154.148.97
 echo "Controller internal IP " $internalIP
 
 cd $HOME/hone/HostAgent

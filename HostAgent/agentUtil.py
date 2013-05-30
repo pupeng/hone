@@ -106,13 +106,11 @@ class LogUtil:
 
     @staticmethod
     def OutputEvalLog():
-        LogUtil.LoggingLock.acquire()
         output = open(LogUtil.LogFileName + '.eval', 'a')
         for data in LogUtil.EvalData:
             print >>output, data
         output.close()
         LogUtil.EvalData = []
-        LogUtil.LoggingLock.release()
 
 # _loggingLock = multiprocessing.Lock()
 #

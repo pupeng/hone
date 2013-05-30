@@ -92,7 +92,6 @@ def runGo(goFunc, data, jobFlowLevel):
         global middleEvalTimestamp
         LogUtil.EvalLog('MiddleExecution', middleEvalTimestamp)
         middleEvalTimestamp = 'Begin'
-        LogUtil.OutputEvalLog()
 
 def buildSourceJob(sourceJob, exePlan):
     #EvalLog('{0:6f},80,build source job exe plan jobId {1} flowId {2}'.format(time.time(), sourceJob.jobId, sourceJob.flowId))
@@ -373,5 +372,6 @@ class RcvModuleProcess(StoppableProcess):
         except Exception as e:
             logging.warning('agentRcvModule got exception {0}'.format(e))
         finally:
+            LogUtil.OutputEvalLog()
             logging.info('Exit from agentRcvModule')
             print 'Exit from agentRcvModule.'

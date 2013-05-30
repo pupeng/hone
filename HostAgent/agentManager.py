@@ -41,8 +41,6 @@ def agentManagerRun(ctrlAddress, ctrlPort):
     #EvalLog('{0:6f},50,agentManager starts in pid {1}'.format(time.time(), os.getpid()))
     global CtrlAddress
     CtrlAddress = ctrlAddress
-    global sndToCtrl
-    sndToCtrl = HostAgentSndSocket(ctrlAddress, ctrlPort)
     global sourceJobTable
     sourceJobTable = {}
     global socketTable
@@ -61,6 +59,8 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         # wait for rcv module to boot
         #EvalLog('{0:6f},52,wait {1} seconds for rcvModule to boot'.format(time.time(), minRunInterval))
         time.sleep(minRunInterval)
+        global sndToCtrl
+        sndToCtrl = HostAgentSndSocket(ctrlAddress, ctrlPort)
         scheduleLoop = Timer(minRunInterval, scheduleLoopRun)
         scheduleLoop.start()
         time.sleep(minRunInterval / 2.0)

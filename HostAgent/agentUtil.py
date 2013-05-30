@@ -52,7 +52,7 @@ class LogUtil:
     _RCV_DEBUG_ = True
     _CONTROL_DEBUG_ = False
     _DIRSERVICE_DEBUG_ = False
-    _LIB_DEBUG_ = True
+    _LIB_DEBUG_ = False
     _JOB_BUILD_DEBUG_ = False
     _SCH_DEBUG_ = False
     _CONN_DEBUG_ = False

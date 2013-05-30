@@ -30,9 +30,9 @@ class MergedData:
         self.bufferedData = []
 
     def addNewData(self, hostId, sequence, data, expectedNum):
-        LogUtil.DebugLog('exeMod', 'sequence: {0}. data: {1}. expectedNum: {2}.'.format(sequence, data, expectedNum))
-        LogUtil.DebugLog('exeMod', 'MergedData class self check. lastSeq: {0}. seenHosts: {1}. bufferedData: {2}'.format(
-            self.lastSeq, self.seenHosts, self.bufferedData))
+        # LogUtil.DebugLog('exeMod', 'sequence: {0}. data: {1}. expectedNum: {2}.'.format(sequence, data, expectedNum))
+        # LogUtil.DebugLog('exeMod', 'MergedData class self check. lastSeq: {0}. seenHosts: {1}. bufferedData: {2}'.format(
+        #     self.lastSeq, self.seenHosts, self.bufferedData))
         rts.evalTimestamp += '#AddNewDataToBuffer${0:6f}${1}${2}${3}'.format(time.time(), self.jobId, self.flowId, sequence)
         if self.lastSeq is None:
             self.lastSeq = sequence

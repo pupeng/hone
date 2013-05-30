@@ -70,8 +70,8 @@ class HoneJob:
                 self.hosts[childHostId] = True
         else:
             self._updateMiddleExe_Parent(childHostId, level - 1, parentHostId)
-        LogUtil.DebugLog('tree', 'addAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
-                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord: ', self.aggStructRecord)
+        # LogUtil.DebugLog('tree', 'addAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
+        #                  'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord: ', self.aggStructRecord)
 
     def removeAggLink(self, level, childHostId, parentHostId):
         logging.info('job {0} remove a level-{1} link from host {2} to host {3}'.format(
@@ -81,8 +81,8 @@ class HoneJob:
             self._updateMiddleExe_NumOfChildren(parentHostId, level)
             if len(self.aggStructRecord[level][parentHostId]) == 0:
                 del self.aggStructRecord[level][parentHostId]
-        LogUtil.DebugLog('tree', 'removeAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
-                         'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord:', self.aggStructRecord)
+        # LogUtil.DebugLog('tree', 'removeAggLink', 'level {0}'.format(level), 'child {0}'.format(rts.HostRecord[childHostId].hostAddress),
+        #                  'parent {0}'.format(rts.HostRecord[parentHostId].hostAddress), 'aggStructRecord:', self.aggStructRecord)
 
     def GetExpectedNumOfHosts(self, flowId):
         if flowId in self.exeFlow.flowToCtrl:

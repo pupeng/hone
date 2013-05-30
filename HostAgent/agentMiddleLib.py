@@ -41,5 +41,5 @@ def ToUpperLevel(jobId, flowId, level):
                     sndSocket = HostAgentRelaySndSocket(parentAddress, port)
                     sndSocket.sendMessage(message)
                 LogUtil.EvalLog('ToUpperLevel', 'jobId {0} flowId {1} level {2} parent address {3}'.format(jobId, flowId, level, parentAddress))
-                LogUtil.DebugLog('lib', 'in ToUpperLevel', jobId, flowId, level, sequence)
+                # LogUtil.DebugLog('lib', 'in ToUpperLevel', jobId, flowId, level, sequence)
     return freLib.FListener(push=push)

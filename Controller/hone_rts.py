@@ -223,8 +223,7 @@ def handleHostJoin(hostId, hostAddress):
     entry = HostEntry(hostId, hostAddress)
     HostRecord[hostId] = entry
     for (jobId, job) in _jobExecution.iteritems():
-        LogUtil.DebugLog('exeGen',
-                         'host {0} eligible for job {1}? {2}'.format(entry.hostId, jobId, job.isHostEligible(entry)))
+        LogUtil.DebugLog('exeGen', 'host {0} eligible for job {1}? {2}'.format(entry.hostId, jobId, job.isHostEligible(entry)))
         if job.isHostEligible(entry):
             entry.addJob(jobId)
             job.addHost(entry)
@@ -256,8 +255,8 @@ def handleHostInfoUpdate(message):
             #LogUtil.EvalLog('DoneHostInfoUpdate', 'done update host info of {0}'.format(hostId))
 
 def handleStatsIn(message):
-    LogUtil.DebugLog('rts', 'new stats come in for job {0} flow {1} sequence {2} content {3}'.format(
-        message.jobId, message.flowId, message.sequence, message.content))
+    # LogUtil.DebugLog('rts', 'new stats come in for job {0} flow {1} sequence {2} content {3}'.format(
+    #     message.jobId, message.flowId, message.sequence, message.content))
     expectedNum = _jobExecution[message.jobId].GetExpectedNumOfHosts(message.flowId)
     exeModule.handleStatsIn(message, expectedNum)
 

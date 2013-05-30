@@ -14,7 +14,7 @@ def connQuery():
     q = (Select(['app','srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
          #Where([('app', '==', 'test_prog')]) *
-         Every(1000))
+         Every(3000))
     return q
 
 def CalcTM(newData, tpData):

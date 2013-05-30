@@ -75,7 +75,7 @@ def agentManagerRun(ctrlAddress, ctrlPort):
                     #debugLog('job', 'new source job', newSourceJob.debug())
                     registerComputePart(newSourceJob)
                     key = composeKey(newSourceJob.jobId, newSourceJob.flowId)
-                    if minRunInterval > (newSourceJob.period / 1000.0):
+                    if (len(sourceJobTable) == 0) or (minRunInterval > (newSourceJob.period / 1000.0)):
                         minRunInterval = newSourceJob.period / 1000.0
                     alreadyPassedPeriods = int(float(currentTime - newSourceJob.createTime) / float(newSourceJob.period / 1000.0))
                     newSourceJob.deadline = newSourceJob.createTime + newSourceJob.period / 1000.0 * (alreadyPassedPeriods + 1)

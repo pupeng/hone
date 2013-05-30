@@ -196,6 +196,7 @@ def ToMiddle(jobId, flowId):
                 sndTimestamp = 'Begin${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
                 if middleAddress == agentManager.CtrlAddress:
                     sndSocket = agentManager.sndToCtrl
+                    message.messageType = HoneMessageType_StatsIn
                 else:
                     port = HostRelayPort
                     sndSocket = HostAgentRelaySndSocket(middleAddress, port)

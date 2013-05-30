@@ -12,4 +12,5 @@ internalIP=10.145.187.80
 echo "Controller internal IP " $internalIP
 
 cd $HOME/hone/HostAgent
+rm logs/*
 python agentRun.py $internalIP 8866

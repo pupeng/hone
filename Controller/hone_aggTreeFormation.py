@@ -10,7 +10,7 @@ import logging
 from hone_job import *
 from hone_hostEntry import *
 
-DefaultBranchFactor = 4
+DefaultBranchFactor = 2
 
 class TreeFormatterBase:
     ''' base class of tree formatter '''

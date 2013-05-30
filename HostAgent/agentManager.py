@@ -22,7 +22,7 @@ sndToCtrl = None
 sourceJobTable = None
 socketTable = None
 sourceJobSkList = None
-minRunInterval = 30.0 # seconds
+minRunInterval = 15.0 # seconds
 stopSchedule = False
 eventAndGoFunc = {}
 jobFlowQueue = JobFlowMinQueue()
@@ -41,15 +41,17 @@ def agentManagerRun(ctrlAddress, ctrlPort):
     #EvalLog('{0:6f},50,agentManager starts in pid {1}'.format(time.time(), os.getpid()))
     global CtrlAddress
     CtrlAddress = ctrlAddress
-    global minRunInterval
-    sourceJobQueue = Queue()
-    socketCriteriaQueue = Queue()
+    global sndToCtrl
+    sndToCtrl = HostAgentSndSocket(ctrlAddress, ctrlPort)
     global sourceJobTable
     sourceJobTable = {}
     global socketTable
     socketTable = {}
     global sourceJobSkList
     sourceJobSkList = {}
+    global minRunInterval
+    sourceJobQueue = Queue()
+    socketCriteriaQueue = Queue()
     rcvModuleProcess = RcvModuleProcess(sourceJobQueue, socketCriteriaQueue)
     dirServiceProcess = DirServiceProcess(socketCriteriaQueue, sourceJobQueue)
     try:
@@ -59,8 +61,6 @@ def agentManagerRun(ctrlAddress, ctrlPort):
         # wait for rcv module to boot
         #EvalLog('{0:6f},52,wait {1} seconds for rcvModule to boot'.format(time.time(), minRunInterval))
         time.sleep(minRunInterval)
-        global sndToCtrl
-        sndToCtrl = HostAgentSndSocket(ctrlAddress, ctrlPort)
         scheduleLoop = Timer(minRunInterval, scheduleLoopRun)
         scheduleLoop.start()
         time.sleep(minRunInterval / 2.0)

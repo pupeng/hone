@@ -10,6 +10,22 @@ import re
 import os
 import json
 
+ExpectNumOfNodes = {
+    16 : {
+        '0' : 4
+    },
+    64 : {
+        '0' : 4,
+        '1' : 4
+    },
+    128 : {
+        '0' : 32,
+        '1' : 8,
+        '2' : 2
+    }
+}
+
+
 def average(x):
     return sum(x) / float(len(x))
 
@@ -63,6 +79,12 @@ def FilterHostData(data):
     else:
         return False
 
+def FilterCtrlDataByLength(numberOfHosts, data):
+    if (numberOfHosts == 4) or (numberOfHosts == 16) or (numberOfHosts == 64):
+        return len(data) == 12
+    elif numberOfHosts == 128:
+        return len(data) == 8
+
 def parse(number):
     logFile = open('exp6data/{0}/controller-temp.log'.format(number), 'r')
     ctrlLogs = logFile.read().split('\n')
@@ -73,7 +95,7 @@ def parse(number):
     ctrlLogs = filter(lambda x : x[0] == 'ControllerExecution', ctrlLogs)
     ctrlLogs = map(lambda x : x[1].split('#'), ctrlLogs)
     ctrlLogs = map(lambda y: map(lambda x : x.split('$'), y), ctrlLogs)
-    ctrlLogs = filter(lambda x : len(x) == 12, ctrlLogs)
+    ctrlLogs = filter(lambda x : FilterCtrlDataByLength(number, x), ctrlLogs)
     ctrlLogs = filter(CtrlSequenceIsCorrect, ctrlLogs)
     # get the sequence numbers and the controller data
     timeSeries = {}
@@ -99,7 +121,10 @@ def parse(number):
         for data in hostData:
             if data[0][0] == 'JobExecutionLoop':
                 temp = []
-                sequence = data[7][4]
+                try:
+                    sequence = data[7][4]
+                except Exception:
+                    continue
                 for i in [1, 4, 5, 7]:
                     temp.append(data[i][1])
                 if sequence in timeSeries:
@@ -128,12 +153,13 @@ def parse(number):
     # calculate e2e latency
     totalLevels = int(math.log(number, 4))
     sequenceToRemove = []
+    global ExpectNumOfNodes
     for sequence, data in timeSeries.iteritems():
         checkResult = True
         if ('source' not in data) or (len(data['source']) != number):
             checkResult = False
         for i in range(totalLevels - 1):
-            expectNum = int(math.pow(4, totalLevels - 1 - i))
+            expectNum = ExpectNumOfNodes[number][str(i)]
             if (str(i) not in data) or (len(data[str(i)]) != expectNum):
                 checkResult = False
         if not checkResult:
@@ -143,7 +169,7 @@ def parse(number):
     results = []
     for sequence, data in timeSeries.iteritems():
         firstHostStart = min(map(lambda x : x[0], data['source']))
-        ctrlDone = data['controller'][5]
+        ctrlDone = data['controller'][len(data['controller']) - 1]
         results.append(float(ctrlDone) * 1000.0 - float(firstHostStart) * 1000.0)
     # output results
     outputFile = open('exp6data/treemerge_{0}.txt'.format(number), 'w')

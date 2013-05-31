@@ -41,18 +41,24 @@ def CtrlSequenceIsCorrect(entry):
 
 def MiddleSeqIsCorrect(entry):
     sequence = {}
+    numInLevel = {}
     for event in entry:
         if event[0] == 'NewMiddleStats':
             sequence[event[5]] = None
-    if len(sequence.keys()) == 1:
-        return True
-    else:
-        return False
+            level = event[4]
+            if level not in numInLevel:
+                numInLevel[level] = 0
+            numInLevel[level] += 1
+    ret = True
+    for number in numInLevel.itervalues():
+        ret = ret and (number == 4)
+    ret = ret and (len(sequence.keys()) == 1)
+    return ret
 
 def FilterHostData(data):
     if (data[0][0] == 'JobExecutionLoop') and (len(data) == 8):
         return True
-    elif (data[0][0] == 'MiddleExecution') and (len(data) == 8):
+    elif data[0][0] == 'MiddleExecution':
         return MiddleSeqIsCorrect(data)
     else:
         return False
@@ -101,15 +107,23 @@ def parse(number):
                         timeSeries[sequence]['source'] = []
                     timeSeries[sequence]['source'].append(temp)
             elif data[0][0] == 'MiddleExecution':
-                temp = []
-                sequence = data[6][5]
-                level = data[6][4]
-                for i in [2, 3, 4, 5, 6, 7]:
-                    temp.append(data[i][1])
+                sequence = data[len(data) - 1][5]
+                dataInLevels = {}
+                for event in data:
+                    if (event[0] == 'Begin') or (event[0] == 'MiddleExecution'):
+                        continue
+                    if (event[0] == 'NewMiddleStats') or (event[0] == 'ReleaseBuffer'):
+                        level = event[4]
+                    elif event[0] == 'DoneToUpperLevel':
+                        level = str(int(event[4]) - 1)
+                    if level not in dataInLevels:
+                        dataInLevels[level] = []
+                    dataInLevels[level].append(event[1])
                 if sequence in timeSeries:
-                    if level not in timeSeries[sequence]:
-                        timeSeries[sequence][level] = []
-                    timeSeries[sequence][level].append(temp)
+                    for level, temp in dataInLevels.iteritems():
+                        if level not in timeSeries[sequence]:
+                            timeSeries[sequence][level] = []
+                        timeSeries[sequence][level].append(temp)
         print hostLog
     # calculate e2e latency
     totalLevels = int(math.log(number, 4))

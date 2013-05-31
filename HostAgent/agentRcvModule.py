@@ -27,7 +27,9 @@ _honeHostListeningPort = 8877
 middleJobTable = {}
 sourceJobQueue = None
 socketCriteriaQueue = None
+
 middleEvalTimestamp = 'Begin'
+highestMiddleJobLevel = 0
 
 class MergedData:
     def __init__(self, jobId, flowId, level):
@@ -282,6 +284,9 @@ class HoneCommProtocolHost(LineReceiver):
     def handleMiddleJob(self, message):
         LogUtil.DebugLog('rcvMod', 'new middle job. jobId:', message.jobId, 'content:', message.content)
         #EvalLog('{0:6f},72,start handleMiddleJob jobId {1}'.format(time.time(), message.jobId))
+        global highestMiddleJobLevel
+        if message.level > highestMiddleJobLevel:
+            highestMiddleJobLevel = message.level
         (numOfChildren, progName, exePlan) = message.content
         for flowExePlan in exePlan:
             middleJob = MiddleJob(message.jobId, flowExePlan.flowId, message.level)

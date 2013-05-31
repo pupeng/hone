@@ -4,7 +4,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the COPYRIGHT file.
 
-for num in $(eval echo {9001..9020..1})
+for num in $(eval echo {9001..9040..1})
 do
     python stressTestServer.py $num &
 done

@@ -89,9 +89,7 @@ def runGo(goFunc, data, jobFlowLevel):
         print msg
         traceback.print_exc()
     finally:
-        global middleEvalTimestamp
-        LogUtil.EvalLog('MiddleExecution', middleEvalTimestamp)
-        middleEvalTimestamp = 'Begin'
+        pass
 
 def buildSourceJob(sourceJob, exePlan):
     #EvalLog('{0:6f},80,build source job exe plan jobId {1} flowId {2}'.format(time.time(), sourceJob.jobId, sourceJob.flowId))

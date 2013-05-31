@@ -44,4 +44,7 @@ def ToUpperLevel(jobId, flowId, level):
                     sndSocket.sendMessage(message)
                 agentRcvModule.middleEvalTimestamp += '#DoneToUpperLevel${0:6f}${1}${2}${3}${4}${5}'.format(time.time(), jobId, flowId, message.level, message.sequence, parentAddress)
                 # LogUtil.DebugLog('lib', 'in ToUpperLevel', jobId, flowId, level, sequence)
+                if parentAddress == agentManager.CtrlAddress:
+                    LogUtil.EvalLog('MiddleExecution', agentRcvModule.middleEvalTimestamp)
+                    agentRcvModule.middleEvalTimestamp = 'Begin'
     return freLib.FListener(push=push)

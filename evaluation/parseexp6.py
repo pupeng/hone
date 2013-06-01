@@ -14,6 +14,10 @@ ExpectNumOfNodes = {
     16 : {
         '0' : 4
     },
+    32 : {
+        '0' : 8,
+        '1' : 2
+    },
     64 : {
         '0' : 16,
         '1' : 4
@@ -82,8 +86,10 @@ def FilterHostData(data):
 def FilterCtrlDataByLength(numberOfHosts, data):
     if (numberOfHosts == 4) or (numberOfHosts == 16) or (numberOfHosts == 64):
         return len(data) == 12
-    elif numberOfHosts == 128:
+    elif (numberOfHosts == 128) or (numberOfHosts == 32):
         return len(data) == 8
+    else:
+        return False
 
 def parse(number):
     logFile = open('exp6data/{0}/controller-temp.log'.format(number), 'r')

@@ -1,0 +1,3074 @@
+runExp6 on controller
+rsyslog stop/waiting
+Already up-to-date.
+ * Stopping NTP server ntpd
+   ...done.
+ 1 Jun 02:03:19 ntpdate[801]: adjust time server 91.189.94.4 offset 0.013025 sec
+ * Starting NTP server ntpd
+   ...done.
+exp_exp6
+HONE controller starts.
+HONE runtime system starts.
+HONE recvModule starts on port 8866.
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  1 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  1 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  1 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  1 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  2 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+
+
+
+intermediate: [4.87236890197571e-05]
+global agg: 4.87236890198e-05
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+
+
+
+
+intermediate: [1040.5896881255399]
+global agg: 1040.58968813
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+            Child ID: 37383573997666. IP: 10.166.8.98.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573997018. IP: 10.166.5.218.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+            Child ID: 37383573997666. IP: 10.166.8.98.
+
+Level  1 node. ID: 37383573997018. IP: 10.166.5.218.
+            Children nodes: 
+            Child ID: 37383573997018. IP: 10.166.5.218.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573997018. IP: 10.166.5.218.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+            Child ID: 37383573997666. IP: 10.166.8.98.
+
+Level  1 node. ID: 37383573997018. IP: 10.166.5.218.
+            Children nodes: 
+            Child ID: 37383573997018. IP: 10.166.5.218.
+            Child ID: 37383572791055. IP: 10.147.159.15.
+
+
+
+
+intermediate: [644.9937920641298]
+global agg: 644.993792064
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573997018. IP: 10.166.5.218.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+            Child ID: 37383573997666. IP: 10.166.8.98.
+
+Level  1 node. ID: 37383573997018. IP: 10.166.5.218.
+            Children nodes: 
+            Child ID: 37383573997018. IP: 10.166.5.218.
+            Child ID: 37383572791055. IP: 10.147.159.15.
+            Child ID: 37383573996756. IP: 10.166.4.212.
+
+
+
+
+
+DEBUG hone_job.py, L94: 
+jobID: 61
+Level  3 node. ID: controller. IP: controller IP.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672305. IP: 10.145.207.49.
+
+Level  2 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573995894. IP: 10.166.1.118.
+
+Level  2 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573997018. IP: 10.166.5.218.
+
+Level  1 node. ID: 37383573998210. IP: 10.166.10.130.
+            Children nodes: 
+            Child ID: 37383573998210. IP: 10.166.10.130.
+            Child ID: 37383572672841. IP: 10.145.209.73.
+            Child ID: 37383572791145. IP: 10.147.159.105.
+            Child ID: 37383572674236. IP: 10.145.214.188.
+
+Level  1 node. ID: 37383573247328. IP: 10.154.149.96.
+            Children nodes: 
+            Child ID: 37383573247328. IP: 10.154.149.96.
+            Child ID: 37383573247401. IP: 10.154.149.169.
+            Child ID: 37383573997922. IP: 10.166.9.98.
+            Child ID: 37383573996191. IP: 10.166.2.159.
+
+Level  1 node. ID: 37383573996764. IP: 10.166.4.220.
+            Children nodes: 
+            Child ID: 37383573996764. IP: 10.166.4.220.
+            Child ID: 37383573246945. IP: 10.154.147.225.
+            Child ID: 37383573247301. IP: 10.154.149.69.
+            Child ID: 37383573995760. IP: 10.166.0.240.
+
+Level  1 node. ID: 37383573995894. IP: 10.166.1.118.
+            Children nodes: 
+            Child ID: 37383573995894. IP: 10.166.1.118.
+            Child ID: 37383573246549. IP: 10.154.146.85.
+            Child ID: 37383573247305. IP: 10.154.149.73.
+            Child ID: 37383573998156. IP: 10.166.10.76.
+
+Level  1 node. ID: 37383572672305. IP: 10.145.207.49.
+            Children nodes: 
+            Child ID: 37383572672305. IP: 10.145.207.49.
+            Child ID: 37383573247422. IP: 10.154.149.190.
+            Child ID: 37383573995932. IP: 10.166.1.156.
+            Child ID: 37383572672482. IP: 10.145.207.226.
+
+Level  1 node. ID: 37383573247199. IP: 10.154.148.223.
+            Children nodes: 
+            Child ID: 37383573247199. IP: 10.154.148.223.
+            Child ID: 37383573995609. IP: 10.166.0.89.
+            Child ID: 37383572791245. IP: 10.147.159.205.
+            Child ID: 37383572667185. IP: 10.145.187.49.
+
+Level  1 node. ID: 37383573247384. IP: 10.154.149.152.
+            Children nodes: 
+            Child ID: 37383573247384. IP: 10.154.149.152.
+            Child ID: 37383573246942. IP: 10.154.147.222.
+            Child ID: 37383572672830. IP: 10.145.209.62.
+            Child ID: 37383573997666. IP: 10.166.8.98.
+
+Level  1 node. ID: 37383573997018. IP: 10.166.5.218.
+            Children nodes: 
+            Child ID: 37383573997018. IP: 10.166.5.218.
+            Child ID: 37383572791055. IP: 10.147.159.15.
+            Child ID: 37383573996756. IP: 10.166.4.212.
+            Child ID: 37383573996150. IP: 10.166.2.118.
+
+
+
+
+intermediate: [1277.0881896046699]
+global agg: 1277.0881896
+intermediate: [1461.9875158895734]
+global agg: 1461.98751589
+intermediate: [1866.162117517124]
+global agg: 1866.16211752
+intermediate: [1517.887966907832, 872.8910895183128]
+global agg: 2390.77905643
+intermediate: [1651.1854084005618, 1096.4906939500054]
+global agg: 2747.67610235
+intermediate: [2756.239552216808, 318.19704105629506]
+global agg: 3074.43659327
+intermediate: [1913.4889918767292, 1655.4854066976304]
+global agg: 3568.97439857
+intermediate: [1655.4845214087964, 1956.483368275679]
+global agg: 3611.96788968
+intermediate: [1582.3859649427263, 2386.474148624013]
+global agg: 3968.86011357
+intermediate: [2098.3812054284263, 1853.27407527143]
+global agg: 3951.6552807
+intermediate: [2635.8772032657303, 2046.7818095539437]
+global agg: 4682.65901282
+intermediate: [1685.5828314224827, 2081.180609515377]
+global agg: 3766.76344094
+intermediate: [1582.3858841822635, 2463.879170362351]
+global agg: 4046.26505454
+intermediate: [1831.7917335812238, 2760.575771592509]
+global agg: 4592.36750517
+intermediate: [1655.4853328242652, 2042.4821576590998]
+global agg: 3697.96749048
+intermediate: [2752.000772060285, 1569.4865733897473]
+global agg: 4321.48734545
+intermediate: [1913.4924359927063, 2235.9792390950174]
+global agg: 4149.47167509
+intermediate: [1655.4836990190415, 2296.178764259248]
+global agg: 3951.66246328
+intermediate: [2382.191409390837, 1732.8840556313853]
+global agg: 4115.07546502
+intermediate: [1857.5880595915621, 2098.3794223197574]
+global agg: 3955.96748191
+intermediate: [2046.7817832615474, 2635.8762547658725]
+global agg: 4682.65803803
+intermediate: [2081.1824384592883, 1685.5856928079065]
+global agg: 3766.76813127
+intermediate: [2463.8776513308094, 1582.3864564663445]
+global agg: 4046.2641078
+intermediate: [1836.083685505542, 2760.5780296728667]
+global agg: 4596.66171518
+intermediate: [1651.1856233902904, 2042.481331538888]
+global agg: 3693.66695493
+intermediate: [2751.9784177611155, 1569.487457555936]
+global agg: 4321.46587532
+intermediate: [1913.4835169897758, 2235.980451461931]
+global agg: 4149.46396845
+intermediate: [1655.48410563556, 2296.180657727955]
+global agg: 3951.66476336
+intermediate: [2382.1793061266826, 1732.8848773182567]
+global agg: 4115.06418344
+intermediate: [1857.581096347882, 2098.380856220038]
+global agg: 3955.96195257
+intermediate: [2046.7832518055666, 2635.8771976113867]
+global agg: 4682.66044942
+intermediate: [2081.180761327865, 1685.5849736521304]
+global agg: 3766.76573498
+intermediate: [2463.87966586197, 700.8939770076927]
+global agg: 3164.77364287
+intermediate: [3078.772420030043, 1831.7828655487401]
+global agg: 4910.55528558
+intermediate: [2042.482423422902, 1655.4854544866475]
+global agg: 3697.96787791
+intermediate: [1569.486501931353, 2751.9769281902095]
+global agg: 4321.46343012
+intermediate: [2235.9800134080406, 1913.4820092546859]
+global agg: 4149.46202266
+intermediate: [2296.1800721769678, 1655.484173870645]
+global agg: 3951.66424605
+intermediate: [1732.8844199820041, 2382.1787725638496]
+global agg: 4115.06319255
+intermediate: [2094.078469273797, 1857.5830935949677]
+global agg: 3951.66156287
+intermediate: [2640.175916272698, 2046.7827101119656]
+global agg: 4686.95862638
+intermediate: [1685.584878144703, 2081.1817369615774]
+global agg: 3766.76661511
+intermediate: [1582.386366302802, 2463.876930581888]
+global agg: 4046.26329688
+intermediate: [2760.5786546998097, 1831.783495992831]
+global agg: 4592.36215069
+intermediate: [2042.4820269994627, 1655.4849676525805]
+global agg: 3697.96699465
+intermediate: [1569.4858660129719, 2751.206841947476]
+global agg: 4320.69270796
+intermediate: [2235.9808845186176, 1913.4821379170728]
+global agg: 4149.46302244
+intermediate: [2296.17606345182, 1655.4835384341084]
+global agg: 3951.65960189
+intermediate: [1732.8852069168329, 2382.9661618602568]
+global agg: 4115.85136878
+intermediate: [2098.3814344466573, 1857.5820397149491]
+global agg: 3955.96347416
+intermediate: [2635.8785983403905, 2046.782190683701]
+global agg: 4682.66078902
+intermediate: [1685.5841285064143, 2081.1809090746015]
+global agg: 3766.76503758
+intermediate: [1582.385178034498, 2463.8770019329813]
+global agg: 4046.26217997
+intermediate: [2760.576057494198, 1831.783871422273]
+global agg: 4592.35992892
+intermediate: [2042.4826015181989, 1651.1854689116242]
+global agg: 3693.66807043
+intermediate: [1569.4872671450282, 2756.2760272743703]
+global agg: 4325.76329442
+intermediate: [2235.9813882560456, 1913.4817501168068]
+global agg: 4149.46313837
+intermediate: [2296.1798087832267, 1655.4843488564816]
+global agg: 3951.66415764
+intermediate: [1732.8851981964074, 2382.178964079134]
+global agg: 4115.06416228
+intermediate: [2098.3767886114774, 1857.583729238756]
+global agg: 3955.96051785
+intermediate: [2635.875379306799, 2046.7810374436087]
+global agg: 4682.65641675
+intermediate: [1685.584254736452, 2076.8820973667293]
+global agg: 3762.4663521
+intermediate: [1582.386692210671, 2468.177506934189]
+global agg: 4050.56419914
+intermediate: [2760.5805593074642, 1831.7841689769566]
+global agg: 4592.36472828
+intermediate: [1651.185094114996, 2042.4823306447108]
+global agg: 3693.66742476
+intermediate: [2756.2756926459824, 1569.4862090588024]
+global agg: 4325.7619017
+intermediate: [1913.4825556972557, 2235.980030422953]
+global agg: 4149.46258612
+intermediate: [2296.180090173293, 1655.4810431212197]
+global agg: 3951.66113329
+intermediate: [1732.8852884204348, 2382.1793060388763]
+global agg: 4115.06459446
+intermediate: [2098.3812014490386, 1857.5824637440178]
+global agg: 3955.96366519
+intermediate: [2635.8775800357016, 2046.7854661937006]
+global agg: 4682.66304623
+intermediate: [1685.5837569335831, 2076.8798612338487]
+global agg: 3762.46361817
+intermediate: [1582.3852719524466, 2468.17641033957]
+global agg: 4050.56168229
+intermediate: [2760.576178697788, 1831.7845146416948]
+global agg: 4592.36069334
+intermediate: [1651.0521138873892, 2042.4825998926435]
+global agg: 3693.53471378
+intermediate: [2756.277608105153, 1569.4862462773533]
+global agg: 4325.76385438
+intermediate: [1913.4826491831261, 2235.980479739802]
+global agg: 4149.46312892
+intermediate: [1655.6191856358794, 2296.1802330036526]
+global agg: 3951.79941864
+intermediate: [2382.179325581422, 1732.8841480847336]
+global agg: 4115.06347367
+intermediate: [1857.582261686491, 2094.0813198070696]
+global agg: 3951.66358149
+intermediate: [2046.7815466940851, 2640.174696696113]
+global agg: 4686.95624339
+intermediate: [2076.8803288362515, 1685.5867116465174]
+global agg: 3762.46704048
+intermediate: [2468.178861272674, 1582.3851543389146]
+global agg: 4050.56401561
+intermediate: [2760.5774781575537, 1659.7865916564801]
+global agg: 4420.36406981
+intermediate: [1651.1836693042223, 2042.4801845404904]
+global agg: 3693.66385384
+intermediate: [2756.2766441432877, 1569.4860769127934]
+global agg: 4325.76272106
+intermediate: [1913.482139452206, 2235.9800962438712]
+global agg: 4149.4622357
+intermediate: [1655.4844674330088, 2296.1809291047257]
+global agg: 3951.66539654
+intermediate: [2382.17744349046, 1732.884027247062]
+global agg: 4115.06147074
+intermediate: [1857.582099490508, 2094.081225811512]
+global agg: 3951.6633253
+intermediate: [2046.7825738770396, 2640.175667082859]
+global agg: 4686.95824096
+intermediate: [2076.8814480014803, 1685.584111309352]
+global agg: 3762.46555931
+intermediate: [2463.8783779399446, 1582.3861667116828]
+global agg: 4046.26454465
+intermediate: [1836.0828656676313, 2760.575201265639]
+global agg: 4596.65806693
+intermediate: [1651.1858929515047, 2042.4827317531444]
+global agg: 3693.6686247
+intermediate: [2756.2763729491144, 1569.486617677224]
+global agg: 4325.76299063
+intermediate: [1913.4819225268784, 2235.9794725224738]
+global agg: 4149.46139505
+intermediate: [1655.4842219901134, 2296.17766926528]
+global agg: 3951.66189126
+intermediate: [2377.87775919464, 1732.8844274795401]
+global agg: 4110.76218667
+intermediate: [1861.8833266189913, 2094.0818486955104]
+global agg: 3955.96517531
+intermediate: [2046.7819988107963, 2640.1769478187343]
+global agg: 4686.95894663
+intermediate: [2076.8823068201523, 1685.581690879041]
+global agg: 3762.4639977
+intermediate: [2463.8765115772094, 1582.3856921388497]
+global agg: 4046.26220372
+intermediate: [1836.0846079838034, 2760.5752813355334]
+global agg: 4596.65988932
+intermediate: [1651.1831062527992, 2042.4849035841653]
+global agg: 3693.66800984
+intermediate: [2756.274733207273, 1569.4860677708325]
+global agg: 4325.76080098
+intermediate: [1913.481236172277, 2235.980527121642]
+global agg: 4149.46176329
+intermediate: [1655.4867788920706, 2296.1810473019686]
+global agg: 3951.66782619
+intermediate: [2377.879306102007, 1732.884088561575]
+global agg: 4110.76339466
+intermediate: [1861.8834951598737, 2094.0816347472437]
+global agg: 3955.96512991
+intermediate: [2046.780619031971, 2640.1757618949428]
+global agg: 4686.95638093
+intermediate: [2076.881028488564, 1685.5848359207926]
+global agg: 3762.46586441
+intermediate: [2463.876113203928, 1582.384853040654]
+global agg: 4046.26096624
+intermediate: [1836.0830243962896, 2760.575834592534]
+global agg: 4596.65885899
+intermediate: [1650.6207889358425, 2042.4830765667828]
+global agg: 3693.1038655
+intermediate: [2756.2774060391703, 1569.4835913309914]
+global agg: 4325.76099737
+intermediate: [1913.4822559219344, 2235.9791837268845]
+global agg: 4149.46143965
+intermediate: [1656.0583621273831, 2296.177966450985]
+global agg: 3952.23632858
+intermediate: [2377.878941049877, 1732.8841168591164]
+global agg: 4110.76305791
+intermediate: [1861.8815525422965, 2094.0835735191185]
+global agg: 3955.96512606
+intermediate: [2046.7815556724343, 2640.1764753742677]
+global agg: 4686.95803105
+intermediate: [2076.88229690287, 1685.582061593762]
+global agg: 3762.4643585
+intermediate: [2463.8769987058727, 1582.3860164183218]
+global agg: 4046.26301512
+intermediate: [1836.0841536444839, 2760.5760682645596]
+global agg: 4596.66022191
+intermediate: [1651.1847885005902, 2042.4852240654054]
+global agg: 3693.67001257
+intermediate: [2756.27724935326, 1569.4867112845277]
+global agg: 4325.76396064
+intermediate: [1913.4817817759424, 2235.9798727031916]
+global agg: 4149.46165448
+intermediate: [1655.4849108094513, 2296.1782265163956]
+global agg: 3951.66313733
+intermediate: [2373.5788530897153, 1732.8839588585693]
+global agg: 4106.46281195
+intermediate: [1866.1833624122569, 2094.081601589969]
+global agg: 3960.264964
+intermediate: [2046.780048749682, 2640.1775616633804]
+global agg: 4686.95761041
+intermediate: [2076.8806357338435, 1685.5850533489483]
+global agg: 3762.46568908
+intermediate: [2463.8772535151998, 1582.38548167223]
+global agg: 4046.26273519
+intermediate: [1836.0848536484355, 2760.5750580534395]
+global agg: 4596.6599117
+intermediate: [1646.8845879225105, 2042.4815479232545]
+global agg: 3689.36613585
+intermediate: [2760.5766502570323, 1569.4866378054076]
+global agg: 4330.06328806
+intermediate: [1913.4826295064208, 2235.979184962966]
+global agg: 4149.46181447
+intermediate: [1655.4848747350868, 2296.179582825749]
+global agg: 3951.66445756
+intermediate: [2373.5811800504353, 1732.8855632937107]
+global agg: 4106.46674334
+intermediate: [1866.183464821319, 2094.0818990357543]
+global agg: 3960.26536386
+intermediate: [2046.7809131826707, 2640.1762865409264]
+global agg: 4686.95719972
+intermediate: [2076.881505267526, 1685.583488661115]
+global agg: 3762.46499393
+intermediate: [2463.8774465463903, 1582.3861504988124]
+global agg: 4046.26359705
+intermediate: [1836.0841072227495, 2756.2752542699764]
+global agg: 4592.35936149
+intermediate: [1646.8840981511098, 2046.7816182493555]
+global agg: 3693.6657164
+intermediate: [2760.575751693751, 1565.1860529725866]
+global agg: 4325.76180467
+intermediate: [1913.482486275247, 2240.28005174826]
+global agg: 4153.76253802
+intermediate: [1655.4839329854149, 2296.1799169319256]
+global agg: 3951.66384992
+intermediate: [2373.579153640994, 1732.8854419289646]
+global agg: 4106.46459557
+intermediate: [1866.1822864689693, 2094.079856533657]
+global agg: 3960.262143
+intermediate: [2046.782742593255, 2640.176501408736]
+global agg: 4686.959244
+intermediate: [2076.8813638577144, 1685.5846566183795]
+global agg: 3762.46602048
+intermediate: [2463.877406357505, 1582.3858108607292]
+global agg: 4046.26321722
+intermediate: [1836.0834088664228, 2756.277269751851]
+global agg: 4592.36067862
+intermediate: [1646.8853044934363, 2046.7819347179302]
+global agg: 3693.66723921
+intermediate: [2760.5757601104688, 1569.4862583509935]
+global agg: 4330.06201846
+intermediate: [1913.4832771993194, 2235.979836769922]
+global agg: 4149.46311397
+intermediate: [1655.4837525047806, 2296.1770168096145]
+global agg: 3951.66076931
+intermediate: [2373.5796208720944, 1728.5849915256408]
+global agg: 4102.1646124
+intermediate: [1866.1821125458753, 2094.081860795533]
+global agg: 3960.26397334
+intermediate: [2046.7830961331283, 2644.477094280037]
+global agg: 4691.26019041
+intermediate: [2076.8823402710864, 1685.585196364811]
+global agg: 3762.46753664
+intermediate: [2463.8768536880534, 1582.38662546743]
+global agg: 4046.26347916
+intermediate: [1836.0824790280385, 2756.275474990435]
+global agg: 4592.35795402
+intermediate: [1646.8812823613207, 2046.7819113432279]
+global agg: 3693.6631937
+intermediate: [2760.575337062546, 1569.4858199788107]
+global agg: 4330.06115704
+intermediate: [1913.4826498885568, 2235.97946216323]
+global agg: 4149.46211205
+intermediate: [1655.4868369774176, 2296.1796864838943]
+global agg: 3951.66652346
+intermediate: [2373.5799163800557, 1728.58512551524]
+global agg: 4102.1650419
+intermediate: [1866.1780121515935, 2094.081441185726]
+global agg: 3960.25945334
+intermediate: [2046.78170935559, 2644.476237638768]
+global agg: 4691.25794699
+intermediate: [2076.8787934262273, 1685.5824611328833]
+global agg: 3762.46125456
+intermediate: [2463.882707873503, 1582.3862983345866]
+global agg: 4046.26900621
+intermediate: [1836.0829035908732, 2756.2747472165756]
+global agg: 4592.35765081
+intermediate: [1646.8859280614856, 2046.7826407692169]
+global agg: 3693.66856883
+intermediate: [2760.5770024107815, 1565.1859557188823]
+global agg: 4325.76295813
+intermediate: [1909.1820979678173, 2240.2785433067666]
+global agg: 4149.46064127
+intermediate: [1659.78340315063, 2296.1790900682518]
+global agg: 3955.96249322
+intermediate: [2373.5787125995494, 1728.5846741475186]
+global agg: 4102.16338675
+intermediate: [1866.182827969565, 2094.0817905743143]
+global agg: 3960.26461854
+intermediate: [2046.7821017838312, 2644.4773267907267]
+global agg: 4691.25942857
+intermediate: [2076.880976136063, 1685.5833872869334]
+global agg: 3762.46436342
+intermediate: [2463.877408304224, 1582.3862499409781]
+global agg: 4046.26365825
+intermediate: [1836.0829414678724, 2756.2752738616923]
+global agg: 4592.35821533
+intermediate: [1646.8849084096219, 2046.7810247430634]
+global agg: 3693.66593315
+intermediate: [2760.5759767202917, 1565.1861907878438]
+global agg: 4325.76216751
+intermediate: [1909.183862525313, 2240.280369357556]
+global agg: 4149.46423188
+intermediate: [1659.7860399667559, 2296.180027860008]
+global agg: 3955.96606783
+intermediate: [2373.578469721773, 1724.2849374022915]
+global agg: 4097.86340712
+intermediate: [1861.8827780456506, 2098.3808969244938]
+global agg: 3960.26367497
+intermediate: [2051.0815111275333, 2644.477462213961]
+global agg: 4695.55897334
+intermediate: [2076.8724669282606, 1685.5812107062786]
+global agg: 3762.45367763
+intermediate: [2463.875509058068, 1578.085384559261]
+global agg: 4041.96089362
+intermediate: [1836.0825651364619, 2760.5747972414724]
+global agg: 4596.65736238
+intermediate: [1642.5864585401036, 2046.7816231711802]
+global agg: 3689.36808171
+intermediate: [2764.881730235629, 1565.187492515462]
+global agg: 4330.06922275
+intermediate: [1909.183559918579, 2240.281304544222]
+global agg: 4149.46486446
+intermediate: [1659.7841386693453, 2296.178061114985]
+global agg: 3955.96219978
+intermediate: [2373.5788161901055, 1724.284870551148]
+global agg: 4097.86368674
+intermediate: [1861.8860615308704, 2098.383090883144]
+global agg: 3960.26915241
+intermediate: [2051.08165337496, 2644.4777654687186]
+global agg: 4695.55941884
+intermediate: [2076.8807881040125, 1685.5850054246516]
+global agg: 3762.46579353
+intermediate: [2463.8769355018403, 1578.0854609682497]
+global agg: 4041.96239647
+intermediate: [1836.08403452866, 2760.5747499803674]
+global agg: 4596.65878451
+intermediate: [1642.5865824933558, 2046.7818707420563]
+global agg: 3689.36845324
+intermediate: [2764.8766411505867, 1565.1862458509806]
+global agg: 4330.062887
+intermediate: [1909.1813448396535, 2240.2801239188598]
+global agg: 4149.46146876
+intermediate: [1659.784698361499, 2296.179579039505]
+global agg: 3955.9642774
+intermediate: [2373.5785343189273, 1724.2846939092758]
+global agg: 4097.86322823
+intermediate: [1861.8829699535424, 2098.380553936726]
+global agg: 3960.26352389
+intermediate: [2051.080841756786, 2644.4764061913666]
+global agg: 4695.55724795
+intermediate: [2076.881324047014, 1685.5822002925584]
+global agg: 3762.46352434
+intermediate: [2463.8780033181874, 1578.0858024516083]
+global agg: 4041.96380577
+intermediate: [1836.0828943251313, 2760.5766890640525]
+global agg: 4596.65958339
+intermediate: [1642.5836237914461, 2046.7806132638855]
+global agg: 3689.36423706
+intermediate: [2764.874779973333, 1565.1881557370234]
+global agg: 4330.06293571
+intermediate: [1909.1828136233294, 2240.2793701027595]
+global agg: 4149.46218373
+intermediate: [1659.7848422867048, 2296.175478741404]
+global agg: 3955.96032103
+intermediate: [2373.580493218039, 1724.2855637790183]
+global agg: 4097.866057
+intermediate: [1861.8813770051647, 2098.3808227108534]
+global agg: 3960.26219972
+intermediate: [2051.081951557193, 2640.1792133342055]
+global agg: 4691.26116489
+intermediate: [2076.8793964969254, 1685.5829422322638]
+global agg: 3762.46233873
+intermediate: [2463.8774700403847, 1582.3867717719409]
+global agg: 4046.26424181
+intermediate: [1836.0827043243958, 2760.575726290667]
+global agg: 4596.65843062
+intermediate: [1642.5835002119793, 2046.7834283629627]
+global agg: 3689.36692857
+intermediate: [2764.8769221769207, 1565.1862866465767]
+global agg: 4330.06320882
+intermediate: [1904.8816661364585, 2240.2803790853823]
+global agg: 4145.16204522
+intermediate: [1664.0856714263305, 2296.178804878632]
+global agg: 3960.2644763
+intermediate: [2373.581016002262, 1724.2851812819492]
+global agg: 4097.86619728
+intermediate: [1861.8828739109845, 2098.380547348638]
+global agg: 3960.26342126
+intermediate: [2051.081197106283, 2640.1768201743325]
+global agg: 4691.25801728
+intermediate: [2076.8811172637497, 1685.5837563974221]
+global agg: 3762.46487366
+intermediate: [2463.877830731362, 1582.3859264942832]
+global agg: 4046.26375723
+intermediate: [1836.082931741687, 2760.5766778496168]
+global agg: 4596.65960959
+intermediate: [1642.5846717111322, 2046.781577659302]
+global agg: 3689.36624937
+intermediate: [2764.878133200103, 1565.1870840350075]
+global agg: 4330.06521724
+intermediate: [1909.182884176669, 2240.2795429496628]
+global agg: 4149.46242713
+intermediate: [1659.784875504262, 2296.180169444856]
+global agg: 3955.96504495
+intermediate: [2373.578877923732, 1724.2853696062923]
+global agg: 4097.86424753
+intermediate: [1861.8816884966964, 2098.3802924568986]
+global agg: 3960.26198095
+intermediate: [2051.0809810201245, 2640.175561278715]
+global agg: 4691.2565423
+intermediate: [2076.881832310504, 1685.5831779841537]
+global agg: 3762.46501029
+intermediate: [2463.8779655071057, 1582.386655115717]
+global agg: 4046.26462062
+intermediate: [1836.0841567209363, 2760.577456374692]
+global agg: 459Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 79, in removeAggLink
+    if childHostId in self.aggStructRecord[level][parentHostId]:
+exceptions.KeyError: 'controller'
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 79, in removeAggLink
+    if childHostId in self.aggStructRecord[level][parentHostId]:
+exceptions.KeyError: 'controller'
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 79, in removeAggLink
+    if childHostId in self.aggStructRecord[level][parentHostId]:
+exceptions.KeyError: 'controller'
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 79, in removeAggLink
+    if childHostId in self.aggStructRecord[level][parentHostId]:
+exceptions.KeyError: 'controller'
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247328L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247328L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247328L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573996764L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573996764L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573996764L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573995894L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573995894L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573995894L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383572672305L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383572672305L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383572672305L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247199L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247199L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247199L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247384L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247384L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573247384L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573997018L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573997018L
+Traceback (most recent call last):
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 77, in recvModuleRun
+    reactor.run()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1158, in run
+    self.mainLoop()
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1170, in mainLoop
+    self.doIteration(t)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 140, in doSelect
+    _logrun(selectable, _drdw, selectable, method, dict)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 84, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/log.py", line 69, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 59, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/python/context.py", line 37, in callWithContext
+    return func(*args,**kw)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/selectreactor.py", line 156, in _doReadOrWrite
+    self._disconnectSelectable(selectable, why, method=="doRead")
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/posixbase.py", line 250, in _disconnectSelectable
+    selectable.readConnectionLost(f)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 508, in readConnectionLost
+    self.connectionLost(reason)
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/tcp.py", line 519, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/ubuntu/hone/Controller/hone_recvModule.py", line 46, in connectionLost
+    rts.handleHostLeave(self.hostName)
+  File "/home/ubuntu/hone/Controller/hone_rts.py", line 238, in handleHostLeave
+    _jobExecution[jobId].removeHost(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 50, in removeHost
+    self.treeFormatter.removeLeaf(hostEntry)
+  File "/home/ubuntu/hone/Controller/hone_aggTreeFormation.py", line 127, in removeLeaf
+    self.job.removeAggLink(0, node.getHostId(), node.getParent().getHostId())
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 81, in removeAggLink
+    self._updateMiddleExe_NumOfChildren(parentHostId, level)
+  File "/home/ubuntu/hone/Controller/hone_job.py", line 150, in _updateMiddleExe_NumOfChildren
+    address = rts.HostRecord[hostId].hostAddress
+exceptions.KeyError: 37383573997018L
+6.6616131
+intermediate: [1642.5845553200763, 2046.7821894732128]
+global agg: 3689.36674479
+intermediate: [2764.875054980437, 1565.185982574029]
+global agg: 4330.06103755
+intermediate: [1904.8820787670102, 2240.280353148214]
+global agg: 4145.16243192
+intermediate: [1664.085459648139, 2296.17918618586]
+global agg: 3960.26464583
+intermediate: [2373.578641399335, 1724.2836557123355]
+global agg: 4097.86229711
+intermediate: [1861.8823720725543, 2094.0810683272684]
+global agg: 3955.9634404
+intermediate: [2051.080921183959, 2644.4749184341317]
+global agg: 4695.55583962
+intermediate: [2076.880365196548, 1685.5839188882944]
+global agg: 3762.46428408
+intermediate: [2463.8766007729064, 1582.38604049539]
+global agg: 4046.26264127
+intermediate: [1836.0826521531712, 2760.575407637831]
+global agg: 4596.65805979
+intermediate: [1642.585767778407, 2046.7810519385644]
+global agg: 3689.36681972
+intermediate: [2764.875488298322, 1565.1862893138816]
+global agg: 4330.06177761
+intermediate: [1904.8813914836699, 2240.279028615796]
+global agg: 4145.1604201
+intermediate: [1664.0834567568763, 2296.178410162571]
+global agg: 3960.26186692
+intermediate: [2373.580489824113, 1724.2843672957817]
+global agg: 4097.86485712
+intermediate: [1861.8830857763203, 2094.080530346864]
+global agg: 3955.96361612
+intermediate: [2051.0820059112807, 2644.4764468119847]
+global agg: 4695.55845272
+intermediate: [2076.881603086068, 1685.5755821076905]
+global agg: 3762.45718519
+intermediate: [2463.8769754871014, 1582.3860980420723]
+global agg: 4046.26307353
+intermediate: [1836.0826387739776, 2760.5752989860284]
+global agg: 4596.65793776
+intermediate: [1642.5843758835597, 2046.7897009863493]
+global agg: 3689.37407687
+intermediate: [2764.8749428276506, 1565.1854874205155]
+global agg: 4330.06043025
+intermediate: [1904.8826745998147, 2240.279377107997]
+global agg: 4145.16205171
+intermediate: [1664.0850926055375, 2296.1795270178864]
+global agg: 3960.26461962
+intermediate: [2373.57991119816, 1724.2846891941533]
+global agg: 4097.86460039
+intermediate: [1861.8819964597792, 2094.081465647594]
+global agg: 3955.96346211
+intermediate: [2051.0819408829084, 2644.475700644096]
+global agg: 4695.55764153
+intermediate: [2076.879616520164, 1685.5839059624916]
+global agg: 3762.46352248
+intermediate: [2463.876830572134, 1582.3861041965367]
+global agg: 4046.26293477
+intermediate: [1836.082305358795, 2756.2760473513035]
+global agg: 4592.35835271
+intermediate: [1642.585798668302, 2051.0812886860863]
+global agg: 3693.66708735
+intermediate: [2764.877600252862, 1560.88644503758]
+global agg: 4325.76404529
+intermediate: [1904.880589084064, 2244.579732002996]
+global agg: 4149.46032109
+intermediate: [1664.082891582672, 2296.1786893486483]
+global agg: 3960.26158093
+intermediate: [2373.5792292478563, 1724.281253986054]
+global agg: 4097.86048323
+intermediate: [1861.882857705189, 2094.081049469918]
+global agg: 3955.96390718
+intermediate: [2051.0819742349854, 2644.47161562988]
+global agg: 4695.55358986
+intermediate: [2072.5808128391654, 1685.583297281076]
+global agg: 3758.16411012
+intermediate: [2468.17637288516, 1582.3851795119863]
+global agg: 4050.5615524
+intermediate: [1836.0835492652996, 2756.270535720545]
+global agg: 4592.35408499
+intermediate: [1642.5854988245103, 2051.0831122061345]
+global agg: 3693.66861103
+intermediate: [2764.8767650044388, 1560.8866828631124]
+global agg: 4325.76344787
+intermediate: [1904.8815336832156, 2244.586366776506]
+global agg: 4149.46790046
+intermediate: [1664.0847648485928, 2296.1853538935097]
+global agg: 3960.27011874
+intermediate: [1724.2847229458864]
+global agg: 1724.28472295
+intermediate: [2094.080989906236]
+global agg: 2094.08098991
+intermediate: [2644.475169297717]
+global agg: 2644.4751693
+Exit from hone_recvModule
+Exit from hone_rts
+HONE controller stops.

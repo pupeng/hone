@@ -30,7 +30,7 @@ port=$1
 echo clock synchronization done
 ./startHoneAgent &> $HOME/agentCommand.log &
 echo HONE agent starts
-./runTestProg test-server $port 100 &> $HOME/testProgCommand.log &
+./runTestProg server $port 100 &> $HOME/testProgCommand.log &
 echo connections start
 sleep 15m
 
@@ -56,5 +56,10 @@ file=`ls *.eval`
 mv $file $selfname-temp.log
 scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem $selfname-temp.log ubuntu@$controllerIP:~/hone/evaluation/exp6data
 echo $selfname-temp.log transferred to controller
+
+file=`ls *.txt`
+mv $file $selfname-cpumem.txt
+scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem $selfname-cpumem.txt ubuntu@$controllerIP:~/hone/evaluation/exp6data
+echo $selfname-cpumem.txt transferred to controller
 
 echo done exp6

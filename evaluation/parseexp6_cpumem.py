@@ -60,6 +60,7 @@ def parse(number):
     print >> outputFile, 'ctrl cpu:{0} mem:{1}'.format(ctrlCpu, ctrlMem)
     for i in range(len(hostCpu)):
         print >> outputFile, 'host cpu:{0} mem:{1}'.format(hostCpu[i], hostMem[i])
+    print >> outputFile, 'host max cpu:{0} max mem:{1}'.format(max(hostCpu), max(hostMem))
     outputFile.close()
 
 if __name__ == '__main__':

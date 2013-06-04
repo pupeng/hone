@@ -85,7 +85,7 @@ def RegisterPolicy(f=None):
             for key in sorted(rule[0].keys()):
                 value = rule[0][key]
                 criterion.append((key, '==', value))
-            dataflow = (lib.Select(['app','srcHost','dstHost','srcIP','srcPort','dstIP','dstPort']) *
+            dataflow = (lib.Select(['app','srcHost','srcIP','srcPort','dstIP','dstPort']) *
                         lib.From('HostConnection') *
                         lib.Where(criterion) *
                         lib.Every(1000))

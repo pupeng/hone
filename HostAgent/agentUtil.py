@@ -49,8 +49,8 @@ class LogUtil:
     _LogLevel_  = logging.DEBUG
     _MAN_DEBUG_ = False
     _SND_DEBUG_ = False
-    _RCV_DEBUG_ = False
-    _CONTROL_DEBUG_ = False
+    _RCV_DEBUG_ = True
+    _CONTROL_DEBUG_ = True
     _DIRSERVICE_DEBUG_ = False
     _LIB_DEBUG_ = False
     _JOB_BUILD_DEBUG_ = False

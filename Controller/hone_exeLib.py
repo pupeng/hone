@@ -77,6 +77,8 @@ def Print(g=None,s=sys.stdout):
 def RegisterPolicy(f=None):
     def push(rs):
         LogUtil.DebugLog('control', 'register rules: ', rs)
+        if not rs:
+            return
         for rule in rs:
             assert len(rule) == 2
             criterion = []

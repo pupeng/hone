@@ -246,8 +246,8 @@ def handleHostInfoUpdate(message):
     hostId = message.hostId
     appCL = message.content
     hostEntry = HostRecord[hostId]
-    LogUtil.DebugLog('rts', 'host info update. hostId {0}. appList {1}. add {2}. delete {3}'.format(
-        hostId, hostEntry.appList, appCL.add, appCL.delete))
+    # LogUtil.DebugLog('rts', 'host info update. hostId {0}. appList {1}. add {2}. delete {3}'.format(
+    #     hostId, hostEntry.appList, appCL.add, appCL.delete))
     hostEntry.appList = list((set(hostEntry.appList) - set(appCL.delete)) | set(appCL.add))
     for (jobId, job) in _jobExecution.iteritems():
         eligible = job.isHostEligible(hostEntry)
@@ -260,8 +260,8 @@ def handleHostInfoUpdate(message):
             #LogUtil.EvalLog('DoneHostInfoUpdate', 'done update host info of {0}'.format(hostId))
 
 def handleStatsIn(message):
-    # LogUtil.DebugLog('rts', 'new stats come in for job {0} flow {1} sequence {2} content {3}'.format(
-    #     message.jobId, message.flowId, message.sequence, message.content))
+    LogUtil.DebugLog('rts', 'new stats come in for job {0} flow {1} sequence {2} content {3}'.format(
+        message.jobId, message.flowId, message.sequence, message.content))
     expectedNum = _jobExecution[message.jobId].GetExpectedNumOfHosts(message.flowId)
     exeModule.handleStatsIn(message, expectedNum)
 

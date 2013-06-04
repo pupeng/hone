@@ -13,7 +13,7 @@ import time
 def connQuery():
     q = (Select(['app','srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
-         #Where([('app', '==', 'test_prog')]) *
+         # Where([('app', '==', 'test_prog')]) *
          Every(3000))
     return q
 

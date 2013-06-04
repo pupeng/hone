@@ -15,7 +15,7 @@ from agentUtil import *
 from agentSndModule import *
 from hone_message import *
 
-HostId = get_mac()
+HostId = str(get_mac())
 
 ControllerPort = 8866
 HostRelayPort = 8877

@@ -16,7 +16,7 @@ from agentUtil import *
 from agentSndModule import *
 from hone_message import *
 
-HostId = get_mac()
+HostId = str(get_mac())
 StartingTime = 1334262600
 
 HostRelayPort = 8877

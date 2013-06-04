@@ -25,7 +25,7 @@ class HostAgentSndSocket:
             self.hostSock.connect((controllerAddress, controllerPort))
             message = HoneMessage()
             message.messageType = HoneMessageType_HostJoin
-            message.hostId = get_mac()
+            message.hostId = str(get_mac())
             #message.hostId = str(random.randint(0, 1000000))
             self.sendMessage(message)
         except socket.error, msg:

@@ -92,25 +92,25 @@ def EWMA(newData, lastData):
     return [newHostId, newTime, newRate]
 
 def GenRateLimitPolicy(x):
-    # sumDemand = 0
-    print x
-    # localDemand = {}
-    # for (hostID, seq, data) in x:
-    #     localDemand[hostID] = data[1]
-    #     sumDemand += data[1]
-    # rs = []
-    # if sumDemand>0:
-    #     for (hostID, localRate) in localDemand.iteritems():
-    #         if localRate<0.1:
-    #             localBudget = totalBudget
-    #         else:
-    #             localBudget = float(localRate)/float(sumDemand)*totalBudget
-    #         cr = {'app':'trafclient', 'srcHost':hostID}
-    #         action = {'rateLimit':localBudget}
-    #         rs.append([cr, action])
-    #         print hostID+' '+str(localBudget)
-    #     print 'Distributed Rate Limiting One Round'
-    # return rs
+    sumDemand = 0
+    localDemand = {}
+    for (hostId, timestamp, rate) in x:
+        localDemand[hostId] = rate
+        sumDemand += rate
+    ruleset = []
+    if sumDemand > 0:
+        for (hostId, localRate) in localDemand.iteritems():
+            if localRate < 0.1: # too small to limit
+                localBudget = totalBudget
+            else:
+                localBudget = localRate / sumDemand * totalBudget
+            criterion = {'app':'test_prog', 'srcHost':hostId}
+            action = {'ratelimit':localBudget}
+            rule = [criterion, action]
+            ruleset.append(rule)
+            print 'hostId {0} budget {1}'.format(hostId, localBudget)
+        print 'Distributed Rate Limiting One Round'
+    return ruleset
 
 def DebugPrint(x):
     for (hostID, timestamp, data) in x:
@@ -123,6 +123,6 @@ def main():
             MapStreamSet(LocalSum) >>
             ReduceStreamSet(EWMA, [None, time.time(), 100]) >>
             MergeHosts() >>
-            Print(DebugPrint))
-            # MapStream(GenRateLimitPolicy) >>
-            # RegisterPolicy())
+            # Print(DebugPrint))
+            MapStream(GenRateLimitPolicy) >>
+            RegisterPolicy())

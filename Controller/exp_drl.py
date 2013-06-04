@@ -12,7 +12,7 @@ import time
 _DRL_DEBUG_ = True
 
 K = 0.2
-totalBudget = 10000 # KBps
+totalBudget = 10000 # Kbps
 
 def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
@@ -63,10 +63,11 @@ def LocalSum(data):
     sumTP = []
     avgTS = []
     for (ts, accumBS, tp) in tpData.itervalues():
+        # tp unit is bytes per second now
         sumTP.append(tp)
         avgTS.append(ts)
     if avgTS:
-        return [hostId, sum(avgTS)/len(avgTS), sum(sumTP)]
+        return [hostId, sum(avgTS)/len(avgTS), sum(sumTP) * 8.0 / 1000.0] # now throughput change to Kbps
 
 def EWMA(newData, lastData):
     if _DRL_DEBUG_:
@@ -100,7 +101,7 @@ def GenRateLimitPolicy(x):
     ruleset = []
     if sumDemand > 0:
         for (hostId, localRate) in localDemand.iteritems():
-            if localRate < 0.1: # too small to limit
+            if localRate < 1: # 1kbps is too small to limit
                 localBudget = totalBudget
             else:
                 localBudget = localRate / sumDemand * totalBudget

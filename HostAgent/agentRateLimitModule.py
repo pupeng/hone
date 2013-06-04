@@ -106,37 +106,45 @@ def cmd_clear_rule(interface):
     LogUtil.DebugLog('control', 'done cmd_clear_rule')
 
 def cmd_add_qdisc(interface):
-    call("tc qdisc add dev {0} root handle 1: htb".format(interface), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_add_gdisc')
+    command = "tc qdisc add dev {0} root handle 1: htb".format(interface)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_add_gdisc', command)
 
 def cmd_add_root(interface):
-    call("tc class add dev {0} parent 1: classid 1:fffe htb rate 1000mbps".format(interface), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_add_root')
+    command = "tc class add dev {0} parent 1: classid 1:fffe htb rate 1000mbps".format(interface)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_add_root', command)
 
 def cmd_add_queue(interface, queueId, rate):
     if rate < 100: # if < 100kbps, just let it go with 100kbps
         rate = 100
-    call("tc class add dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate), shell=True, executable='/bin/bash')
-    call("tc filter add dev {0} protocol ip parent 1: prio 0 handle {1} fw flowid 1:{1}".format(interface, queueId), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_add_queue')
+    command1 = "tc class add dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate)
+    command2 = "tc filter add dev {0} protocol ip parent 1: prio 0 handle {1} fw flowid 1:{1}".format(interface, queueId)
+    call(command1, shell=True, executable='/bin/bash')
+    call(command2, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_add_queue', command1, command2)
 
 def cmd_modify_queue(interface, queueId, rate):
     if rate < 100:
         rate = 100
-    call("tc class change dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_modify_queue')
+    command = "tc class change dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_modify_queue', command)
 
 def cmd_add_rule(rule):
-    call("iptables -A {0}".format(rule), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_add_rule')
+    command = "iptables -A {0}".format(rule)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_add_rule', command)
 
 def cmd_del_queue(interface, queueId):
-    call("tc class del dev {0} parent 1:fffe classid 1:{1} &> /dev/null".format(interface, queueId), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_del_queue')
+    command = "tc class del dev {0} parent 1:fffe classid 1:{1} &> /dev/null".format(interface, queueId)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_del_queue', command)
 
 def cmd_show_class(interface, className):
-    call("tc -s class show dev {0} | grep {1}".format(interface, className), shell=True, executable='/bin/bash')
-    LogUtil.DebugLog('control', 'done cmd_show_class')
+    command = "tc -s class show dev {0} | grep {1}".format(interface, className)
+    call(command, shell=True, executable='/bin/bash')
+    LogUtil.DebugLog('control', 'done cmd_show_class', command)
 
 #########################################################
 # Old version. Just for reference

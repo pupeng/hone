@@ -248,7 +248,8 @@ class HoneCommProtocolHost(LineReceiver):
             HoneMessageType_UpdateSourceJob  : self.handleSourceJobUpdate,
             HoneMessageType_UpdateMiddleJob  : self.handleMiddleJobUpdate,
             HoneMessageType_SendFile         : self.handleFileTransfer,
-            HoneMessageType_RelayStatsIn     : self.handleMiddleStatsIn }
+            HoneMessageType_RelayStatsIn     : self.handleMiddleStatsIn,
+            HoneMessageType_UpdateControlJob : self.handleControlJobUpdate}
         self.factory = factory
     
     def lineReceived(self, line):
@@ -342,6 +343,9 @@ class HoneCommProtocolHost(LineReceiver):
                 self.factory.statsBuffer[message.jobId][message.flowId][message.level] = MergedData(message.jobId, message.flowId, message.level)
             self.factory.statsBuffer[message.jobId][message.flowId][message.level].addNewData(message.hostId, message.sequence, message.content, expectNumOfChild)
         #EvalLog('{0:6f},79,done handleMiddleStatsIn for jobId {1}'.format(time.time(), message.jobId))
+
+    def handleControlJobUpdate(self, message):
+        pass
     
     def handleUnknownType(self, message):
         logging.warning('Agent receives unknown message. type: {0}. content: {1}'.format(message.messageType, repr(message.content)))

@@ -14,6 +14,7 @@ HoneMessageType_InstallMiddleJob = 4
 HoneMessageType_UpdateMiddleJob  = 5
 HoneMessageType_SendFile         = 6
 HoneMessageType_RelayStatsIn     = 7
+HoneMessageType_UpdateControlJob = 8
 
 class HoneMessage(object):
     def __init__(self):
@@ -39,4 +40,3 @@ class FlowExePlan(object):
     def __init__(self, flowId, exePlan):
         self.flowId = flowId
         self.exePlan = exePlan
-

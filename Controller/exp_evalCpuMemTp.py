@@ -87,7 +87,7 @@ def HeartBeat(data):
 def ctrlCpuMem(data):
     print data
     try:
-        pids = check_output('ps -a | grep python | cut -b1-5', shell=True, executable='/bin/bash')
+        pids = check_output('ps -A | grep python | cut -b1-5', shell=True, executable='/bin/bash')
         pids = pids.rstrip('\n').split('\n')
         pids = map(lambda x: int(x.lstrip(' ').rstrip(' ')), pids)
         cpuUsage = []

@@ -14,11 +14,11 @@ import inspect
 
 class LogUtil:
     _LogLevel_      = logging.DEBUG
-    _GLOBAL_DEBUG_  = False
+    _GLOBAL_DEBUG_  = True
     _LIB_DEBUG_     = False
-    _RTS_DEBUG_     = False
+    _RTS_DEBUG_     = True
     _EXEGEN_DEBUG_  = False
-    _PART_DEBUG_    = False
+    _PART_DEBUG_    = True
     _EXEMOD_DEBUG_  = False
     _SND_DEBUG_     = False
     _CONTROL_DEBUG_ = False

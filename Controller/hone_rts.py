@@ -180,6 +180,9 @@ HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP())}
 # key: jobId, value: HoneJob
 _jobExecution = {}
 
+# key: str(criterion), value: jobId
+_controlJobIds = {}
+
 ''' function to start rts '''
 def RtsRun(mgmtProg):
     print 'HONE runtime system starts.'
@@ -263,82 +266,20 @@ def handleStatsIn(message):
     exeModule.handleStatsIn(message, expectedNum)
 
 def handleControlJob(dataflow):
-    pass
-
-#def addControlJob(content):
-#    ''' 
-#    if _GLOBAL_DEBUG_:
-#        rtsLoggingLock.acquire()
-#        print 'in addControlJob'
-#        print content
-#        rtsLoggingLock.release() '''
-#    dataflow = content[1]
-#    criteria = dataflow.myFlow[2]
-#    cr = []
-#    for i in range(1,len(criteria)):
-#        cr.append(criteria[i][2])
-#    cr = tuple(cr)
-#    '''
-#    if _CONTROL_DEBUG_:
-#        rtsLoggingLock.acquire()
-#        print 'in addControlJob'
-#        print repr(cr)
-#        print 'controlJobs:'
-#        print controlJobs
-#        rtsLoggingLock.release() '''
-#    if controlJobs.has_key(cr):
-#        jobId = controlJobs[cr]
-#        newRate = dataflow.myFlow[5][1]
-#        for item in jobExePlanHost[jobId].iterkeys():
-#            if isinstance(item, int):
-#                flowIndex = item
-#                break
-#        '''
-#        if _GLOBAL_DEBUG_:
-#            rtsLoggingLock.acquire()
-#            print 'newRate:'+str(newRate)
-#            print 'jobExePlanHost of '+jobId+' '+str(flowIndex)
-#            print jobExePlanHost[jobId][flowIndex]
-#            rtsLoggingLock.release() '''
-#        try:
-#            if jobExePlanHost[jobId][flowIndex][1][1] != newRate:
-#                # update job on hosts
-#                jobExePlanHost[jobId][flowIndex][1][1] = newRate
-#                for hostId in hostsOfJob[jobId]:
-#                    updateJobOnHost(jobId,hostId)
-#        except:
-#            rtsLoggingLock.acquire()
-#            print 'exception point A'
-#            print jobId
-#            print flowIndex
-#            print jobExePlanHost[jobId]
-#            rtsLoggingLock.release()
-#            sys.exit(0)
-#    else:
-#        jobId = _nextHoneJobId()
-#        _processQueryPart(dataflow)
-#        jobEligibleBar[jobId] = generateJobEligibleBar(dataflow)
-#        jobCreateTime = time.time()
-#        jobExePlanHost[jobId] = {}
-#        jobExePlanHost[jobId]['progName'] = 'controldummy'
-#        jobExePlanHost[jobId]['jobCreateTime'] = jobCreateTime
-#        jobExePlanNet[jobId] = {}
-#        jobExePlanNet[jobId]['progName'] = 'controldummy'
-#        jobExePlanCtrl[jobId] = {}
-#        jobExePlanCtrl[jobId]['progName'] = 'controldummy'
-#        _addExePlans(dataflow, jobId)
-#        controlJobs[cr] = jobId
-#        for hostId in hosts.iterkeys():
-#            hostAddr = hosts[hostId][0]
-#            if hostMatchJob(hostId,hostAddr,jobId):
-#                installNewJobOnHost(jobId, hostId)
-#                jobsOnHost[hostId].append(jobId)
-#                if not (jobId in hostsOfJob):
-#                    hostsOfJob[jobId] = []
-#                hostsOfJob[jobId].append(hostId)  
-#    '''
-#    if _GLOBAL_DEBUG_:
-#        rtsLoggingLock.acquire()
-#        print 'Done addControlJob'
-#        print jobExePlanHost[jobId]
-#        rtsLoggingLock.release() '''
+    LogUtil.DebugLog('rts', 'control job', dataflow.printDataFlow(), dataflow.flow)
+    criterion = str(dataflow.getFlowCriterion())
+    progName = 'hone_control'
+    if criterion in _controlJobIds:
+        jobId = _controlJobIds[criterion]
+        job = _jobExecution[jobId]
+        job.updateControlAction(dataflow.flow[1:])
+    else:
+        jobId = _nextHoneJobId()
+        _controlJobIds[criterion] = jobId
+        partitionedFlow = HonePartitionedFlow(progName, dataflow)
+        job = HoneJob(jobId, partitionedFlow)
+        _jobExecution[jobId] = job
+        for hostId, hostEntry in HostRecord.iteritems():
+            if job.isHostEligible(hostEntry):
+                hostEntry.addJob(jobId)
+                job.addHost(hostEntry)

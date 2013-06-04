@@ -93,6 +93,18 @@ class HoneJob:
     def DisplayAggTree(self):
         LogUtil.DebugLog('tree', self.treeFormatter.displayTree())
 
+    def updateControlAction(self, newAction):
+        LogUtil.DebugLog('control', self.exeFlow.hostSourceExePlan)
+        oldAction = self.exeFlow.hostSourceExePlan[1:]
+        if str(newAction) != str(oldAction):
+            for hostId in self.hosts.iterkeys():
+                address = rts.HostRecord[hostId].hostAddress
+                message = HoneMessage()
+                message.messageType = HoneMessageType_UpdateControlJob
+                message.jobId = self.jobId
+                message.content = newAction
+                HoneHostSndModule().sendMessage(address, message)
+
     # private methods
     def _transferExeFile(self, hostId):
         address = rts.HostRecord[hostId].hostAddress

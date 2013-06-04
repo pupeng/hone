@@ -60,6 +60,9 @@ class HoneDataFlow:
             ret += subFlow.printDataFlow()
         return ret
 
+    def getFlowCriterion(self):
+        return self.flow[0].wh
+
 ''' query part '''
 class HoneQuery:
     def __init__(self,var,ft,wh,gp,every,agg,compose):

@@ -21,7 +21,8 @@ IPCType = {'NewSourceJob' : 1,
            'NewSocket': 5,
            'DeleteSocket': 6,
            'AddSkToJobFlow': 7,
-           'RemoveSkFromJobFlow': 8}
+           'RemoveSkFromJobFlow': 8,
+           'UpdateControlJob':9}
 
 def IsLazyTableEnabled():
     return _LAZY_M_ENABLED_

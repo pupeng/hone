@@ -10,7 +10,7 @@ import os
 from uuid import getnode as get_mac
 
 import agentFreLib as freLib
-import agentControlModule
+import agentRateLimitModule
 import agentManager
 from agentUtil import *
 from agentSndModule import *
@@ -209,17 +209,19 @@ def ToMiddle(jobId, flowId):
     return freLib.FListener(push=push)
 
 # rate limit
-def RateLimit(jobID):
+def RateLimit(jobId, defaultRate):
     def push(x):
-        #debugLog('control', 'push ratelimit rule', jobID, x, agentControlModule.jobAndQueueRate)
-        (queueID, rate) = agentControlModule.jobAndQueueRate[jobID]
+        LogUtil.DebugLog('control', 'jobId {0}'.format(jobId), 'defaultRate {0}'.format(defaultRate), 'rules:', x)
+        if jobId not in agentRateLimitModule.JobAndQueueRate:
+            agentRateLimitModule.AddRateLimitJob(jobId, defaultRate)
         for conn in x:
-            criteria = {'app':conn[0],
-                        'srcIP':conn[3],
-                        'dstIP':conn[5],
-                        'srcPort':conn[4],
-                        'dstPort':conn[6]}
-            agentControlModule.trafficControl(criteria, queueID, rate)
+            (app, srcHost, srcIP, srcPort, dstIP, dstPort) = conn
+            criteria = {'app': app,
+                        'srcIP': srcIP,
+                        'dstIP': dstIP,
+                        'srcPort': srcPort,
+                        'dstPort': dstPort}
+            agentRateLimitModule.AddConnToJob(criteria, jobId)
     return freLib.FListener(push=push)
 
 def TreeMerge(f):

@@ -17,6 +17,7 @@ from agentRcvModule import *
 from agentDirService import *
 import agentConnMeasure
 import agentProcMeasure
+import agentRateLimitModule
 
 sourceJobTable = None
 socketTable = None
@@ -106,6 +107,12 @@ def agentManagerRun(ctrlAddress, ctrlPort):
                     (jobFlow, sockfd) = itemContent
                     if (jobFlow in sourceJobSkList) and (sockfd in sourceJobSkList[jobFlow]):
                         sourceJobSkList[jobFlow].remove(sockfd)
+                elif itemType == IPCType['UpdateControlJob']:
+                    (jobId, newAction) = itemContent
+                    if newAction[0][0] == 'RateLimit':
+                        if jobId in agentRateLimitModule.JobAndQueueRate:
+                            newRate = int(newAction[0][1])
+                            agentRateLimitModule.UpdateRateLimitJob(jobId, newRate)
             #debugLog('manager', 'one round of main loop')
             #for id in sourceJobTable.keys():
                 #debugLog('manager', 'jobId@flowId: ', id, 'sourceJob: ', sourceJobTable[id].debug())
@@ -322,7 +329,8 @@ def _processOp(operator, jobId, flowId, progName, event):
     elif opType=='RateLimit':
         #debugLog('lib', 'RateLimit')
         opFunc = getattr(agentLib, opType)
-        return (opFunc(jobId), True)
+        defaultRate = int(operator[1])
+        return (opFunc(jobId, defaultRate), True)
     else:
         opFunc = getattr(agentLib,opType)
         (f, subcomplete) = _processOp(operator[1:], jobId, flowId, progName, event)

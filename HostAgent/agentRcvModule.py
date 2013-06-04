@@ -345,7 +345,9 @@ class HoneCommProtocolHost(LineReceiver):
         #EvalLog('{0:6f},79,done handleMiddleStatsIn for jobId {1}'.format(time.time(), message.jobId))
 
     def handleControlJobUpdate(self, message):
-        pass
+        LogUtil.DebugLog('rcvMod', 'handle control job update', 'jobId', message.jobId, 'content', message.content)
+        item = (IPCType['UpdateControlJob'], (message.jobId, message.content))
+        sourceJobQueue.put(item)
     
     def handleUnknownType(self, message):
         logging.warning('Agent receives unknown message. type: {0}. content: {1}'.format(message.messageType, repr(message.content)))

@@ -7,7 +7,7 @@
 
 from hone_lib import *
 from math import *
-import time, sys
+import time
 
 _DRL_DEBUG_ = False
 
@@ -18,7 +18,7 @@ def query():
     q = (Select(['app','srcIP','srcPort','dstIP','dstPort','timestamp','BytesSentOut']) *
         From('HostConnection') *
         Where([('app','==','test_prog')]) *
-        Every(2))
+        Every(2000))
     return q
 
 ''' tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput) '''
@@ -41,9 +41,9 @@ def calThroughput(newData, tpData):
         newTS = conn[5]
         newAccumBS = conn[6]
         thetuple = (srcIP,srcPort,dstIP,dstPort)
-        if tpData.has_key(thetuple):
+        if thetuple in tpData:
             (lastTS, lastAccumBS, lastTP) = tpData[thetuple]
-            if newTS>lastTS:
+            if newTS > lastTS:
                 newTP = float((newAccumBS-lastAccumBS))/(newTS-lastTS)
             else:
                 newTP = 0
@@ -83,7 +83,7 @@ def ewma(newData, lastData):
     lastRate = lastData[1]
     timeDiff = newTime - lastTime
     if timeDiff > 0:
-        newRate = (1.0 - exp(-timeDiff/K))*newTP+exp(-timeDiff/K)*lastRate
+        newRate = (1.0 - exp(-timeDiff / K)) * newTP + exp(-timeDiff / K) * lastRate
         if _DRL_DEBUG_:
             fileOutput = open('tmp_drl.log', 'a')
             print >>fileOutput, 'newRate'
@@ -93,25 +93,26 @@ def ewma(newData, lastData):
         newRate = 0.0
     return [newTime, newRate]
 
-def rateLimitPolicy(x):
-    sumDemand = 0
-    localDemand = {}
-    for (hostID, seq, data) in x:
-        localDemand[hostID] = data[1]
-        sumDemand += data[1]
-    rs = []
-    if sumDemand>0:
-        for (hostID, localRate) in localDemand.iteritems():
-            if localRate<0.1:
-                localBudget = totalBudget
-            else:
-                localBudget = float(localRate)/float(sumDemand)*totalBudget
-            cr = {'app':'trafclient', 'srcHost':hostID}
-            action = {'rateLimit':localBudget}
-            rs.append([cr, action])
-            print hostID+' '+str(localBudget)
-        print 'Distributed Rate Limiting One Round'
-    return rs
+def genRateLimitPolicy(x):
+    # sumDemand = 0
+    print x
+    # localDemand = {}
+    # for (hostID, seq, data) in x:
+    #     localDemand[hostID] = data[1]
+    #     sumDemand += data[1]
+    # rs = []
+    # if sumDemand>0:
+    #     for (hostID, localRate) in localDemand.iteritems():
+    #         if localRate<0.1:
+    #             localBudget = totalBudget
+    #         else:
+    #             localBudget = float(localRate)/float(sumDemand)*totalBudget
+    #         cr = {'app':'trafclient', 'srcHost':hostID}
+    #         action = {'rateLimit':localBudget}
+    #         rs.append([cr, action])
+    #         print hostID+' '+str(localBudget)
+    #     print 'Distributed Rate Limiting One Round'
+    # return rs
 
 def myPrint(x):
     for (hostID, timestamp, data) in x:
@@ -119,15 +120,13 @@ def myPrint(x):
     print '******************************************'
 
 def main():
-    return (query()>>
-            ReduceSet(calThroughput, {})>>
-            MapSet(localSum)>>
-            ReduceSet(ewma, [time.time(),100])>>
-            MergeHosts()>>
-            JoinHostsBySeq()>>
-            Print(myPrint))
-            #MapStream(rateLimitPolicy)>>
-            #RegisterPolicy())
+    return (query() >>
+            ReduceStreamSet(calThroughput, {}) >>
+            MapStreamSet(localSum) >>
+            ReduceStreamSet(ewma, [time.time(), 100]) >>
+            MergeHosts() >>
+            MapStream(genRateLimitPolicy) >>
+            RegisterPolicy())
             
 
 

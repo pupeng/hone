@@ -10,6 +10,8 @@ import sys
 import hone_lib as lib
 import hone_freLib as freLib
 import hone_exeModule as exeModule
+import hone_rts as rts
+from hone_util import LogUtil
 
 ########################
 # Foundation Operators #
@@ -72,22 +74,25 @@ def Print(g=None,s=sys.stdout):
     return freLib.FListener(push=push)
 
 # Install_listener : Policy
-queueToRts = None
 def RegisterPolicy(f=None):
     def push(rs):
+        LogUtil.DebugLog('control', 'register rules: ', rs)
         for rule in rs:
-            rate = rule[1]['rateLimit']
-            cr = []
-            for key in sorted(rule[0].iterkeys()):
-                value = rule[0][key]
-                cr.append((key,'==',value))
-            plan = (lib.Select(['app','srcHost','dstHost','srcIP','srcPort','dstIP','dstPort']) *
-                    lib.From('HostConnection') *
-                    lib.Where(cr) *
-                    lib.Every(1)) >> lib.RateLimit(rate)
-            queueToRts.put([['ControlJob'],plan])
-        #print 'control policies'
-        #print rs
+            assert len(rule) == 2
+            criterion = []
+            for key, value in rule[0].iteritems():
+                criterion.append((key, '==', value))
+            dataflow = (lib.Select(['app','srcHost','dstHost','srcIP','srcPort','dstIP','dstPort']) *
+                        lib.From('HostConnection') *
+                        lib.Where(criterion) *
+                        lib.Every(1000))
+            if 'ratelimit' in rule[1]:
+                dataflow = dataflow >> lib.RateLimit(rule[1]['ratelimit'])
+            elif 'forward' in rule[1]:
+                dataflow = dataflow >> lib.Forward(rule[1]['forward'])
+            else:
+                raise Exception('Invalid control actions {0}'.format(rule[1]))
+            rts.handleControlJob(dataflow)
     return freLib.FListener(push=push)
 
 def MergeHosts(f=None):

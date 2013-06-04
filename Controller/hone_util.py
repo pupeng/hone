@@ -37,7 +37,8 @@ class LogUtil:
                   'exeMod' : _EXEMOD_DEBUG_,
                   'snd'    : _SND_DEBUG_,
                   'evaluation' : _EVALUATION_,
-                  'tree'   : _TREE_FORMATION_ }
+                  'tree'   : _TREE_FORMATION_,
+                  'control': _CONTROL_DEBUG_}
 
     EvalData = []
     

@@ -274,5 +274,8 @@ def RegisterPolicy(f=None):
 def RateLimit(rate):
     return HoneDataFlow(None, ['RateLimit', rate])
 
+def Forward(path):
+    return HoneDataFlow(None, ['Forward', path])
+
 def TreeMerge(f):
     return HoneDataFlow(None, ['TreeMerge', f.__name__])

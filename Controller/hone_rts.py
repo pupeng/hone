@@ -262,6 +262,9 @@ def handleStatsIn(message):
     expectedNum = _jobExecution[message.jobId].GetExpectedNumOfHosts(message.flowId)
     exeModule.handleStatsIn(message, expectedNum)
 
+def handleControlJob(dataflow):
+    pass
+
 #def addControlJob(content):
 #    ''' 
 #    if _GLOBAL_DEBUG_:

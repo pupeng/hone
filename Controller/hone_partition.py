@@ -20,7 +20,8 @@ class HonePartitionedFlow:
         self.hostMiddleExePlan = []
         self.networkExePlan = []
         self.controllerExePlan = []
-        self.criterion = {'app'  : [],
+        self.criterion = {'app': [],
+                          'srcHost': [],
                           'srcIP': [],
                           'dstIP': []}
         self.flowToCtrl= []
@@ -35,6 +36,11 @@ class HonePartitionedFlow:
             ret = ret and True
         else:
             ret = False
+        for hostId in self.criterion['srcHost']:
+            if hostId == hostEntry.hostId:
+                ret = ret and True
+            else:
+                ret = False
         for ipnet in self.criterion['srcIP']:
             if ipaddr.IPAddress(hostEntry.hostAddress) in ipaddr.IPNetwork(ipnet):
                 ret = ret and True
@@ -59,7 +65,7 @@ class HonePartitionedFlow:
         if dataFlow.flow[0].wh is not None:
             for criteria in dataFlow.flow[0].wh:
                 if criteria[0] in self.criterion:
-                    if (criteria[1] != '=='):
+                    if criteria[1] != '==':
                         raise Exception('Must give == to app or srcIP or dstIP in Where clause')
                     self.criterion[criteria[0]].append(criteria[2])
         for subFlow in dataFlow.subFlows:

@@ -101,7 +101,7 @@ def GenRateLimitPolicy(x):
     ruleset = []
     if sumDemand > 0:
         for (hostId, localRate) in localDemand.iteritems():
-            if localRate < 1: # 1kbps is too small to limit
+            if localRate < 10: # if it is just 10kbps, let it run
                 localBudget = totalBudget
             else:
                 localBudget = localRate / sumDemand * totalBudget

@@ -15,7 +15,7 @@ K = 0.2
 totalBudget = 10000 # KBps
 
 def query():
-    q = (Select(['app','srcIP','srcPort','dstIP','dstPort','timestamp','BytesSentOut']) *
+    q = (Select(['app','srcIP','srcPort','dstIP','dstPort','TimeStamps','BytesSentOut']) *
         From('HostConnection') *
         Where([('app','==','test_prog')]) *
         Every(2000))

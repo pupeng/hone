@@ -70,6 +70,51 @@ class DirServiceProcess(StoppableProcess):
                                     self.socketQueue.put(item)
                     else:
                         print 'unknown kernel message: {0}'.format(message)
+                while not self.socketCriteriaQueue.empty():
+                    (itemType, itemContent) = self.socketCriteriaQueue.get_nowait()
+                    if itemType == IPCType['InstallSocketCriteria']:
+                        (jobFlow, measureCriteria) = itemContent
+                        self.socketCriteria[jobFlow] = measureCriteria
+                        for sockfd, sockstruct in self.socketTable.iteritems():
+                            result = True
+                            for (cr, value) in measureCriteria.iteritems():
+                                if cr == 'app':
+                                    if fnmatch.fnmatch(sockstruct.app, value):
+                                        result = result and True
+                                    else:
+                                        result = False
+                                elif cr == 'srcIP':
+                                    if ipaddr.IPAddress(sockstruct.srcAddress) in ipaddr.IPNetwork(value):
+                                        result = result and True
+                                    else:
+                                        result = False
+                                elif cr == 'srcPort':
+                                    if sockstruct.srcPort == value:
+                                        result = result and True
+                                    else:
+                                        result = False
+                                elif cr == 'dstIP':
+                                    if ipaddr.IPAddress(sockstruct.dstAddress) in ipaddr.IPNetwork(value):
+                                        result = result and True
+                                    else:
+                                        result = False
+                                elif cr == 'dstPort':
+                                    if sockstruct.dstPort == value:
+                                        result = result and True
+                                    else:
+                                        result = False
+                                else:
+                                    print 'unknown tuple match {0}:{1}'.format(cr, value)
+                            if result:
+                                if jobFlow not in self.sourceJobSkList:
+                                    self.sourceJobSkList[jobFlow] = []
+                                if sockfd not in self.sourceJobSkList[jobFlow]:
+                                    self.sourceJobSkList[jobFlow].append(sockfd)
+                                    item = (IPCType['AddSkToJobFlow'], (jobFlow, sockfd))
+                                    self.socketQueue.put(item)
+                    elif itemType == IPCType['DeleteSocketCriteria']:
+                        if itemContent in self.socketCriteria:
+                            del self.socketCriteria[itemContent]
                 time.sleep(0.001)
         except Exception as e:
             logging.error('agentDirService exception {0}'.format(e))
@@ -89,14 +134,6 @@ class DirServiceProcess(StoppableProcess):
         dstAddress = message[5]
         dstPort = message[6]
         ret = False
-        while not self.socketCriteriaQueue.empty():
-            (itemType, itemContent) = self.socketCriteriaQueue.get_nowait()
-            if itemType == IPCType['InstallSocketCriteria']:
-                (key, measureCriteria) = itemContent
-                self.socketCriteria[key] = measureCriteria
-            elif itemType == IPCType['DeleteSocketCriteria']:
-                if itemContent in self.socketCriteria:
-                    del self.socketCriteria[itemContent]
         for (jobFlow, criteria) in self.socketCriteria.iteritems():
             result = True
             for (cr, value) in criteria.iteritems():

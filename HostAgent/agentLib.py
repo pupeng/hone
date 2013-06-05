@@ -79,21 +79,21 @@ def MergeStreamsForSet(a, b):
     
 # WhereComplex
 def WC(attr, op, value):
-    value = float(value)
+    value = str(value)
     def newFunc(x):
         #debugLog('lib', 'new func of WC', x)
-        if op=='=':
-            return float(x[attr])==value
-        elif op=='!=':
-            return float(x[attr])!=value
-        elif op=='>':
-            return float(x[attr])>value
-        elif op=='<':
-            return float(x[attr])<value
-        elif op=='>=':
-            return float(x[attr])>=value
+        if op == '==':
+            return str(x[attr]) == value
+        elif op == '!=':
+            return str(x[attr]) != value
+        elif op == '>':
+            return str(x[attr]) > value
+        elif op == '<':
+            return str(x[attr]) < value
+        elif op == '>=':
+            return str(x[attr]) >= value
         else:
-            return float(x[attr])<=value
+            return str(x[attr]) <= value
     return MapStreamSet(FilterList(newFunc))
 
 # groupby in query

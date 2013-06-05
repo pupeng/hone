@@ -110,7 +110,8 @@ def buildSourceJob(sourceJob, exePlan):
             if stat in ['app', 'srcIP', 'dstIP', 'srcPort', 'dstPort']:
                 sourceJob.measureCriteria[stat] = value
             else:
-                computePart.append(['WC', stat, op, value])
+                statPosition = sourceJob.measureStats.index(stat)
+                computePart.append(['WC', statPosition, op, value])
     if sourceJob.measureType == 'conn':
         key = composeKey(sourceJob.jobId, sourceJob.flowId)
         item = (IPCType['InstallSocketCriteria'], (key, sourceJob.measureCriteria))

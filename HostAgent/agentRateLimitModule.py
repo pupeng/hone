@@ -90,9 +90,10 @@ def _getDataPlaneIp():
 
 def _initTrafficControl():
     dataPlaneIp = _getDataPlaneIp()
+    command = "ifconfig | grep -B1 {0} | head -n1 | cut -b1-6".format(dataPlaneIp)
     global _interface
-    _interface = check_output("ifconfig | grep -B1 {0} | head -n1 | awk \'{print $1}\'".format(dataPlaneIp), shell=True, executable='/bin/bash')
-    _interface = _interface.split('\n')[0]
+    _interface = check_output(command, shell=True, executable='/bin/bash')
+    _interface = _interface.split(' ')[0]
     LogUtil.DebugLog('control', 'the data plane interface', _interface)
     cmd_clear_rule(_interface)
     cmd_add_qdisc(_interface)

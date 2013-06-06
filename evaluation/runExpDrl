@@ -24,7 +24,7 @@ echo HONE agent starts
 sleep 1m
 screen -S client -d -m ./runTrafclient
 echo trafclient start
-sleep 2m
+sleep 80s
 
 screen -S client -X quit
 killall python

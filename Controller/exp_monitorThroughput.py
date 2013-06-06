@@ -70,11 +70,12 @@ def EWMA(newData, lastData):
 def MonitorThroughput(x):
     outputFile = open('logs/throughput.txt', 'a')
     sumRate = []
+    timestamps = []
     for (hostId, timestamp, rate) in x:
         sumRate.append(rate)
+        timestamps.append(timestamp)
         print >> outputFile, 'host {0} {1} {2}'.format(hostId, timestamp, rate)
-    print >> outputFile, 'aggregate {0}'.format(sum(sumRate))
-    print >> outputFile, 'done'
+    print >> outputFile, 'aggregate {0} {1}'.format(min(timestamps), sum(sumRate))
     outputFile.close()
 
 def main():

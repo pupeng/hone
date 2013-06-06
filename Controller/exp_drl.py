@@ -9,7 +9,7 @@ from hone_lib import *
 from math import *
 import time
 
-_DRL_DEBUG_ = True
+_DRL_DEBUG_ = False
 
 K = 0.2
 totalBudget = 100000 # Kbps
@@ -92,26 +92,37 @@ def EWMA(newData, lastData):
         newRate = 0.0
     return [newHostId, newTime, newRate]
 
+# equally allocate budge among hosts running trafclient
 def GenRateLimitPolicy(x):
-    sumDemand = 0
-    localDemand = {}
-    for (hostId, timestamp, rate) in x:
-        localDemand[hostId] = rate
-        sumDemand += rate
     ruleset = []
-    if sumDemand > 0:
-        for (hostId, localRate) in localDemand.iteritems():
-            if localRate < 10: # if it is just 10kbps, let it run
-                localBudget = totalBudget
-            else:
-                localBudget = localRate / sumDemand * totalBudget
-            criterion = {'app':'trafclient', 'srcHost':hostId}
-            action = {'ratelimit':localBudget}
-            rule = [criterion, action]
-            ruleset.append(rule)
-            print 'hostId {0} budget {1}'.format(hostId, localBudget)
-        print 'Distributed Rate Limiting One Round'
+    numberOfHosts = float(len(x))
+    for (hostId, _, _) in x:
+        budget = 1.0 / numberOfHosts * totalBudget
+        criterion = {'app':'trafclient', 'srcHost':hostId}
+        action = {'ratelimit':budget}
+        rule = [criterion, action]
+        ruleset.append(rule)
+    print 'Distributed Rate Limiting One Round'
     return ruleset
+    # sumDemand = 0
+    # localDemand = {}
+    # for (hostId, timestamp, rate) in x:
+    #     localDemand[hostId] = rate
+    #     sumDemand += rate
+    # ruleset = []
+    # if sumDemand > 0:
+    #     for (hostId, localRate) in localDemand.iteritems():
+    #         if localRate < 10: # if it is just 10kbps, let it run
+    #             localBudget = totalBudget
+    #         else:
+    #             localBudget = localRate / sumDemand * totalBudget
+    #         criterion = {'app':'trafclient', 'srcHost':hostId}
+    #         action = {'ratelimit':localBudget}
+    #         rule = [criterion, action]
+    #         ruleset.append(rule)
+    #         print 'hostId {0} budget {1}'.format(hostId, localBudget)
+    #     print 'Distributed Rate Limiting One Round'
+    # return ruleset
 
 def DebugPrint(x):
     for (hostID, timestamp, data) in x:

@@ -15,7 +15,7 @@ def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
          Where([('app', '==', 'trafclient')]) *
-         Every(2000))
+         Every(1000))
     return q
 
 ''' tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput) '''
@@ -68,12 +68,14 @@ def EWMA(newData, lastData):
     return [newHostId, newTime, newRate]
 
 def MonitorThroughput(x):
+    outputFile = open('logs/throughput.txt', 'a')
     sumRate = []
     for (hostId, timestamp, rate) in x:
         sumRate.append(rate)
-        print 'hostID:{0}. timestamp:{1}. data:{2}'.format(hostId, timestamp, rate)
-    print 'aggregate {0}'.format(sum(sumRate))
-    print '******************************************'
+        print >> outputFile, 'host {0} {1} {2}'.format(hostId, timestamp, rate)
+    print >> outputFile, 'aggregate {0}'.format(sum(sumRate))
+    print >> outputFile, 'done'
+    outputFile.close()
 
 def main():
     return (query() >>

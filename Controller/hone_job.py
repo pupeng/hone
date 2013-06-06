@@ -94,7 +94,7 @@ class HoneJob:
         LogUtil.DebugLog('tree', self.treeFormatter.displayTree())
 
     def updateControlAction(self, newAction):
-        LogUtil.DebugLog('control', self.exeFlow.hostSourceExePlan)
+        # LogUtil.DebugLog('control', self.exeFlow.hostSourceExePlan)
         oldAction = self.exeFlow.hostSourceExePlan[1:]
         if str(newAction) != str(oldAction):
             for hostId in self.hosts.iterkeys():

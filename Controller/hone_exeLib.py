@@ -76,7 +76,7 @@ def Print(g=None,s=sys.stdout):
 # Install_listener : Policy
 def RegisterPolicy(f=None):
     def push(rs):
-        LogUtil.DebugLog('control', 'register rules: ', rs)
+        # LogUtil.DebugLog('control', 'register rules: ', rs)
         if not rs:
             return
         for rule in rs:

@@ -175,7 +175,7 @@ def ToCtrl(jobID, flowId):
             agentManager.evalTimestamp += '#StartToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
             agentManager.sndToCtrl.sendMessage(message)
             agentManager.evalTimestamp += '#DoneToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobID, flowId, sequence)
-            LogUtil.DebugLog('lib', 'in ToCtrl', jobID, flowId, sequence)
+            # LogUtil.DebugLog('lib', 'in ToCtrl', jobID, flowId, sequence)
     return freLib.FListener(push=push)
 
 def ToMiddle(jobId, flowId):
@@ -205,13 +205,13 @@ def ToMiddle(jobId, flowId):
                 agentManager.evalTimestamp += '#DoneToMiddle${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
                 sndTimestamp += '#End${0:6f}'.format(time.time())
                 LogUtil.EvalLog('ToMiddleOneRound', sndTimestamp)
-                LogUtil.DebugLog('lib', 'in ToMiddle', jobId, flowId, sequence, middleAddress)
+                # LogUtil.DebugLog('lib', 'in ToMiddle', jobId, flowId, sequence, middleAddress)
     return freLib.FListener(push=push)
 
 # rate limit
 def RateLimit(jobId, defaultRate):
     def push(x):
-        LogUtil.DebugLog('control', 'jobId {0}'.format(jobId), 'defaultRate {0}'.format(defaultRate), 'rules:', x)
+        # LogUtil.DebugLog('control', 'jobId {0}'.format(jobId), 'defaultRate {0}'.format(defaultRate), 'rules:', x)
         if jobId not in agentRateLimitModule.JobAndQueueRate:
             agentRateLimitModule.AddRateLimitJob(jobId, defaultRate)
         for conn in x:

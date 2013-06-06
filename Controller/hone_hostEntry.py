@@ -24,9 +24,9 @@ class HostEntry:
     def addJob(self, jobId):
         if jobId not in self.jobs:
             self.jobs.append(jobId)
-            LogUtil.DebugLog('exeGen', 'HostEntry addJob. hostId: {0}. jobId: {1}.'.format(self.hostId, jobId))
+            # LogUtil.DebugLog('exeGen', 'HostEntry addJob. hostId: {0}. jobId: {1}.'.format(self.hostId, jobId))
 
     def removeJob(self, jobId):
         if jobId in self.jobs:
             self.jobs.remove(jobId)
-            LogUtil.DebugLog('exeGen', 'HostEntry removeJob. hostId: {0}. jobId: {1}'.format(self.hostId, jobId))
+            # LogUtil.DebugLog('exeGen', 'HostEntry removeJob. hostId: {0}. jobId: {1}'.format(self.hostId, jobId))

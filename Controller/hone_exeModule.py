@@ -91,14 +91,14 @@ def buildExePlan(jobId, progName, controllerExePlan):
         e = hone_exeLib.Subscribe(jobId, flowExePlan.flowId)
         for operator in flowExePlan.exePlan:
             ef = processOp(operator, progName, jobId, e)
-            LogUtil.DebugLog('exeMod', 'process one operator: {0}. flowId: {1}. ef type: {2}'.format(
-                operator, flowExePlan.flowId, ef.__class__.__name__))
+            # LogUtil.DebugLog('exeMod', 'process one operator: {0}. flowId: {1}. ef type: {2}'.format(
+            #     operator, flowExePlan.flowId, ef.__class__.__name__))
             if (ef.__class__.__name__ == 'FEvent'):
                 e = ef
             else:
                 e = e >> ef
         jobEvent[jobId][flowExePlan.flowId] = e
-    LogUtil.DebugLog('exeMod', 'check jobEvent and jobGoFun: \n{0}\n{1}'.format(jobEvent, jobGoFun))
+    # LogUtil.DebugLog('exeMod', 'check jobEvent and jobGoFun: \n{0}\n{1}'.format(jobEvent, jobGoFun))
     #EvalLog('{0:6f},44,done building exe plan for job {1}'.format(time.time(), jobId))
 
 def processOp(operator, progName, jobID, event):

@@ -23,6 +23,7 @@ def main():
                 results['agg'] = []
             results['agg'].append([timestamp, rate])
     count = 0
+    startTimestamp = float(results['agg'][0][0]) - 10.0
     for key, value in results.iteritems():
         if key == 'agg':
             filename = 'drldata/agg.txt'
@@ -31,7 +32,7 @@ def main():
             count += 1
         outputFile = open(filename, 'w')
         for timestamp, rate in value:
-            print >> outputFile, '{0} {1}'.format(timestamp, rate)
+            print >> outputFile, '{0} {1}'.format(float(timestamp) - startTimestamp, float(rate) / 1000.0)
         outputFile.close()
 
 if __name__ == '__main__':

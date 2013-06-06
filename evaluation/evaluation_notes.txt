@@ -104,8 +104,10 @@ Launch parser to check the results.
 
 Exp DRL
 distributed rate limiting
-start trafclient on 10 hosts, each by 10 seconds
+start trafclient on 5 hosts, each by 10 seconds
 equally allocate bandwidth among active hosts
+
+1 trafclient connection, 1K bytes packet = ~25Mbps demand
 
 Remember:
 change server IP in runTrafclient

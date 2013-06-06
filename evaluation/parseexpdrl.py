@@ -28,7 +28,17 @@ def main():
             if 'agg' not in results:
                 results['agg'] = []
             results['agg'].append([timestamp, rate])
-    print results
+    count = 0
+    for key, value in results.iteritems():
+        if key == 'agg':
+            filename = 'drldata/agg.txt'
+        else:
+            filename = 'drldata/host-{0}.txt'.format(count)
+            count += 1
+        outputFile = open(filename, 'w')
+        for timestamp, rate in value:
+            print >> outputFile, '{0} {1}'.format(timestamp, rate)
+        outputFile.close()
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,3 @@
+#! /bin/bash
+
+trafserver -sn basic -rn ack tcp 9001

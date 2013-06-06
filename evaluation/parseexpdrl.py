@@ -4,12 +4,6 @@
 
 # parse drl result for plotting
 
-import sys
-import math
-import re
-import os
-import json
-
 def main():
     logFile = open('drldata/drl_throughput.txt', 'r')
     logs = logFile.read().split('\n')

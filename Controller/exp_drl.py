@@ -12,7 +12,7 @@ import time
 _DRL_DEBUG_ = True
 
 K = 0.2
-totalBudget = 10000 # Kbps
+totalBudget = 100000 # Kbps
 
 def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *

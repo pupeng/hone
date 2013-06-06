@@ -17,7 +17,7 @@ totalBudget = 10000 # Kbps
 def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
-         Where([('app', '==', 'test_prog')]) *
+         Where([('app', '==', 'trafclient')]) *
          Every(2000))
     return q
 
@@ -105,7 +105,7 @@ def GenRateLimitPolicy(x):
                 localBudget = totalBudget
             else:
                 localBudget = localRate / sumDemand * totalBudget
-            criterion = {'app':'test_prog', 'srcHost':hostId}
+            criterion = {'app':'trafclient', 'srcHost':hostId}
             action = {'ratelimit':localBudget}
             rule = [criterion, action]
             ruleset.append(rule)

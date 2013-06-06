@@ -18,7 +18,7 @@ def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
          Where([('app', '==', 'trafclient')]) *
-         Every(2000))
+         Every(1000))
     return q
 
 ''' tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput) '''

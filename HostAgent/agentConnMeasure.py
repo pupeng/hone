@@ -316,36 +316,37 @@ def connMeasureRun(jobFlowToM, nothing):
         #EvalLog('{0:6f},115,start job data {1}'.format(time.time(), jobFlow))
         measureResults = []
         sourceJob = agentManager.sourceJobTable[jobFlow]
-        for sockfd in agentManager.sourceJobSkList[jobFlow]:
-            if (sockfd in skSnapshot):
-                if sockfd not in sockStats:
-                    sockStats[sockfd] = {}
-                    data = skSnapshot[sockfd].split('#')
-                    agentManager.socketTable[sockfd].setCid(int(data[0]))
-                    for i in range(len(statsToMPy)):
-                        if statsToMPy[i] in web10g_string_type_var:
-                            sockStats[sockfd][statsToMPy[i]] = str(data[i+1])
+        if jobFlow in agentManager.sourceJobSkList:
+            for sockfd in agentManager.sourceJobSkList[jobFlow]:
+                if (sockfd in skSnapshot):
+                    if sockfd not in sockStats:
+                        sockStats[sockfd] = {}
+                        data = skSnapshot[sockfd].split('#')
+                        agentManager.socketTable[sockfd].setCid(int(data[0]))
+                        for i in range(len(statsToMPy)):
+                            if statsToMPy[i] in web10g_string_type_var:
+                                sockStats[sockfd][statsToMPy[i]] = str(data[i+1])
+                            else:
+                                sockStats[sockfd][statsToMPy[i]] = int(data[i+1])
+                    #debugLog('conn', 'got snapshot: ', sockfd, \
+                    #                 'current time:', time.time(), \
+                    #                 'snapshot time:', (snapshot['StartTimeSecs']+snapshot['ElapsedSecs']+float(snapshot['StartTimeMicroSecs'])/1000000.0+float(snapshot['ElapsedMicroSecs'])/1000000.0))
+                    result = []
+                    for name in sourceJob.measureStats:
+                        if name == 'BytesWritten':
+                            result.append(agentManager.socketTable[sockfd].bytesWritten)
+                        elif name == 'app':
+                            result.append(agentManager.socketTable[sockfd].app)
+                        elif name == 'srcHost':
+                            result.append(str(get_mac()))
+                        elif name == 'CurrentTime':
+                            result.append(time.time())
+                        #elif name == 'all':
+                        #    for value in snapshot.itervalues():
+                        #        result.append(value)
                         else:
-                            sockStats[sockfd][statsToMPy[i]] = int(data[i+1])
-                #debugLog('conn', 'got snapshot: ', sockfd, \
-                #                 'current time:', time.time(), \
-                #                 'snapshot time:', (snapshot['StartTimeSecs']+snapshot['ElapsedSecs']+float(snapshot['StartTimeMicroSecs'])/1000000.0+float(snapshot['ElapsedMicroSecs'])/1000000.0))
-                result = []
-                for name in sourceJob.measureStats:
-                    if name == 'BytesWritten':
-                        result.append(agentManager.socketTable[sockfd].bytesWritten)
-                    elif name == 'app':
-                        result.append(agentManager.socketTable[sockfd].app)
-                    elif name == 'srcHost':
-                        result.append(str(get_mac()))
-                    elif name == 'CurrentTime':
-                        result.append(time.time())
-                    #elif name == 'all':
-                    #    for value in snapshot.itervalues():
-                    #        result.append(value)
-                    else:
-                        result.append(sockStats[sockfd][web10g_var_location[web10g_types_dict[name]]])
-                measureResults.append(result)
+                            result.append(sockStats[sockfd][web10g_var_location[web10g_types_dict[name]]])
+                    measureResults.append(result)
         #EvalLog('{0:6f},116,done job data {1}'.format(time.time(), jobFlow))
         if measureResults:
             (jobId, flowId) = decomposeKey(jobFlow)

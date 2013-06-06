@@ -11,6 +11,9 @@
 internalIP=10.166.2.76
 echo "Controller internal IP " $internalIP
 
+cd $HOME/hone/HostAgent/kpsimple
+sudo insmod kpsimple.ko
+
 cd $HOME/hone/HostAgent
 rm logs/*
 python agentRun.py $internalIP 8866

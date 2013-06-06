@@ -11,4 +11,4 @@
 internalIP=10.147.159.155
 echo "Server internal IP " $internalIP
 
-trafclient -cn fixed -cmax 10 -n 10 -da $internalIP -dp 9001 -dn tcp -pn fixed -pmax 10000
+trafclient -cn fixed -cmax 1 -n 1 -da $internalIP -dp 9001 -dn tcp -pn fixed -pmax 1000

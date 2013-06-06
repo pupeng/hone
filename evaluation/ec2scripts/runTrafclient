@@ -4,13 +4,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the COPYRIGHT file.
 
-#instance=`ec2-describe-instances | grep hone-controller | cut -f3`
-#echo "Controller Instance is " $instance
+#instance=`ec2-describe-instances | grep $1 | cut -f3`
+#echo "Server Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.166.2.76
-echo "Controller internal IP " $internalIP
+internalIP=10.147.159.155
+echo "Server internal IP " $internalIP
 
-cd $HOME/hone/HostAgent
-rm logs/*
-python agentRun.py $internalIP 8866
+trafclient -cn fixed -cmax 10 -n 10 -da $internalIP -dp 9001 -dn tcp -pn fixed -pmax 10000

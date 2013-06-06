@@ -112,14 +112,14 @@ def cmd_add_qdisc(interface):
     LogUtil.DebugLog('control', 'done cmd_add_gdisc', command)
 
 def cmd_add_root(interface):
-    command = "tc class add dev {0} parent 1: classid 1:fffe htb rate 1000mbps".format(interface)
+    command = "tc class add dev {0} parent 1: classid 1:fffe htb rate 1000mbit".format(interface)
     call(command, shell=True, executable='/bin/bash')
     LogUtil.DebugLog('control', 'done cmd_add_root', command)
 
 def cmd_add_queue(interface, queueId, rate):
-    if rate < 100: # if < 100kbps, just let it go with 100kbps
+    if rate < 100: # if < 100K bits per second, just let it go with 100Kbps
         rate = 100
-    command1 = "tc class add dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate)
+    command1 = "tc class add dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbit".format(interface, queueId, rate)
     command2 = "tc filter add dev {0} protocol ip parent 1: prio 0 handle {1} fw flowid 1:{1}".format(interface, queueId)
     call(command1, shell=True, executable='/bin/bash')
     call(command2, shell=True, executable='/bin/bash')
@@ -128,7 +128,7 @@ def cmd_add_queue(interface, queueId, rate):
 def cmd_modify_queue(interface, queueId, rate):
     if rate < 100:
         rate = 100
-    command = "tc class change dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbps".format(interface, queueId, rate)
+    command = "tc class change dev {0} parent 1:fffe classid 1:{1} htb rate {2}kbit".format(interface, queueId, rate)
     call(command, shell=True, executable='/bin/bash')
     LogUtil.DebugLog('control', 'done cmd_modify_queue', command)
 

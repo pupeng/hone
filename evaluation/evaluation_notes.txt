@@ -98,3 +98,20 @@ controller runs exp_evalCpuMemTp to log the cpu and memory usages
 Step3:
 On controller, move data files to corresponding folders.
 Launch parser to check the results. 
+
+
+
+
+Exp DRL
+distributed rate limiting
+start trafclient on 10 hosts, each by 10 seconds
+equally allocate bandwidth among active hosts
+
+Remember:
+change server IP in runTrafclient
+start trafserver on server
+everything in Exp5 'Remember'
+
+start agent, launch trafclient traffic on each host, one by one every
+10 seconds.
+(startExpDrl.py)

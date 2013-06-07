@@ -6,31 +6,29 @@
 # Debug: check the correctness of timestamp
 
 from hone_lib import *
-from math import *
-import time, sys
-
-_CTS_DEBUG_ = True
 
 def query():
-    q = (Select(['app','timestamp']) *
+    q = (Select(['app','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
         From('HostConnection') *
         Where([('app','==','test_prog')]) *
-        Every(1))
+        Every(1000))
     return q
 
-def processData(x):
-    if x:
-        return [len(x), x[0][1]]
-    else:
-        return None
+def ProcessData(table):
+    if table:
+        (app, startSecs, elapsedSecs, startMicrosecs, elapsedMicrosecs) = table[0]
+        timestamp = startSecs + elapsedSecs+startMicrosecs / 1000000.0 + elapsedMicrosecs / 1000000.0
+        return [len(table), timestamp]
 
-def myPrint(x):
-    (hostID, seq, data) = x
-    [number, ts] = data
-    print 'hostID:'+hostID+' seq:'+str(seq)+' number:'+str(number)+' timestamp:'+str(ts)
+def DebugPrint(x):
+    [numberOfConns, timestamp] = x
+    print 'number of conns:{0} timestamp:{1}'.format(numberOfConns, timestamp)
 
 def main():
-    return (query()>>MapSet(processData)>>MergeHosts()>>Print(myPrint))
+    return (query()>>
+            MapStreamSet(ProcessData) >>
+            Print(DebugPrint))
+
             
 
 

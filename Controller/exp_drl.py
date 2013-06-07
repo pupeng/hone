@@ -9,8 +9,6 @@ from hone_lib import *
 from math import *
 import time
 
-_DRL_DEBUG_ = False
-
 K = 0.2
 totalBudget = 100000 # Kbps
 
@@ -21,18 +19,9 @@ def query():
          Every(1000))
     return q
 
-''' tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput) '''
+# tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput)
 def CalThroughput(newData, oldData):
     (hostId, tpData) = oldData
-    if _DRL_DEBUG_:
-        fileOutput = open('tmp_drl.log', 'a')
-        print >>fileOutput, 'CalThroughput'
-        print >>fileOutput, 'before start'
-        print >>fileOutput, 'newData'
-        print >>fileOutput, newData
-        print >>fileOutput, 'tpData'
-        print >>fileOutput, tpData
-        fileOutput.close()
     openConn = []
     for conn in newData:
         [app, newHostId, srcIP, srcPort, dstIP, dstPort, newAccumBS, startSecs, elapsedSecs, startMicrosecs, elapsedMicrosecs] = conn
@@ -69,25 +58,18 @@ def LocalSum(data):
     if avgTS:
         return [hostId, sum(avgTS)/len(avgTS), sum(sumTP) * 8.0 / 1000.0] # now throughput change to Kbps
 
+# exponentially weighted moving average
 def EWMA(newData, lastData):
-    if _DRL_DEBUG_:
-        fileOutput = open('tmp_drl.log', 'a')
-        print >>fileOutput,  'in ewma'
-        print >>fileOutput, 'newData'
-        print >>fileOutput,  newData
-        print >>fileOutput, 'lastData'
-        print >>fileOutput,  lastData
-        fileOutput.close()
     (newHostId, newTime, newTP) = newData
     (lastHostId, lastTime, lastRate) = lastData
     timeDiff = newTime - lastTime
     if timeDiff > 0:
         newRate = (1.0 - exp(-timeDiff / K)) * newTP + exp(-timeDiff / K) * lastRate
-        if _DRL_DEBUG_:
-            fileOutput = open('tmp_drl.log', 'a')
-            print >>fileOutput, 'newRate'
-            print >>fileOutput,  newRate
-            fileOutput.close()
+        # if _DRL_DEBUG_:
+        #     fileOutput = open('tmp_drl.log', 'a')
+        #     print >>fileOutput, 'newRate'
+        #     print >>fileOutput,  newRate
+        #     fileOutput.close()
     else:
         newRate = 0.0
     return [newHostId, newTime, newRate]

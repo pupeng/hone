@@ -14,21 +14,22 @@ def query():
          Every(1000))
     return q
 
-def localSum(table):
+def LocalSum(table):
     table = map(lambda x: float(x[1]), table)
     print 'local sum'
     return sum(table)
 
-def agg(data):
-    print 'middle level {0}'.format(data)
-    return data
+def IntermediateSum(data):
+    print 'intermediate level {0}'.format(data)
+    return sum(data)
 
-def myPrint(data):
-    print 'global sum'
+def FinalSum(data):
+    print 'final level {0}'.format(data)
+    print 'sum: {0}'.format(sum(data))
 
 def main():
-    return (query() >> \
-            MapStreamSet(localSum) >> \
-            TreeMerge(agg) >> \
-            Print(myPrint))
+    return (query() >>
+            MapStreamSet(LocalSum) >>
+            TreeMerge(IntermediateSum) >>
+            MapStream(FinalSum))
 

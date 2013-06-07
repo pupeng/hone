@@ -10,9 +10,9 @@ import time
 from hone_lib import *
 
 def CpuMemQuery():
-    q = (Select(['app','cpu','memory'])*
-         From('AppStatus')*
-         Where([('app','==','python')])*
+    q = (Select(['app','cpu','memory']) *
+         From('AppStatus') *
+         Where([('app','==','python')]) *
          Every(1000))
     return q
 
@@ -31,9 +31,6 @@ def HostPrint(cpuMem):
     return cpuMem
 
 def main():
-    stream = (CpuMemQuery() >>
+    return (CpuMemQuery() >>
               MapStreamSet(SumCpuMem) >>
               MapStreamSet(HostPrint))
-              #MergeHosts() >>
-              #Print())
-    return stream

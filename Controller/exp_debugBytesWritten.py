@@ -6,26 +6,21 @@
 # Debug the measurement of number of bytes written
 
 from hone_lib import *
-from math import *
-import time, sys
 
-_DRL_DEBUG_ = True
-
-K = 0.2
 
 def query():
     q = (Select(['app','BytesSentOut','BytesWritten','SegmentsOut']) *
         From('HostConnection') *
         Where([('app','==','test_prog')]) *
-        Every(3))
+        Every(3000))
     return q
 
-def checkPoint(x):
+def CheckPoint(x):
     for conn in x:
-        print 'BS:'+str(conn[1])+' BW:'+str(conn[2])+' SO:'+str(conn[3])
-    return None
+        print 'Application {0} BytesSent: {1} BytesWritten: {2} SegmentsOut: {3}'.format(conn[0], conn[1], conn[2], conn[3])
 
 def main():
-    return (query()>>MapSet(checkPoint))
+    return (query()>>
+            MapStreamSet(CheckPoint))
 
 

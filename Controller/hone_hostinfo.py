@@ -44,35 +44,32 @@ def main():
             MergeHosts() >>
             MapStream(noOp))
     
-if __name__ == '__main__':
-    from cStringIO import StringIO
-    import cPickle as pickle
-    from hone_message import *
-    import sys
-    dataFlow = main()
-    dataFlow.printDataFlow()
-    changeList = ChangeList()
-    changeList.hostId = 12345
-    changeList.add = [1, 2, 3]
-    changeList.delete = [4, 5]
-    message = HoneMessage()
-    message.messageType = HoneMessageType_StatsIn
-    message.hostId = changeList.hostId
-    message.jobId = 6789
-    message.flowId = 1
-    message.sequence = 0
-    message.content = changeList
-    buf = StringIO()
-    pickle.dump(message, buf, pickle.HIGHEST_PROTOCOL)
-    wire = buf.getvalue()
-    buf.close()
-    print 'old', message
-    print 'wire', len(wire), sys.getsizeof(wire)
-    buf2 = StringIO(wire)
-    message2 = pickle.load(buf2)
-    buf2.close()
-    print 'new', message2
-    print message2.content.add
-
-
-    
+# if __name__ == '__main__':
+#     from cStringIO import StringIO
+#     import cPickle as pickle
+#     from hone_message import *
+#     import sys
+#     dataFlow = main()
+#     dataFlow.printDataFlow()
+#     changeList = ChangeList()
+#     changeList.hostId = 12345
+#     changeList.add = [1, 2, 3]
+#     changeList.delete = [4, 5]
+#     message = HoneMessage()
+#     message.messageType = HoneMessageType_StatsIn
+#     message.hostId = changeList.hostId
+#     message.jobId = 6789
+#     message.flowId = 1
+#     message.sequence = 0
+#     message.content = changeList
+#     buf = StringIO()
+#     pickle.dump(message, buf, pickle.HIGHEST_PROTOCOL)
+#     wire = buf.getvalue()
+#     buf.close()
+#     print 'old', message
+#     print 'wire', len(wire), sys.getsizeof(wire)
+#     buf2 = StringIO(wire)
+#     message2 = pickle.load(buf2)
+#     buf2.close()
+#     print 'new', message2
+#     print message2.content.add

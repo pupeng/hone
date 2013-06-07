@@ -11,15 +11,18 @@ from hone_lib import *
 def query():
     q = (Select(['app', 'srcIP', 'srcPort', 'dstIP', 'dstPort', 'BytesWritten', 'BytesSentOut']) *
          From('HostConnection') *
-         #Where([('app', '==', 'test_prog')]) *
+         Where([('app', '==', 'test_prog')]) *
          Every(1000))
     return q
 
-def noOp(x):
+def PrintLen(x):
     print len(x)
     if x:
         print x[0]
     return x
 
 def main():
-    return (query()>>MapStreamSet(noOp))
+    return (query() >>
+            MapStreamSet(PrintLen) >>
+            MergeHosts() >>
+            MapStream(PrintLen))

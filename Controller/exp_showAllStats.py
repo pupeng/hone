@@ -8,8 +8,8 @@
 from hone_lib import *
 
 def query1():
-    q = (Select(['hostId','app','cpu','memory'])*
-         From('AppStatus')*
+    q = (Select(['hostId','app','cpu','memory']) *
+         From('AppStatus') *
          Every(1000))
     return q
 
@@ -150,8 +150,8 @@ def query3():
 
 
 def GetLen(x):
-    print 'Data length: {0}'.format(len(x))
     if x:
+        print 'Number of Columns: {0}'.format(len(x[0]))
         print x[0]
     return x
 

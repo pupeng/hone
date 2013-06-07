@@ -3,30 +3,27 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# evaluate host-controller communication overhead
+# evaluate host-controller communication overhead (i.e., used bandwidth)
 
 from hone_lib import *
 
 def query():
-    q = (Select(['app','srcIP','srcPort','dstIP','dstPort','timestamp','BytesSentOut']) *
-        From('HostConnection') *
-        Where([('srcPort','==','8866')]) *
-        Every(1))
+    q = (Select(['app','srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
+         From('HostConnection') *
+         Where([('dstPort','==','8866')]) *
+         Every(1000))
     return q
 
-def calThroughput(newData, tpData):
+# tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput)
+def CalThroughput(newData, tpData):
     openConn = []
     for conn in newData:
-        srcIP = conn[1]
-        srcPort = conn[2]
-        dstIP = conn[3]
-        dstPort = conn[4]
-        newTS = conn[5]
-        newAccumBS = conn[6]
+        [app, srcIP, srcPort, dstIP, dstPort, newAccumBS, startSecs, elapsedSecs, startMicrosecs, elapsedMicrosecs] = conn
+        newTS = startSecs + elapsedSecs+startMicrosecs / 1000000.0 + elapsedMicrosecs / 1000000.0
         thetuple = (srcIP,srcPort,dstIP,dstPort)
-        if tpData.has_key(thetuple):
+        if thetuple in tpData:
             (lastTS, lastAccumBS, lastTP) = tpData[thetuple]
-            if newTS>lastTS:
+            if newTS > lastTS:
                 newTP = float((newAccumBS-lastAccumBS))/(newTS-lastTS)
             else:
                 newTP = 0
@@ -42,7 +39,7 @@ def calThroughput(newData, tpData):
         del tpData[key]
     return tpData
 
-def localSum(x):
+def LocalSum(x):
     sumTP = []
     avgTS = []
     for (ts, accumBS, tp) in x.itervalues():
@@ -51,21 +48,19 @@ def localSum(x):
     if avgTS:
         return [sum(avgTS)/len(avgTS), sum(sumTP)]
 
-def myPrint(x):
-    volOut = open('eval_ctrl_vol.txt', 'a')
-    (hostID, seq, [ts, tp]) = x
-    ct = time.time()
-    print >>volOut, str(seq)+' '+str(tp)+' '+str(ct)+' '+str(ts)
-    volOut.close()
-    print 'seq:'+str(seq)+',tp:'+str(tp)+',ct:'+str(ct)+',ts:'+str(ts)
+def PrintHelper(x):
+    outputFile = open('eval_ctrl_vol.txt', 'a')
+    for (timestamp, rate) in x:
+        print >> outputFile, '{0} {1}'.format(timestamp, rate)
+    print >> outputFile, 'one round done.'
+    outputFile.close()
 
 def main():
-    return (query()>>
-            ReduceSet(calThroughput, {})>>
-            MapSet(localSum)>>
-            MergeHosts()>>
-            Print(myPrint))
-
+    return (query() >>
+            ReduceStreamSet(CalThroughput, {}) >>
+            MapStreamSet(LocalSum) >>
+            MergeHosts() >>
+            Print(PrintHelper))
 
 
 #

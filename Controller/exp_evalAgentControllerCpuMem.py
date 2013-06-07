@@ -3,7 +3,7 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# measure cpu, memory, and throughput
+# measure cpu, memory of HONE agent and HONE controller
 
 from hone_lib import *
 from subprocess import check_output

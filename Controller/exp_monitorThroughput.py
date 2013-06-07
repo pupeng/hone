@@ -18,7 +18,7 @@ def query():
          Every(1000))
     return q
 
-''' tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput) '''
+# tpData[(srcIP,srcPort,dstIP,dstPort)] = (lastTimestamp, lastAccumulativeBytesSent, lastThroughput)
 def CalThroughput(newData, oldData):
     (hostId, tpData) = oldData
     openConn = []
@@ -57,6 +57,7 @@ def LocalSum(data):
     if avgTS:
         return [hostId, sum(avgTS)/len(avgTS), sum(sumTP) * 8.0 / 1000.0] # now throughput change to Kbps
 
+# exponentially weighted moving average
 def EWMA(newData, lastData):
     (newHostId, newTime, newTP) = newData
     (lastHostId, lastTime, lastRate) = lastData

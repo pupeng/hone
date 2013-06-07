@@ -3,7 +3,7 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# Sum throughputs of iperf across hosts
+# Sum throughputs of an application across hosts
 
 from hone_lib import *
 from subprocess import check_output

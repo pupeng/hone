@@ -3,7 +3,7 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# Calculate cpu and memory usage of HONE agent
+# Calculate cpu and memory usage of an application (in this case, python)
 
 import time
 
@@ -25,7 +25,7 @@ def SumCpuMem(table):
     return (sum(cpuSum), sum(memSum))
 
 def HostPrint(cpuMem):
-    cpuMemOutput = open('logs/agentCpuMem.txt', 'a')
+    cpuMemOutput = open('logs/applicationCpuMem.txt', 'a')
     print >>cpuMemOutput, "{0:6f} {1} {2}".format(time.time(), cpuMem[0], cpuMem[1])
     cpuMemOutput.close()
     return cpuMem

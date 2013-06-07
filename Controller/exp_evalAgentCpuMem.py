@@ -32,5 +32,5 @@ def HostPrint(cpuMem):
 
 def main():
     return (CpuMemQuery() >>
-              MapStreamSet(SumCpuMem) >>
-              MapStreamSet(HostPrint))
+            MapStreamSet(SumCpuMem) >>
+            MapStreamSet(HostPrint))

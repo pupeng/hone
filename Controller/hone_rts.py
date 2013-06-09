@@ -177,7 +177,8 @@ def GetControllerLocalIP():
     return s.getsockname()[0]
 
 # key: hostId, value: HostEntry
-HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP())}
+HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP()),
+              'network'   : HostEntry('network', '127.0.0.1')}
 
 # key: jobId, value: HoneJob
 _jobExecution = {}
@@ -215,6 +216,7 @@ def RtsRun(mgmtProg):
     except KeyboardInterrupt:
         LogUtil.DebugLog('global', 'catch keyboard keyboard interrupt')
     finally:
+        netModuleProcess.stop()
         LogUtil.OutputEvalLog()
         print 'Exit from hone_rts'
 

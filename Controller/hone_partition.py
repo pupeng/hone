@@ -26,6 +26,7 @@ class HonePartitionedFlow:
                           'dstIP': []}
         self.flowToCtrl= []
         self.flowToMiddle = []
+        self.flowFromNet = []
         self.minQueryPeriod= None
         self.addExePlan(honeDataFlow)
         self.debug()
@@ -102,6 +103,7 @@ class HonePartitionedFlow:
                     hostMiddle = [flow[numOp], ['ToUpperLevel']]
                     controller = flow[numOp : ]
         elif (tableName == 'LinkStatus') or (tableName == 'SwitchStatus'):
+            self.flowFromNet.append(flowId)
             network += [flow[0], ['NetworkToController']]
             controller = flow[1:]
         else:

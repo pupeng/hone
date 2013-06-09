@@ -24,7 +24,7 @@ class LogUtil:
     _CONTROL_DEBUG_ = False
     _EVALUATION_    = False
     _TREE_FORMATION_ = True
-    _NETWORK_DEBUG_ = True
+    _NETWORK_DEBUG_ = False
 
     LoggingLock = multiprocessing.Lock()
 
@@ -79,3 +79,10 @@ class LogUtil:
             print >>output, data
         output.close()
         LogUtil.EvalData = []
+
+def ComposeKey(jobId, flowId):
+    return '{0}@{1}'.format(jobId, flowId)
+
+def DecomposeKey(key):
+    [jobId, flowId] = key.split('@')
+    return (int(jobId), int(flowId))

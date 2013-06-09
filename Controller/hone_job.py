@@ -33,7 +33,7 @@ class HoneJob:
         # register controller-side and network-side execution
         exeModule.buildExePlan(self.jobId, self.exeFlow.progName, self.exeFlow.controllerExePlan)
         if self.exeFlow.networkExePlan:
-            item = (self.jobId, self.createTime, self.exeFlow.progName, self.exeFlow.networkExePlan)
+            item = ('NewNetworkJob', [self.jobId, self.createTime, self.exeFlow.progName, self.exeFlow.networkExePlan])
             rts.NetworkModuleQueue.put(item)
 
     def addHost(self, hostEntry):
@@ -89,6 +89,8 @@ class HoneJob:
     def GetExpectedNumOfHosts(self, flowId):
         if flowId in self.exeFlow.flowToCtrl:
             return len(self.hosts.keys())
+        elif flowId in self.exeFlow.flowFromNet:
+            return 1
         else:
             return len(self.aggStructRecord[len(self.aggStructRecord) - 1]['controller'])
 

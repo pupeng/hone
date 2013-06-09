@@ -10,11 +10,8 @@ from hone_lib import *
 def LinkQuery():
     return (Select(['BeginDevice','EndDevice']) *
             From('LinkStatus') *
-            Every(1000))
-
-def NoOp(x):
-    pass
+            Every(3000))
 
 def main():
     return (LinkQuery() >>
-            MapStream(NoOp))
+            Print())

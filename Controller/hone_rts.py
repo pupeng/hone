@@ -11,9 +11,11 @@
 ''' hone_rts is Singleton, implemented as Python module '''
 import socket
 import logging
+from multiprocessing import Queue
 
 import hone_recvModule as recvModule
 import hone_exeModule as exeModule
+import hone_netModule as netModule
 from hone_partition import *
 from hone_util import LogUtil
 from hone_hostEntry import *
@@ -183,6 +185,9 @@ _jobExecution = {}
 # key: str(criterion), value: jobId
 _controlJobIds = {}
 
+# queue to network module
+NetworkModuleQueue = None
+
 ''' function to start rts '''
 def RtsRun(mgmtProg):
     print 'HONE runtime system starts.'
@@ -190,6 +195,10 @@ def RtsRun(mgmtProg):
     LogUtil.EvalLog('rts', 'runtime system starts to run')
     mgmtDataflow = map(_executeMgmtMain, mgmtProg)
     LogUtil.DebugLog('global', 'mgmtDataFlow')
+    global NetworkModuleQueue
+    NetworkModuleQueue = Queue()
+    netModuleProcess = netModule.NetworkModuleProcess(NetworkModuleQueue)
+    netModuleProcess.start()
     for (eachProgName, eachFlow) in mgmtDataflow:
         LogUtil.DebugLog('global', eachFlow.printDataFlow())
         if eachProgName == HoneHostInfoJob:

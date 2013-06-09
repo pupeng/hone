@@ -32,7 +32,9 @@ class HoneJob:
         self.treeFormatter = TreeFormatterFactory.GetNewFormatter(self)
         # register controller-side and network-side execution
         exeModule.buildExePlan(self.jobId, self.exeFlow.progName, self.exeFlow.controllerExePlan)
-        # TODO netModule.build(...)
+        if self.exeFlow.networkExePlan:
+            item = (self.jobId, self.createTime, self.exeFlow.progName, self.exeFlow.networkExePlan)
+            rts.NetworkModuleQueue.put(item)
 
     def addHost(self, hostEntry):
         logging.info('job {0} add host {1}'.format(self.jobId, hostEntry.hostId))

@@ -1,0 +1,49 @@
+    INFO,06/10/2013 19:21:46.464,         hone_run,                 main, 24,Controller starts with the following programs: ['exp_monitorThroughput']
+    INFO,06/10/2013 19:21:46.479,         hone_rts,               RtsRun,198,hone rts starts
+    INFO,06/10/2013 19:21:46.486,   hone_netModule,                  run, 94,network module starts
+    INFO,06/10/2013 19:21:46.487,  hone_recvModule,        recvModuleRun, 79,hone recvModule starts
+    INFO,06/10/2013 19:22:15.992,         hone_rts,       handleHostJoin,240,new host joins with id 37383572791094 and address 10.147.159.54
+    INFO,06/10/2013 19:22:15.992,         hone_job,              addHost, 40,job 61 add host 37383572791094
+    INFO,06/10/2013 19:22:16.989,         hone_job,           addAggLink, 58,job 61 add a level-0 link from host 37383572791094 to host controller
+    INFO,06/10/2013 19:22:16.989,         hone_job,    _installMiddleExe,148,job 61 install level-0 middle exe on host controller
+    INFO,06/10/2013 19:22:16.990,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 1
+    INFO,06/10/2013 19:22:16.990,         hone_job,    _installSourceExe,121,job 61 install source exe on host 37383572791094 to parent controller
+    INFO,06/10/2013 19:22:17.055,         hone_rts,       handleHostJoin,240,new host joins with id 37383573997403 and address 10.166.7.91
+    INFO,06/10/2013 19:22:17.055,         hone_job,              addHost, 40,job 61 add host 37383573997403
+    INFO,06/10/2013 19:22:18.053,         hone_job,           addAggLink, 58,job 61 add a level-0 link from host 37383573997403 to host controller
+    INFO,06/10/2013 19:22:18.053,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 2
+    INFO,06/10/2013 19:22:18.053,         hone_job,    _installSourceExe,121,job 61 install source exe on host 37383573997403 to parent controller
+    INFO,06/10/2013 19:22:18.056,         hone_rts,       handleHostJoin,240,new host joins with id 37383573247406 and address 10.154.149.174
+    INFO,06/10/2013 19:22:18.056,         hone_job,              addHost, 40,job 61 add host 37383573247406
+    INFO,06/10/2013 19:22:19.053,         hone_job,           addAggLink, 58,job 61 add a level-0 link from host 37383573247406 to host controller
+    INFO,06/10/2013 19:22:19.054,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 3
+    INFO,06/10/2013 19:22:19.054,         hone_job,    _installSourceExe,121,job 61 install source exe on host 37383573247406 to parent controller
+    INFO,06/10/2013 19:22:19.056,         hone_rts,       handleHostJoin,240,new host joins with id 37383573995703 and address 10.166.0.183
+    INFO,06/10/2013 19:22:19.056,         hone_job,              addHost, 40,job 61 add host 37383573995703
+    INFO,06/10/2013 19:22:20.053,         hone_job,           addAggLink, 58,job 61 add a level-0 link from host 37383573995703 to host controller
+    INFO,06/10/2013 19:22:20.053,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 4
+    INFO,06/10/2013 19:22:20.053,         hone_job,    _installSourceExe,121,job 61 install source exe on host 37383573995703 to parent controller
+    INFO,06/10/2013 19:28:00.307,         hone_rts,      handleHostLeave,251,host 37383572791094 leaves
+    INFO,06/10/2013 19:28:00.307,         hone_job,           removeHost, 49,Remove host 37383572791094 from job 61
+ WARNING,06/10/2013 19:28:00.310,hone_aggTreeFormation,           removeLeaf,122,Node deletion in aggregation tree is not fully implemented yet!
+    INFO,06/10/2013 19:28:00.310,         hone_job,        removeAggLink, 80,job 61 remove a level-0 link from host 37383572791094 to host controller
+    INFO,06/10/2013 19:28:00.310,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 3
+    INFO,06/10/2013 19:28:00.946,         hone_rts,      handleHostLeave,251,host 37383573997403 leaves
+    INFO,06/10/2013 19:28:00.946,         hone_job,           removeHost, 49,Remove host 37383573997403 from job 61
+ WARNING,06/10/2013 19:28:00.946,hone_aggTreeFormation,           removeLeaf,122,Node deletion in aggregation tree is not fully implemented yet!
+    INFO,06/10/2013 19:28:00.946,         hone_job,        removeAggLink, 80,job 61 remove a level-0 link from host 37383573997403 to host controller
+    INFO,06/10/2013 19:28:00.946,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 2
+    INFO,06/10/2013 19:28:01.458,         hone_rts,      handleHostLeave,251,host 37383573995703 leaves
+    INFO,06/10/2013 19:28:01.458,         hone_job,           removeHost, 49,Remove host 37383573995703 from job 61
+ WARNING,06/10/2013 19:28:01.458,hone_aggTreeFormation,           removeLeaf,122,Node deletion in aggregation tree is not fully implemented yet!
+    INFO,06/10/2013 19:28:01.458,         hone_job,        removeAggLink, 80,job 61 remove a level-0 link from host 37383573995703 to host controller
+    INFO,06/10/2013 19:28:01.458,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 1
+    INFO,06/10/2013 19:28:01.773,         hone_rts,      handleHostLeave,251,host 37383573247406 leaves
+    INFO,06/10/2013 19:28:01.773,         hone_job,           removeHost, 49,Remove host 37383573247406 from job 61
+ WARNING,06/10/2013 19:28:01.773,hone_aggTreeFormation,           removeLeaf,122,Node deletion in aggregation tree is not fully implemented yet!
+    INFO,06/10/2013 19:28:01.773,         hone_job,        removeAggLink, 80,job 61 remove a level-0 link from host 37383573247406 to host controller
+    INFO,06/10/2013 19:28:01.773,         hone_job,_updateMiddleExe_NumOfChildren,163,job 61 update level-0 middle exe on host controller to update number of children to 0
+    INFO,06/10/2013 19:30:31.133,  hone_recvModule,        recvModuleRun, 89,Exit from hone_recvModule
+    INFO,06/10/2013 19:30:31.133,         hone_run,                 main, 34,Controller stops
+    INFO,06/10/2013 19:30:31.497,   hone_netModule,      scheduleLoopRun,152,schedule loop should stop now
+    INFO,06/10/2013 19:30:32.444,   hone_netModule,                  run,125,netModule exits

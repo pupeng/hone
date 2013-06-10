@@ -41,18 +41,19 @@ Steps:
 Exp4:
 End-to-end responsiveness test
 
-q1:
-start iperf server on one host.
-run iperf client with 100 connnections.
-controller run exp_exp4q1.py
+task1
+controller run exp_monitorThroughput.py
+run traffic client with 100 connnections.
 start agent
-last for 5m
+last for 3m
 
-Repeat with controller running exp_exp4q1.py and exp_evalCpuMemTp
+Repeat with controller running exp_monitorThroughput.py and exp_evalAgentControllerCpuMem.py
 Get CPU and memory usage on both agent and controller
 
-Don't overwrite the agent.log and controller.log
-
+task2:
+controller run exp_checkNetworkUtilization.py
+start Floodlight and connect to the network (switches)
+start hone
 
 Exp5:
 MergeHosts test

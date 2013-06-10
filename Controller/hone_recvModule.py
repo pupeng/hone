@@ -20,7 +20,7 @@ import logging
 _honeCtrlListeningPort = 8866
 
 class HostConnectionTypes:
-    AgentDirect, Relay = range(2)
+    AgentDirect, Relay, Network = range(3)
 
 class HoneCommProtocol(LineReceiver):
     ''' the protocol between controller and host agent '''
@@ -30,7 +30,8 @@ class HoneCommProtocol(LineReceiver):
         self.typeActions = {
             HoneMessageType_HostJoin : self.handleHostJoin,
             HoneMessageType_StatsIn  : self.handleStatsIn,
-            HoneMessageType_RelayStatsIn: self.handleRelayStatsIn}
+            HoneMessageType_RelayStatsIn: self.handleRelayStatsIn,
+            HoneMessageType_NetworkStatsIn: self.handleNetworkStatsIn}
     
     ''' receive a new line from agent. Data in the line is HoneMessage '''
     def lineReceived(self, line):
@@ -60,6 +61,10 @@ class HoneCommProtocol(LineReceiver):
     def handleRelayStatsIn(self, message):
         self.connectionType = HostConnectionTypes.Relay
         rts.evalTimestamp += '#NewStatsIn${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
+        rts.handleStatsIn(message)
+
+    def handleNetworkStatsIn(self, message):
+        self.connectionType = HostConnectionTypes.Network
         rts.handleStatsIn(message)
 
     def handleUnknownType(self, message):

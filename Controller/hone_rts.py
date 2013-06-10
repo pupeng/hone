@@ -11,9 +11,11 @@
 ''' hone_rts is Singleton, implemented as Python module '''
 import socket
 import logging
+from multiprocessing import Queue
 
 import hone_recvModule as recvModule
 import hone_exeModule as exeModule
+import hone_netModule as netModule
 from hone_partition import *
 from hone_util import LogUtil
 from hone_hostEntry import *
@@ -148,7 +150,10 @@ HoneTableTypes = {'HostConnection': ['app', 'srcHost', 'BytesWritten',
                                      'RcvNxt',
                                      'CurMSS'],
                   'LinkStatus': ['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort'],
-                  'SwitchStatus': ['switchId'],
+                  'SwitchStatus': ['switchId', 'portNumber', 'collisions', 'receiveBytes', 'receiveCRCErrors', 'receiveDropped', 'receiveErrors',
+                                   'receiveFrameErrors', 'receiveOverrunErrors', 'receivePackets', 'transmitBytes', 'transmitDropped',
+                                   'transmitErrors', 'transmitPackets', 'capacity', 'timestamp'],
+                  'HostRoute' : ['HostAId', 'HostBId', 'Path'],
                   'AppStatus': ['hostId', 'app', 'cpu', 'memory'],
                   'HostStatus': ['hostId', 'totalCPU', 'totalMemory']}
 
@@ -175,13 +180,17 @@ def GetControllerLocalIP():
     return s.getsockname()[0]
 
 # key: hostId, value: HostEntry
-HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP())}
+HostRecord = {'controller': HostEntry('controller', GetControllerLocalIP()),
+              'network'   : HostEntry('network', '127.0.0.1')}
 
 # key: jobId, value: HoneJob
 _jobExecution = {}
 
 # key: str(criterion), value: jobId
 _controlJobIds = {}
+
+# queue to network module
+NetworkModuleQueue = None
 
 ''' function to start rts '''
 def RtsRun(mgmtProg):
@@ -190,6 +199,10 @@ def RtsRun(mgmtProg):
     LogUtil.EvalLog('rts', 'runtime system starts to run')
     mgmtDataflow = map(_executeMgmtMain, mgmtProg)
     LogUtil.DebugLog('global', 'mgmtDataFlow')
+    global NetworkModuleQueue
+    NetworkModuleQueue = Queue()
+    netModuleProcess = netModule.NetworkModuleProcess(NetworkModuleQueue)
+    netModuleProcess.start()
     for (eachProgName, eachFlow) in mgmtDataflow:
         LogUtil.DebugLog('global', eachFlow.printDataFlow())
         if eachProgName == HoneHostInfoJob:
@@ -206,6 +219,7 @@ def RtsRun(mgmtProg):
     except KeyboardInterrupt:
         LogUtil.DebugLog('global', 'catch keyboard keyboard interrupt')
     finally:
+        netModuleProcess.stop()
         LogUtil.OutputEvalLog()
         print 'Exit from hone_rts'
 

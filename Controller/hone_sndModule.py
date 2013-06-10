@@ -12,6 +12,7 @@ import logging
 
 hostCommPort = 8877
 networkCommPort = 6633
+ctrlListenPort = 8866
 
 class HoneHostSndModule:
     def __init__(self):
@@ -42,6 +43,26 @@ class HoneHostSndModule:
         f.close()
         message.content = (fileName, fileContent)
         self.sendMessage(hostAddress, message)
+
+class NetToControllerSndSocket:
+    def __init__(self):
+        self.sock = None
+
+    def sendMessage(self, message):
+        src = StringIO()
+        pickle.dump(message, src, pickle.HIGHEST_PROTOCOL)
+        data = src.getvalue() + '\r\n'
+        src.close()
+        try:
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.sock.connect(('127.0.0.1', ctrlListenPort))
+            self.sock.sendall(data)
+        except socket.error, msg:
+            logging.error('Socket error {0}'.format(msg))
+        finally:
+            if self.sock:
+                self.sock.close()
+            self.sock = None
 
 if __name__ == '__main__':
     from hone_message import *

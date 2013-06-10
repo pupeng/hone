@@ -21,6 +21,7 @@ echo clock synchronization done
 echo HONE agent starts
 sleep 1m
 
+port=$1
 ./runTestProg server $port 100 &> $HOME/testProgCommand.log &
 echo connections start
 sleep 5m

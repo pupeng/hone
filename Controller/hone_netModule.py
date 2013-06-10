@@ -97,31 +97,33 @@ class NetworkModuleProcess(multiprocessing.Process):
         scheduleLoop = Timer(minRunInterval, scheduleLoopRun)
         scheduleLoop.start()
         time.sleep(minRunInterval / 2.0)
-        while not self.shouldStop():
-            currentTime = time.time()
-            while not self.networkJobQueue.empty():
-                (itemType, itemContent) = self.networkJobQueue.get_nowait()
-                if itemType == 'NewNetworkJob':
-                    (jobId, createTime, progName, exeFlow) = itemContent
-                    LogUtil.DebugLog('network', 'new network job', jobId, createTime, progName, exeFlow)
-                    for eachFlow in exeFlow:
-                        newJob = NetworkJob(jobId, eachFlow.flowId, progName, createTime, eachFlow.exePlan)
-                        registerNetworkJob(newJob)
-                        key = ComposeKey(newJob.jobId, newJob.flowId)
-                        if (len(netJobTable) == 0) or (minRunInterval > (newJob.period / 1000.0)):
-                            minRunInterval = newJob.period / 1000.0
-                        alreadyPassedPeriods = int(float(currentTime - newJob.createTime) / float(newJob.period / 1000.0))
-                        newJob.deadline = newJob.createTime + newJob.period / 1000.0 * (alreadyPassedPeriods + 1)
-                        newJob.lastSequence = alreadyPassedPeriods
-                        jobFlowQueue.push(newJob.deadline, key)
-                        netJobTable[key] = newJob
-            LogUtil.DebugLog('network', 'netModule is alive')
-            time.sleep(minRunInterval)
-        global stopSchedule
-        stopSchedule = True
-        time.sleep(minRunInterval * 2)
-        logging.info('netModule exits')
-        print 'network module exits'
+        try:
+            while not self.shouldStop():
+                currentTime = time.time()
+                while not self.networkJobQueue.empty():
+                    (itemType, itemContent) = self.networkJobQueue.get_nowait()
+                    if itemType == 'NewNetworkJob':
+                        (jobId, createTime, progName, exeFlow) = itemContent
+                        LogUtil.DebugLog('network', 'new network job', jobId, createTime, progName, exeFlow)
+                        for eachFlow in exeFlow:
+                            newJob = NetworkJob(jobId, eachFlow.flowId, progName, createTime, eachFlow.exePlan)
+                            registerNetworkJob(newJob)
+                            key = ComposeKey(newJob.jobId, newJob.flowId)
+                            if (len(netJobTable) == 0) or (minRunInterval > (newJob.period / 1000.0)):
+                                minRunInterval = newJob.period / 1000.0
+                            alreadyPassedPeriods = int(float(currentTime - newJob.createTime) / float(newJob.period / 1000.0))
+                            newJob.deadline = newJob.createTime + newJob.period / 1000.0 * (alreadyPassedPeriods + 1)
+                            newJob.lastSequence = alreadyPassedPeriods
+                            jobFlowQueue.push(newJob.deadline, key)
+                            netJobTable[key] = newJob
+                time.sleep(minRunInterval)
+        except KeyboardInterrupt:
+            global stopSchedule
+            stopSchedule = True
+            time.sleep(minRunInterval * 1.5)
+        finally:
+            logging.info('netModule exits')
+            print 'network module exits'
 
 def registerNetworkJob(netJob):
     (e, go) = freLib.RawEvent()

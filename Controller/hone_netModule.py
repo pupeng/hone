@@ -99,7 +99,7 @@ class NetworkModuleProcess(multiprocessing.Process):
         time.sleep(minRunInterval / 2.0)
         try:
             while not self.shouldStop():
-                currentTime = time.time()
+                # currentTime = time.time()
                 while not self.networkJobQueue.empty():
                     (itemType, itemContent) = self.networkJobQueue.get_nowait()
                     if itemType == 'NewNetworkJob':
@@ -111,7 +111,7 @@ class NetworkModuleProcess(multiprocessing.Process):
                             key = ComposeKey(newJob.jobId, newJob.flowId)
                             if (len(netJobTable) == 0) or (minRunInterval > (newJob.period / 1000.0)):
                                 minRunInterval = newJob.period / 1000.0
-                            alreadyPassedPeriods = int(float(currentTime - newJob.createTime) / float(newJob.period / 1000.0))
+                            alreadyPassedPeriods = int(float(time.time() - newJob.createTime) / float(newJob.period / 1000.0))
                             newJob.deadline = newJob.createTime + newJob.period / 1000.0 * (alreadyPassedPeriods + 1)
                             newJob.lastSequence = alreadyPassedPeriods
                             jobFlowQueue.push(newJob.deadline, key)
@@ -161,6 +161,7 @@ def scheduleLoopRun():
     else:
         nextLoop = Timer(minRunInterval, scheduleLoopRun)
     nextLoop.start()
+    LogUtil.DebugLog('network', 'delta is', delta)
     # schedule job to run
     jobFlowToRun = []
     linkJobFlow = []
@@ -177,6 +178,7 @@ def scheduleLoopRun():
         elif measureType == 'route':
             routeJobFlow.append(jobFlowKey)
         netJobTable[jobFlowKey].updateDeadline()
+        LogUtil.DebugLog('network', 'job {0} deadline'.format(jobFlowKey), netJobTable[jobFlowKey].deadline)
         jobFlowQueue.push(netJobTable[jobFlowKey].deadline, jobFlowKey)
     LogUtil.DebugLog('network', 'network job flow to run', jobFlowToRun)
     if linkJobFlow:
@@ -203,6 +205,7 @@ link_stats_location = {'BeginDevice' : 0,
                        'EndDevice' : 2,
                        'EndPort' : 3}
 def linkMeasureRun(jobFlowToM, nothing):
+    LogUtil.DebugLog('network', 'linkMeasureRun stats at ', time.time())
     links = GetLinks()
     for jobFlow in jobFlowToM:
         (jobId, flowId) = DecomposeKey(jobFlow)
@@ -218,20 +221,30 @@ def linkMeasureRun(jobFlowToM, nothing):
             goThread = Thread(target=runGo, args=(goFunc, results, jobId, flowId))
             goThread.daemon = True
             goThread.start()
+    LogUtil.DebugLog('network', 'linkMeasureRun stops at', time.time())
 
 def switchMeasureRun(jobFlowToM, nothing):
-    switchStats = GetSwitchStats('all', 'port')
+    LogUtil.DebugLog('network', 'switchMeasureRun starts at', time.time())
+    # measure
+    measureCapacity = False
+    for jobFlow in jobFlowToM:
+        if 'capacity' in netJobTable[jobFlow].measureStats:
+            measureCapacity = True
+            break
+    switches = GetSwitchProperties().keys()
+    switchStats = {}
+    capacity = {}
+    for switchId in switches:
+        switchStats[switchId] = GetSwitchStats(switchId, 'port')
+        capacity[switchId] = {}
+        if measureCapacity:
+            features = GetSwitchStats(switchId, 'features')
+            for portFeature in features['ports']:
+                capacity[switchId][portFeature['portNumber']] = DecodeCapacity(portFeature['currentFeatures'])
+    # distribute
     for jobFlow in jobFlowToM:
         (jobId, flowId) = DecomposeKey(jobFlow)
         netJob = netJobTable[jobFlow]
-        if 'capacity' in netJob.measureStats:
-            switchFeatures = GetSwitchStats('all', 'features')
-            capacity = {}
-            for switchId, features in switchFeatures.iteritems():
-                if switchId not in capacity:
-                    capacity[switchId] = {}
-                for portFeature in features['ports']:
-                    capacity[switchId][portFeature['portNumber']] = DecodeCapacity(portFeature['currentFeatures'])
         results = []
         for switchId, stats in switchStats.iteritems():
             for portStat in stats:
@@ -251,6 +264,7 @@ def switchMeasureRun(jobFlowToM, nothing):
             goThread = Thread(target=runGo, args=(goFunc, results, jobId, flowId))
             goThread.daemon = True
             goThread.start()
+    LogUtil.DebugLog('network', 'switchMeasureRun stops at', time.time())
 
 def routeMeasureRun(jobFlowToM, nothing):
     hosts = {}
@@ -364,22 +378,25 @@ def GetSwitchProperties():
     return switchProperties
 
 if __name__ == '__main__':
-    links = GetLinks()
-    hosts = filter(lambda x: x[1] is None, links)
-    print 'Links:'
-    for link in links:
-        print link
+    # links = GetLinks()
+    # hosts = filter(lambda x: x[1] is None, links)
+    # print 'Links:'
+    # for link in links:
+    #     print link
     # routes = GetRoute(hosts[0][2], hosts[0][3], hosts[2][2], hosts[2][3])
     # print 'Routes between {0} and {1}'.format(hosts[0][0], hosts[2][0])
     # print routes
     print 'switch stats:'
-    print GetSwitchStats('all', 'port')
+    print time.time()
+    print GetSwitchStats('00:00:00:00:00:00:00:01', 'port')
+    print time.time()
     print 'switch features'
+    print time.time()
     print GetSwitchStats('all', 'features')
-    # switches = GetSwitchProperties()
-    # for (key, value) in switches.iteritems():
-        # print key
-        # print value
+    print time.time()
+    switches = GetSwitchProperties()
+    print time.time()
+    print switches.keys()
 
 
 

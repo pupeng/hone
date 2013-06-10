@@ -14,7 +14,7 @@ fi
 #echo "Server Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.145.209.77
+internalIP=10.145.207.207
 echo "Server internal IP " $internalIP
 
 cd $HOME/hone/evaluation/test_prog

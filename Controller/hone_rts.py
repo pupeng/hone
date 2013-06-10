@@ -153,7 +153,7 @@ HoneTableTypes = {'HostConnection': ['app', 'srcHost', 'BytesWritten',
                   'SwitchStatus': ['switchId', 'portNumber', 'collisions', 'receiveBytes', 'receiveCRCErrors', 'receiveDropped', 'receiveErrors',
                                    'receiveFrameErrors', 'receiveOverrunErrors', 'receivePackets', 'transmitBytes', 'transmitDropped',
                                    'transmitErrors', 'transmitPackets', 'capacity', 'timestamp'],
-                  'HostRoute' : ['HostA', 'HostB', 'Path'],
+                  'HostRoute' : ['HostAId', 'HostBId', 'Path'],
                   'AppStatus': ['hostId', 'app', 'cpu', 'memory'],
                   'HostStatus': ['hostId', 'totalCPU', 'totalMemory']}
 

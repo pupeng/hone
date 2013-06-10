@@ -27,11 +27,10 @@ sleep 1m
 
 python startTrafclientToAll.py
 echo trafclient start
-sleep 80s
+sleep 3m
 
 killall trafclient
 killall python
-sleep 30s
 screen -S server -X quit
 echo HONE agent stops
 echo trafclient stops

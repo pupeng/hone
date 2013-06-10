@@ -3,35 +3,59 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# find the network topology
+# calculate the link utilization of current network
 
-import time
 from hone_lib import *
 
 def LinkQuery():
     return (Select(['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort']) *
             From('LinkStatus') *
-            Every(3000))
+            Every(5000))
 
-def FindRoutesForHostPair(links):
-    # remove the out-most list structure
-    links = links[0]
-    for link in links:
-        pass
-    hosts = filter(lambda  x: x[1] is None, links)
-
-
-def PrintHelper(x):
-    print time.time()
-    print x
-
-def SwitchQuery():
-    return (Select(['switchId', 'portNumber', 'capacity']) *
+def SwitchStatsQuery():
+    return (Select(['switchId', 'portNumber', 'transmitBytes', 'receiveBytes', 'capacity', 'timestamp']) *
             From('SwitchStatus') *
-            Every(3000))
+            Every(5000))
+
+def JoinTables(x):
+    (links, switchStats) = x
+    links = links[0]
+    switchStats = switchStats[0]
+    switchDataDict = {}
+    for (device, port, transmitBytes, receiveBytes, capacity, timestamp) in switchStats:
+        if device not in switchDataDict:
+            switchDataDict[device] = {}
+        switchDataDict[device][port] = [(transmitBytes + receiveBytes), capacity, timestamp]
+    results = {}
+    for (deviceA, portA, deviceB, portB) in links:
+        results[(deviceA, portA, deviceB, portB)] = switchDataDict[deviceB][portB]
+    return results
+
+def CalculateRate(newData, tpData):
+    for link, linkStats in newData.iteritems():
+        (newAccumBytes, capacity, newTimestamp) = linkStats
+        if link in tpData:
+            (lastTimestamp, lastAccumBytes, lastRate, _) = tpData[link]
+            if newTimestamp > lastTimestamp:
+                newRate = float((newAccumBytes - lastAccumBytes) / (newTimestamp - lastTimestamp))
+            else:
+                newRate = 0.0
+        else:
+            newRate = float(newAccumBytes) / float(newTimestamp)
+        tpData[link] = (newTimestamp, newAccumBytes, newRate, capacity)
+    return tpData
+
+def DisplayUtilization(x):
+    for link, linkRate in x.iteritems():
+        (_, _, rate, capacity) = linkRate
+        print 'link {0}'.format(link)
+        print 'Rate:{0}Kbps Capacity:{1}Kbps Utilization:{2}%'.format(rate * 8.0 / 1000.0, capacity, rate * 8.0 / 1000.0 / capacity)
+        print '***************************************************'
+    print '###############################\n\n'
 
 def main():
-    return (SwitchQuery() >>
-    # return (LinkQuery() >>
-    #         MapStream(FindRoutesForHostPair) >>
-            Print(PrintHelper))
+    stream = MergeStreams(LinkQuery(), SwitchStatsQuery())
+    stream = stream >> MapStream(JoinTables)
+    stream = stream >> ReduceStream(CalculateRate, {})
+    stream = stream >> MapStream(DisplayUtilization)
+    return stream

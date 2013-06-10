@@ -5,13 +5,26 @@
 # HONE application
 # find the network topology
 
+import time
 from hone_lib import *
 
 def LinkQuery():
-    return (Select(['BeginDevice','EndDevice']) *
+    return (Select(['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort']) *
             From('LinkStatus') *
             Every(3000))
 
+def FindRoutesForHostPair(links):
+    # remove the out-most list structure
+    links = links[0]
+    for link in links
+    hosts = filter(lambda  x: x[1] is None, links)
+
+
+def PrintHelper(x):
+    print time.time()
+    print x
+
 def main():
     return (LinkQuery() >>
-            Print())
+            MapStream(FindRoutesForHostPair) >>
+            Print(PrintHelper))

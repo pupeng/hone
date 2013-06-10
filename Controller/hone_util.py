@@ -18,7 +18,7 @@ class LogUtil:
     _LIB_DEBUG_     = False
     _RTS_DEBUG_     = True
     _EXEGEN_DEBUG_  = False
-    _PART_DEBUG_    = True
+    _PART_DEBUG_    = False
     _EXEMOD_DEBUG_  = False
     _SND_DEBUG_     = False
     _CONTROL_DEBUG_ = False

@@ -213,6 +213,7 @@ def linkMeasureRun(jobFlowToM, nothing):
 
 def switchMeasureRun(jobFlowToM, nothing):
     switchStats = GetSwitchStats('all', 'port')
+    switchFeatures = GetSwitchStats('all', 'features')
     for jobFlow in jobFlowToM:
         (jobId, flowId) = DecomposeKey(jobFlow)
         netJob = netJobTable[jobFlow]

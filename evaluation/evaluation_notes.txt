@@ -51,9 +51,14 @@ Repeat with controller running exp_monitorThroughput.py and exp_evalAgentControl
 Get CPU and memory usage on both agent and controller
 
 task2:
-controller run exp_checkNetworkUtilization.py
+controller run exp_checkNetworkUtilization and exp_evalAppCpuMem
 start Floodlight and connect to the network (switches)
 start hone
+For the network, launch random iperf among hosts. Use the maximum bandwidth as possible. 
+(a 4-host mini FatTree topology)
+
+Data: Controller/logs/*.eval and CtrlCpuMem.txt
+
 
 Exp5:
 MergeHosts test

@@ -239,6 +239,8 @@ def switchMeasureRun(jobFlowToM, nothing):
                         result.append(switchId)
                     elif name == 'capacity':
                         result.append(capacity[switchId][portStat['portNumber']])
+                    elif name == 'timestamp':
+                        result.append(time.time())
                     else:
                         result.append(portStat[name])
                 results.append(result)

@@ -7,7 +7,6 @@
 
 from hone_lib import *
 
-import time
 import math
 
 K = 0.2 # for moving average

@@ -15,7 +15,7 @@ Controllor runs exp_connMeasureOverhead
 (Controller should disable hone_hostinfo)
 (Agent should service rsyslog stop)
 
-Repeat with exp_connMeasureOverhead and exp_evalCpuMem on controller
+Repeat with exp_connMeasureOverhead and exp_evalAgentControllerCpuMem
 to get CPU and memory usages.
 
 

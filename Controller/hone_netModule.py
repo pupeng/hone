@@ -104,7 +104,7 @@ class NetworkModuleProcess(multiprocessing.Process):
                     (itemType, itemContent) = self.networkJobQueue.get_nowait()
                     if itemType == 'NewNetworkJob':
                         (jobId, createTime, progName, exeFlow) = itemContent
-                        LogUtil.DebugLog('network', 'new network job', jobId, createTime, progName, exeFlow)
+                        # LogUtil.DebugLog('network', 'new network job', jobId, createTime, progName, exeFlow)
                         for eachFlow in exeFlow:
                             newJob = NetworkJob(jobId, eachFlow.flowId, progName, createTime, eachFlow.exePlan)
                             registerNetworkJob(newJob)
@@ -147,7 +147,7 @@ def registerNetworkJob(netJob):
     eventAndGoFunc[netJob.jobId][netJob.flowId] = (e, go)
 
 def scheduleLoopRun():
-    LogUtil.DebugLog('network', 'a new schedule loop starts at {0}'.format(time.time()))
+    # LogUtil.DebugLog('network', 'a new schedule loop starts at {0}'.format(time.time()))
     if stopSchedule:
         logging.info('schedule loop should stop now')
         return
@@ -161,7 +161,6 @@ def scheduleLoopRun():
     else:
         nextLoop = Timer(minRunInterval, scheduleLoopRun)
     nextLoop.start()
-    LogUtil.DebugLog('network', 'delta is', delta)
     # schedule job to run
     jobFlowToRun = []
     linkJobFlow = []
@@ -178,9 +177,9 @@ def scheduleLoopRun():
         elif measureType == 'route':
             routeJobFlow.append(jobFlowKey)
         netJobTable[jobFlowKey].updateDeadline()
-        LogUtil.DebugLog('network', 'job {0} deadline'.format(jobFlowKey), netJobTable[jobFlowKey].deadline)
+        # LogUtil.DebugLog('network', 'job {0} deadline'.format(jobFlowKey), netJobTable[jobFlowKey].deadline)
         jobFlowQueue.push(netJobTable[jobFlowKey].deadline, jobFlowKey)
-    LogUtil.DebugLog('network', 'network job flow to run', jobFlowToRun)
+    # LogUtil.DebugLog('network', 'network job flow to run', jobFlowToRun)
     if linkJobFlow:
         linkThread = Thread(target=linkMeasureRun, args=(linkJobFlow, None))
         linkThread.daemon = True
@@ -205,7 +204,7 @@ link_stats_location = {'BeginDevice' : 0,
                        'EndDevice' : 2,
                        'EndPort' : 3}
 def linkMeasureRun(jobFlowToM, nothing):
-    LogUtil.DebugLog('network', 'linkMeasureRun stats at ', time.time())
+    # LogUtil.DebugLog('network', 'linkMeasureRun stats at ', time.time())
     links = GetLinks()
     for jobFlow in jobFlowToM:
         (jobId, flowId) = DecomposeKey(jobFlow)
@@ -221,10 +220,10 @@ def linkMeasureRun(jobFlowToM, nothing):
             goThread = Thread(target=runGo, args=(goFunc, results, jobId, flowId))
             goThread.daemon = True
             goThread.start()
-    LogUtil.DebugLog('network', 'linkMeasureRun stops at', time.time())
+    # LogUtil.DebugLog('network', 'linkMeasureRun stops at', time.time())
 
 def switchMeasureRun(jobFlowToM, nothing):
-    LogUtil.DebugLog('network', 'switchMeasureRun starts at', time.time())
+    # LogUtil.DebugLog('network', 'switchMeasureRun starts at', time.time())
     # measure
     measureCapacity = False
     for jobFlow in jobFlowToM:
@@ -264,7 +263,7 @@ def switchMeasureRun(jobFlowToM, nothing):
             goThread = Thread(target=runGo, args=(goFunc, results, jobId, flowId))
             goThread.daemon = True
             goThread.start()
-    LogUtil.DebugLog('network', 'switchMeasureRun stops at', time.time())
+    # LogUtil.DebugLog('network', 'switchMeasureRun stops at', time.time())
 
 def routeMeasureRun(jobFlowToM, nothing):
     hosts = {}

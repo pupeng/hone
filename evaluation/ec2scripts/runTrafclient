@@ -8,7 +8,7 @@
 #echo "Server Instance is " $instance
 
 #internalIP=`ec2-describe-instances $instance | grep INSTANCE | cut -f18`
-internalIP=10.147.159.155
+internalIP=$1
 echo "Server internal IP " $internalIP
 
 trafclient -cn fixed -cmax 2 -n 2 -da $internalIP -dp 9001 -dn tcp -pn fixed -pmax 1000

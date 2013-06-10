@@ -49,7 +49,7 @@ def DisplayUtilization(x):
     for link, linkRate in x.iteritems():
         (_, _, rate, capacity) = linkRate
         print 'link {0}'.format(link)
-        print 'Rate:{0}Kbps Capacity:{1}Kbps Utilization:{2}%'.format(rate * 8.0 / 1000.0, capacity, rate * 8.0 / 1000.0 / capacity)
+        print 'Rate:{0} Kbps Capacity:{1} Kbps Utilization:{2}%'.format(rate * 8.0 / 1000.0, capacity, rate * 8.0 / 1000.0 / capacity)
         print '***************************************************'
     print '###############################\n\n'
 

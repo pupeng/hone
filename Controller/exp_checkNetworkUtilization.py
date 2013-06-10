@@ -10,12 +10,12 @@ from hone_lib import *
 def LinkQuery():
     return (Select(['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort']) *
             From('LinkStatus') *
-            Every(5000))
+            Every(3000))
 
 def SwitchStatsQuery():
     return (Select(['switchId', 'portNumber', 'transmitBytes', 'receiveBytes', 'capacity', 'timestamp']) *
             From('SwitchStatus') *
-            Every(5000))
+            Every(3000))
 
 def JoinTables(x):
     (links, switchStats) = x
@@ -49,7 +49,7 @@ def DisplayUtilization(x):
     for link, linkRate in x.iteritems():
         (_, _, rate, capacity) = linkRate
         print 'link {0}'.format(link)
-        print 'Rate:{0} Kbps Capacity:{1} Kbps Utilization:{2}%'.format(rate * 8.0 / 1000.0, capacity, rate * 8.0 / 1000.0 / capacity)
+        print 'Rate:{0} Kbps Capacity:{1} Kbps Utilization:{2}%'.format(rate * 8.0 / 1000.0, capacity, rate * 8.0 / 10.0 / capacity)
         print '***************************************************'
     print '###############################\n\n'
 

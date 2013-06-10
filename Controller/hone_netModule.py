@@ -194,9 +194,9 @@ def scheduleLoopRun():
         routeThread.daemon = True
         routeThread.start()
 
-FeatureToCapacity = { 192 : 10000000,
-                      64  : 10000000,
-                      0   : 10000} #Kbps
+FeatureToCapacity = { 192 : 10000000.0,
+                      64  : 10000000.0,
+                      0   : 10000.0} #Kbps
 def DecodeCapacity(feature):
     return FeatureToCapacity[feature]
 

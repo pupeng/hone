@@ -16,7 +16,8 @@ def LinkQuery():
 def FindRoutesForHostPair(links):
     # remove the out-most list structure
     links = links[0]
-    for link in links
+    for link in links:
+        pass
     hosts = filter(lambda  x: x[1] is None, links)
 
 
@@ -24,7 +25,13 @@ def PrintHelper(x):
     print time.time()
     print x
 
+def SwitchQuery():
+    return (Select(['switchId', 'portNumber', 'capacity']) *
+            From('SwitchStatus') *
+            Every(3000))
+
 def main():
-    return (LinkQuery() >>
-            MapStream(FindRoutesForHostPair) >>
+    return (SwitchQuery() >>
+    # return (LinkQuery() >>
+    #         MapStream(FindRoutesForHostPair) >>
             Print(PrintHelper))

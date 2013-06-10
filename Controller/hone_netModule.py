@@ -190,6 +190,12 @@ def scheduleLoopRun():
         routeThread.daemon = True
         routeThread.start()
 
+FeatureToCapacity = { 192 : 10000000,
+                      64  : 10000000,
+                      0   : 10000} #Kbps
+def DecodeCapacity(feature):
+    return FeatureToCapacity[feature]
+
 link_stats_location = {'BeginDevice' : 0,
                        'BeginPort' : 1,
                        'EndDevice' : 2,
@@ -213,10 +219,17 @@ def linkMeasureRun(jobFlowToM, nothing):
 
 def switchMeasureRun(jobFlowToM, nothing):
     switchStats = GetSwitchStats('all', 'port')
-    switchFeatures = GetSwitchStats('all', 'features')
     for jobFlow in jobFlowToM:
         (jobId, flowId) = DecomposeKey(jobFlow)
         netJob = netJobTable[jobFlow]
+        if 'capacity' in netJob.measureStats:
+            switchFeatures = GetSwitchStats('all', 'features')
+            capacity = {}
+            for switchId, features in switchFeatures.iteritems():
+                if switchId not in capacity:
+                    capacity[switchId] = {}
+                for portFeature in features['ports']:
+                    capacity[switchId][portFeature['portNumber']] = DecodeCapacity(portFeature['currentFeatures'])
         results = []
         for switchId, stats in switchStats.iteritems():
             for portStat in stats:
@@ -224,6 +237,8 @@ def switchMeasureRun(jobFlowToM, nothing):
                 for name in netJob.measureStats:
                     if name == 'switchId':
                         result.append(switchId)
+                    elif name == 'capacity':
+                        result.append(capacity[switchId][portStat['portNumber']])
                     else:
                         result.append(portStat[name])
                 results.append(result)
@@ -350,12 +365,20 @@ if __name__ == '__main__':
     print 'Links:'
     for link in links:
         print link
-    routes = GetRoute(hosts[0][2], hosts[0][3], hosts[2][2], hosts[2][3])
-    print 'Routes between {0} and {1}'.format(hosts[0][0], hosts[2][0])
-    print routes
+    # routes = GetRoute(hosts[0][2], hosts[0][3], hosts[2][2], hosts[2][3])
+    # print 'Routes between {0} and {1}'.format(hosts[0][0], hosts[2][0])
+    # print routes
     print 'switch stats:'
-    print GetSwitchStats(links[1][0], 'port')
-    switches = GetSwitchProperties()
-    for (key, value) in switches.iteritems():
-        print key
-        print value
+    print GetSwitchStats('all', 'port')
+    print 'switch features'
+    print GetSwitchStats('all', 'features')
+    # switches = GetSwitchProperties()
+    # for (key, value) in switches.iteritems():
+        # print key
+        # print value
+
+
+
+
+
+

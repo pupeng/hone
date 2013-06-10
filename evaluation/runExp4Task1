@@ -17,24 +17,18 @@ cd ../evaluation/ec2scripts
 ./adjustClock &> $HOME/clock.log
 echo clock synchronization done
 
-cd ../test_prog
-screen -S server -d -m ./startTrafserver
-
-cd ../ec2scripts
 ./startHoneAgent &> $HOME/agentCommand.log &
 echo HONE agent starts
 sleep 1m
 
-python startTrafclientToAll.py
-echo trafclient start
-sleep 3m
+./runTestProg server $port 100 &> $HOME/testProgCommand.log &
+echo connections start
+sleep 5m
 
-killall trafclient
 killall python
-screen -S server -X quit
+killall test_prog
 echo HONE agent stops
-echo trafclient stops
-echo trafserver stops
+echo connection stops
 
 #export EC2_KEYPAIR=home-keypair
 #export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem

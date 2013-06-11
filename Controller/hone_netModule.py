@@ -70,7 +70,7 @@ class NetworkJob:
             self.measureType = 'link'
         elif self.query.ft == 'SwitchStatus':
             self.measureType = 'switch'
-        elif self.query.ft == 'HostRoute':
+        elif self.query.ft == 'Route':
             self.measureType = 'route'
         self.measureStats = self.query.se
 

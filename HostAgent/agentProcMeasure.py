@@ -213,6 +213,8 @@ def machineMeasureRun(jobFlowToM, nothing):
                 measureResults.append(totalCpu)
             elif name == 'totalMemory':
                 measureResults.append(totalMemory)
+            elif name == 'IP':
+                measureResults.append(SelfIP.GetSelfIP())
         if measureResults:
             #debugLog('proc', 'measureResults:', measureResults)
             (jobId, flowId) = decomposeKey(jobFlow)

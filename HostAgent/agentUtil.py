@@ -10,6 +10,7 @@ import multiprocessing
 import logging
 import os
 import datetime
+import socket
 from uuid import getnode as get_mac
 
 _LAZY_M_ENABLED_ = True
@@ -44,6 +45,19 @@ def middleJobKeyContainJobIdAndLevel(key, jobId, level):
 
 def composeMiddleJobKey(jobId, flowId, level):
     return '{0}@{1}@{2}'.format(jobId, flowId, level)
+
+class SelfIP():
+
+    _myIP = None
+
+    @staticmethod
+    def GetSelfIP():
+        if SelfIP._myIP is None:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(('google.com', 0))
+            SelfIP._myIP = s.getsockname()[0]
+            s.close()
+        return SelfIP._myIP
 
 
 class LogUtil:

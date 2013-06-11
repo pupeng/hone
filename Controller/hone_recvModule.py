@@ -65,6 +65,7 @@ class HoneCommProtocol(LineReceiver):
 
     def handleNetworkStatsIn(self, message):
         self.connectionType = HostConnectionTypes.Network
+        rts.evalTimestamp += '#NewStatsIn${0:6f}${1}${2}${3}'.format(time.time(), message.jobId, message.flowId, message.sequence)
         rts.handleStatsIn(message)
 
     def handleUnknownType(self, message):

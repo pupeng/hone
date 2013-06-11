@@ -3,9 +3,11 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# calculate the link utilization of current network
+# find flows with low congestion window size, and find the shared network links among those flows as the bottleneck links
 
 from hone_lib import *
+
+
 
 def LinkQuery():
     return (Select(['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort']) *

@@ -13,42 +13,6 @@ import json
 def average(x):
     return sum(x) / float(len(x))
 
-def stddev(x):
-    avg = average(x)
-    var = map(lambda x: (x - avg)**2, x)
-    return math.sqrt(average(var))
-
-def GetDiff(x):
-    x = map(lambda x : float(x) * 1000.0, x)
-    for i in reversed(range(1, len(x))):
-        x[i] = x[i] - x[i-1]
-    x[0] = 0.0
-    return x
-
-def CtrlSequenceIsCorrect(entry):
-    sequence = {}
-    for event in entry:
-        if event[0] == 'NewStatsIn':
-            sequence[event[4]] = None
-    if len(sequence.keys()) == 1:
-        return True
-    else:
-        return False
-
-def FilterHostData(data):
-    if (data[0][0] == 'JobExecutionLoop') and (len(data) == 8):
-        return True
-    else:
-        return False
-
-def FilterCtrlDataByLength(numberOfHosts, data):
-    if (numberOfHosts == 4) or (numberOfHosts == 16) or (numberOfHosts == 64):
-        return len(data) == 12
-    elif (numberOfHosts == 128) or (numberOfHosts == 32):
-        return len(data) == 8
-    else:
-        return False
-
 def parseTimestamp():
     logFile = open('exp4task2data/controller-timestamp.log', 'r')
     logs = logFile.read().split('\n')

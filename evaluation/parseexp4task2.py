@@ -64,70 +64,43 @@ def parseTimestamp():
     netLogs = map(lambda x : x[1].split('#'), netLogs)
     netLogs = map(lambda y : map(lambda x : x.split('$'), y), netLogs)
     netLogs = filter(lambda x : len(x) == 10, netLogs)
-    # get the sequence numbers and the controller data
+    # process controller data
     timeSeries = {}
     for log in ctrlLogs:
+        flowId = log[1][3]
         sequence = log[1][4]
-        timeSeries[sequence] = {}
-        temp = []
-        for i in [1, 5]:
-            temp.append(log[i][1])
-        timeSeries[sequence]['controller'] = temp
+        if sequence not in timeSeries:
+            timeSeries[sequence] = {}
+        timeSeries[sequence][flowId] = [log[1][1], log[5][1]]
     # process network data
     for log in netLogs:
         sequence = log[3][4]
         temp = []
-        for i in [0, 9]:
+        for i in [0, 2, 5, 6, 9]:
             temp.append(log[i][1])
         if sequence in timeSeries:
             timeSeries[sequence]['network'] = temp
-    files = os.listdir('exp4task1data')
-    files = filter(lambda x : re.search("^host", x) and re.search("log$", x), files)
-    for hostLog in files:
-        logFile = open('exp4task1data/{0}'.format(hostLog))
-        hostData = logFile.read().split('\n')
-        logFile.close()
-        hostData.pop(len(hostData) - 1)
-        hostData = map(lambda x : x.split(','), hostData)
-        hostData = map(lambda x : [x[0]] + x[1].split('#'), hostData)
-        hostData = map(lambda y: map(lambda x : x.split('$'), y), hostData)
-        hostData = filter(FilterHostData, hostData)
-        for data in hostData:
-            temp = []
-            try:
-                sequence = data[7][4]
-            except Exception:
-                continue
-            for i in [1, 4, 5, 7]:
-                temp.append(data[i][1])
-            if sequence in timeSeries:
-                if 'host' not in timeSeries[sequence]:
-                    timeSeries[sequence]['host'] = []
-                timeSeries[sequence]['host'].append(temp)
-        print hostLog
-    # calculate e2e latency
+    # remove incomplete data
     sequenceToRemove = []
     for sequence, data in timeSeries.iteritems():
-        if ('host' not in data) or (len(data['host']) != 4):
+        if ('network' not in data) or ('6' not in data) or ('7' not in data):
             sequenceToRemove.append(sequence)
     for sequence in sequenceToRemove:
         del timeSeries[sequence]
     results = []
     for sequence, data in timeSeries.iteritems():
-        firstHostStart = min(map(lambda x : x[0], data['host']))
-        lastHostEnd = max(map(lambda x : x[3], data['host']))
-        lastStatsIn = data['controller'][3]
-        controllerDone = data['controller'][5]
-        results.append([firstHostStart, lastHostEnd, lastStatsIn, controllerDone])
-    results = map(GetDiff, results)
+        network = float(data['network'][4]) * 1000.0 - float(data['network'][0]) * 1000.0
+        controller = max(map(lambda x : float(x[1]) * 1000.0 - float(x[0]) * 1000.0, [data['6'], data['7']]))
+        e2e = float(data['7'][1]) * 1000.0 - float(data['network'][0]) * 1000.0
+        results.append([network, controller, e2e])
     # output results
-    outputFile = open('exp4task1data/breakdown.txt', 'w')
+    outputFile = open('exp4task2data/latency.txt', 'w')
     for result in results:
-        print >> outputFile, '{0} {1} {2}'.format(result[1], result[2], result[3])
+        print >> outputFile, '{0} {1} {2}'.format(result[0], result[1], result[2])
     outputFile.close()
 
 def parseCpuMem():
-    logFile = open('exp4task1data/ctrlCpuMem.txt', 'r')
+    logFile = open('exp4task2data/ctrlCpuMem.txt', 'r')
     ctrlCpuMem = logFile.read().split('\n')
     logFile.close()
     ctrlCpuMem.pop(len(ctrlCpuMem) - 1)
@@ -138,21 +111,6 @@ def parseCpuMem():
         cpuSum.append(float(cpu))
         memSum.append(float(mem))
     print 'controller cpu:{0} mem:{1}'.format(average(cpuSum), average(memSum))
-    files = os.listdir('exp4task1data')
-    files = filter(lambda x : re.search("^host", x) and re.search("txt$", x), files)
-    cpuSum = []
-    memSum = []
-    for hostLog in files:
-        logFile = open('exp4task1data/{0}'.format(hostLog))
-        hostData = logFile.read().split('\n')
-        logFile.close()
-        hostData.pop(len(hostData) - 1)
-        hostData = map(lambda x : x.split(' '), hostData)
-        for (_, cpu, mem) in hostData:
-            cpuSum.append(float(cpu))
-            memSum.append(float(mem))
-        print hostLog
-    print 'agent cpu:{0} mem:{1}'.format(average(cpuSum), average(memSum))
 
 if __name__ == '__main__':
     parseTimestamp()

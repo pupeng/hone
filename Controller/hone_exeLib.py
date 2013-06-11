@@ -84,7 +84,10 @@ def MergeStreams(streams):
                 MapStream(GetDataToRelease) >>
                 FilterStream(FilterDataToRelease))
     else:
-        return freLib.Merge(streams[0], MergeStreams(streams[1:]))
+        return (freLib.Merge(streams[0], MergeStreams(streams[1:])) >>
+                ReduceStream(RemoveNoneFromMergeStreams, ([None, None], [None, None])) >>
+                MapStream(GetDataToRelease) >>
+                FilterStream(FilterDataToRelease))
     
 # Print_listener : string -> output channel -> L string
 def Print(g=None,s=sys.stdout):    

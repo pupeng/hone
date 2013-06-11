@@ -10,12 +10,12 @@ from hone_lib import *
 def LinkQuery():
     return (Select(['BeginDevice', 'BeginPort', 'EndDevice', 'EndPort']) *
             From('LinkStatus') *
-            Every(3000))
+            Every(2000))
 
 def SwitchStatsQuery():
     return (Select(['switchId', 'portNumber', 'transmitBytes', 'receiveBytes', 'capacity', 'timestamp']) *
             From('SwitchStatus') *
-            Every(3000))
+            Every(2000))
 
 def JoinTables(x):
     (links, switchStats) = x

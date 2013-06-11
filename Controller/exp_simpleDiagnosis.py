@@ -21,15 +21,18 @@ def RouteQuery():
 def HostInfoQuery():
     return (Select(['hostId', 'IP']) *
             From('HostStatus') *
-            Where(5000))
+            Every(5000))
 
 def FormatHostInfoToDict(x):
     result = {}
-    print x
+    for (hostId, ip) in x:
+        result[hostId] = ip
+    return result
 
 def main():
     hostInfoStream = HostInfoQuery() >> MergeHosts() >> MapStream(FormatHostInfoToDict)
-    return hostInfoStream
+    stream = hostInfoStream >> Print()
+    return stream
 
 
 def LinkQuery():

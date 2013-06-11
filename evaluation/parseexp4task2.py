@@ -59,7 +59,7 @@ def parseTimestamp():
     ctrlLogs = filter(lambda x : x[0] == 'ControllerExecution', logs)
     ctrlLogs = map(lambda x : x[1].split('#'), ctrlLogs)
     ctrlLogs = map(lambda y: map(lambda x : x.split('$'), y), ctrlLogs)
-    ctrlLogs = filter(lambda x : len(x) == 5, ctrlLogs)
+    ctrlLogs = filter(lambda x : len(x) == 6, ctrlLogs)
     netLogs = filter(lambda x : x[0] == 'NetworkRun', logs)
     netLogs = map(lambda x : x[1].split('#'), netLogs)
     netLogs = map(lambda y : map(lambda x : x.split('$'), y), netLogs)
@@ -70,15 +70,17 @@ def parseTimestamp():
         sequence = log[1][4]
         timeSeries[sequence] = {}
         temp = []
-        for i in [1, 4]:
+        for i in [1, 5]:
             temp.append(log[i][1])
         timeSeries[sequence]['controller'] = temp
     # process network data
     for log in netLogs:
-        try:
-            sequence = log[3][4]
-            temp = []
-            for i in [0, ]
+        sequence = log[3][4]
+        temp = []
+        for i in [0, 9]:
+            temp.append(log[i][1])
+        if sequence in timeSeries:
+            timeSeries[sequence]['network'] = temp
     files = os.listdir('exp4task1data')
     files = filter(lambda x : re.search("^host", x) and re.search("log$", x), files)
     for hostLog in files:

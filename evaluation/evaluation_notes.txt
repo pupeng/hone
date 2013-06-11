@@ -54,7 +54,7 @@ task2:
 controller run exp_checkNetworkUtilization and exp_evalAppCpuMem
 start Floodlight and connect to the network (switches)
 start hone
-For the network, launch random iperf among hosts. Use the maximum bandwidth as possible. 
+For the network, launch full iperf among hosts. Use the maximum bandwidth as possible. 
 (a 4-host mini FatTree topology)
 
 Data: Controller/logs/*.eval and CtrlCpuMem.txt

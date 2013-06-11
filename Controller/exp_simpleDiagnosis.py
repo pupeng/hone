@@ -7,6 +7,29 @@
 
 from hone_lib import *
 
+def ConnQuery():
+    return (Select(['srcIP', 'dstIP', 'Cwnd']) *
+            From('HostConnection') *
+            Where([('Cwnd', '<', '100')]) *
+            Every(5000))
+
+def RouteQuery():
+    return (Select(['HostAId', 'HostBId', 'Path']) *
+            From('Route') *
+            Every(5000))
+
+def HostInfoQuery():
+    return (Select(['hostId', 'IP']) *
+            From('HostStatus') *
+            Where(5000))
+
+def FormatHostInfoToDict(x):
+    result = {}
+    print x
+
+def main():
+    hostInfoStream = HostInfoQuery() >> MergeHosts() >> MapStream(FormatHostInfoToDict)
+    return hostInfoStream
 
 
 def LinkQuery():
@@ -55,9 +78,4 @@ def DisplayUtilization(x):
         print '***************************************************'
     print '###############################\n\n'
 
-def main():
-    stream = MergeStreams(LinkQuery(), SwitchStatsQuery())
-    stream = stream >> MapStream(JoinTables)
-    stream = stream >> ReduceStream(CalculateRate, {})
-    stream = stream >> MapStream(DisplayUtilization)
-    return stream
+

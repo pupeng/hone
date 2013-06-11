@@ -116,6 +116,7 @@ def FormatHostInfoToDict(x):
 
 # TODO
 def FindRoutesForHostPair(x):
+    # for each host pair, find all equal-cost routes between them
     return x
 
 def ReplaceHostIDwithHostIP(x):
@@ -130,6 +131,9 @@ def ReplaceHostIDwithHostIP(x):
 
 # TODO
 def Schedule(x):
+    ((trafficMatrix, hostPairRoutes), elephantFlows) = x
+    # first: schedule elephant flows
+    # second: for remaining flows in traffic matrix, randomly pick a route for them not interfering with elephants
     return []
 
 def main():
@@ -146,8 +150,8 @@ def main():
     hostInfoStream = HostInfoQuery() >> MergeHosts() >> MapStream(FormatHostInfoToDict)
     routesStream = (LinkQuery() >>
                     MapStream(FindRoutesForHostPair))
-    topologyStream = MergeStreams(hostInfoStream, routesStream) >> MapStream(ReplaceHostIDwithHostIP)
-    stream = (MergeStreams(MergeStreams(trafficMatrixStream, topologyStream), elephantStream) >>
+    hostRoutesStream = MergeStreams(hostInfoStream, routesStream) >> MapStream(ReplaceHostIDwithHostIP)
+    stream = (MergeStreams(MergeStreams(trafficMatrixStream, hostRoutesStream), elephantStream) >>
               MapStream(Schedule) >>
               RegisterPolicy())
     return stream

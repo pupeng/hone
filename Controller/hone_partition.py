@@ -102,7 +102,7 @@ class HonePartitionedFlow:
                     hostSource.append(['ToMiddle'])
                     hostMiddle = [flow[numOp], ['ToUpperLevel']]
                     controller = flow[numOp : ]
-        elif (tableName == 'LinkStatus') or (tableName == 'SwitchStatus') or (tableName == 'HostRoute'):
+        elif (tableName == 'LinkStatus') or (tableName == 'SwitchStatus') or (tableName == 'Route'):
             self.flowFromNet.append(flowId)
             network += [flow[0], ['NetworkToController']]
             controller = flow[1:]

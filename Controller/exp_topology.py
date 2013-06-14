@@ -12,6 +12,11 @@ def LinkQuery():
             From('LinkStatus') *
             Every(2000))
 
+def SwitchQuery():
+    return (Select(['switchId', 'portNumber']) *
+            From('SwitchStatus') *
+            Every(2000))
+
 def main():
-    stream = LinkQuery() >> Print()
+    stream = MergeStreams(LinkQuery(), SwitchQuery()) >> Print()
     return stream

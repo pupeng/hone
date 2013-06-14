@@ -14,7 +14,7 @@ import inspect
 
 class LogUtil:
     _LogLevel_      = logging.DEBUG
-    _GLOBAL_DEBUG_  = False
+    _GLOBAL_DEBUG_  = True
     _LIB_DEBUG_     = False
     _RTS_DEBUG_     = True
     _EXEGEN_DEBUG_  = False
@@ -24,6 +24,7 @@ class LogUtil:
     _CONTROL_DEBUG_ = False
     _EVALUATION_    = False
     _TREE_FORMATION_ = True
+    _NETWORK_DEBUG_ = False
 
     LoggingLock = multiprocessing.Lock()
 
@@ -38,7 +39,8 @@ class LogUtil:
                   'snd'    : _SND_DEBUG_,
                   'evaluation' : _EVALUATION_,
                   'tree'   : _TREE_FORMATION_,
-                  'control': _CONTROL_DEBUG_}
+                  'control': _CONTROL_DEBUG_,
+                  'network': _NETWORK_DEBUG_}
 
     EvalData = []
     
@@ -77,3 +79,10 @@ class LogUtil:
             print >>output, data
         output.close()
         LogUtil.EvalData = []
+
+def ComposeKey(jobId, flowId):
+    return '{0}@{1}'.format(jobId, flowId)
+
+def DecomposeKey(key):
+    [jobId, flowId] = key.split('@')
+    return (int(jobId), int(flowId))

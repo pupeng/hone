@@ -26,6 +26,7 @@ class HonePartitionedFlow:
                           'dstIP': []}
         self.flowToCtrl= []
         self.flowToMiddle = []
+        self.flowFromNet = []
         self.minQueryPeriod= None
         self.addExePlan(honeDataFlow)
         self.debug()
@@ -101,9 +102,12 @@ class HonePartitionedFlow:
                     hostSource.append(['ToMiddle'])
                     hostMiddle = [flow[numOp], ['ToUpperLevel']]
                     controller = flow[numOp : ]
-        else:
-            network.append(flow[0])
+        elif (tableName == 'LinkStatus') or (tableName == 'SwitchStatus') or (tableName == 'HostRoute'):
+            self.flowFromNet.append(flowId)
+            network += [flow[0], ['NetworkToController']]
             controller = flow[1:]
+        else:
+            raise Exception('Unable to partition this flow {0}'.format(flow))
         return (hostSource, hostMiddle, network, controller)
 
     def debug(self):

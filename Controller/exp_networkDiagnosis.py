@@ -10,7 +10,7 @@ from hone_lib import *
 def ConnQuery():
     return (Select(['srcIP', 'dstIP', 'Cwnd']) *
             From('HostConnection') *
-            Where([('Cwnd', '<', '100')]) *
+            # Where([('Cwnd', '<', '100')]) *
             Every(5000))
 
 def RouteQuery():

@@ -32,6 +32,8 @@ def LinkQuery():
             Every(2000))
 
 def DiscoverLinkChanges(newListOfLinks, state):
+    newListOfLinks = newListOfLinks[0]
+    print newListOfLinks
     (changeList, oldListOfLinks) = state
     changeList.add = list(set(newListOfLinks) - set(oldListOfLinks))
     changeList.delete = list(set(oldListOfLinks) - set(newListOfLinks))

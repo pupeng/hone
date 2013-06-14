@@ -23,6 +23,6 @@ def RouteQuery():
             Every(2000))
 
 def main():
-    # stream = MergeStreams(LinkQuery(), SwitchQuery()) >> Print()
-    stream = RouteQuery() >> Print()
+    stream = MergeStreams(LinkQuery(), SwitchQuery()) >> Print()
+    # stream = RouteQuery() >> Print()
     return stream

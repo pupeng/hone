@@ -34,7 +34,6 @@ def LinkQuery():
 def DiscoverLinkChanges(newListOfLinks, state):
     newListOfLinks = newListOfLinks[0]
     newListOfLinks = map(lambda x : '{0}#{1}#{2}#{3}'.format(x[0], x[1], x[2], x[3]), newListOfLinks)
-    print newListOfLinks
     (changeList, oldListOfLinks) = state
     changeList.add = list(set(newListOfLinks) - set(oldListOfLinks))
     changeList.delete = list(set(oldListOfLinks) - set(newListOfLinks))
@@ -44,7 +43,8 @@ def GetChanges(state):
     return state[0]
 
 def BuildTopology(linkChanges):
-    for newLink in linkChanges.add:
+    newLinks = map(lambda x : x.split('#'), linkChanges.add)
+    for newLink in newLinks:
         (deviceA, portA, deviceB, portB) = newLink
         if deviceA not in allNodes:
             allNodes[deviceA] = Node(deviceA)
@@ -52,7 +52,8 @@ def BuildTopology(linkChanges):
             allNodes[deviceB] = Node(deviceB)
         allNodes[deviceA].addLink(deviceB, portA)
         allNodes[deviceB].addLink(deviceA, portB)
-    for deleteLink in linkChanges.delete:
+    deleteLinks = map(lambda x : x.split('#'), linkChanges.delete)
+    for deleteLink in deleteLinks:
         (deviceA, portA, deviceB, portB) = deleteLink
         if deviceA in allNodes:
             allNodes[deviceA].removeLink(deviceB)

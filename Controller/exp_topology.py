@@ -33,6 +33,7 @@ def LinkQuery():
 
 def DiscoverLinkChanges(newListOfLinks, state):
     newListOfLinks = newListOfLinks[0]
+    newListOfLinks = map(lambda x : x.join('#'), newListOfLinks)
     print newListOfLinks
     (changeList, oldListOfLinks) = state
     changeList.add = list(set(newListOfLinks) - set(oldListOfLinks))

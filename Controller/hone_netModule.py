@@ -53,6 +53,7 @@ netJobTable = {}
 jobFlowQueue = JobFlowMinQueue()
 stopSchedule = False
 eventAndGoFunc = {}
+evalTimestamp = ''
 
 class NetworkJob:
     def __init__(self, jobId, flowId, progName, createTime, exePlan):
@@ -69,7 +70,7 @@ class NetworkJob:
             self.measureType = 'link'
         elif self.query.ft == 'SwitchStatus':
             self.measureType = 'switch'
-        elif self.query.ft == 'HostRoute':
+        elif self.query.ft == 'Route':
             self.measureType = 'route'
         self.measureStats = self.query.se
 
@@ -122,6 +123,7 @@ class NetworkModuleProcess(multiprocessing.Process):
             stopSchedule = True
             time.sleep(minRunInterval * 1.5)
         finally:
+            LogUtil.OutputEvalLog()
             logging.info('netModule exits')
             print 'network module exits'
 
@@ -151,6 +153,9 @@ def scheduleLoopRun():
     if stopSchedule:
         logging.info('schedule loop should stop now')
         return
+    global evalTimestamp
+    LogUtil.EvalLog('NetworkRun', evalTimestamp)
+    evalTimestamp = 'Begin${0:6f}'.format(time.time())
     currentTime = time.time()
     if jobFlowQueue.minDeadline():
         delta = currentTime - jobFlowQueue.minDeadline() - 0.1
@@ -180,6 +185,7 @@ def scheduleLoopRun():
         # LogUtil.DebugLog('network', 'job {0} deadline'.format(jobFlowKey), netJobTable[jobFlowKey].deadline)
         jobFlowQueue.push(netJobTable[jobFlowKey].deadline, jobFlowKey)
     # LogUtil.DebugLog('network', 'network job flow to run', jobFlowToRun)
+    evalTimestamp += '#DoneSchedule${0:6f}'.format(time.time())
     if linkJobFlow:
         linkThread = Thread(target=linkMeasureRun, args=(linkJobFlow, None))
         linkThread.daemon = True
@@ -294,6 +300,8 @@ def routeMeasureRun(jobFlowToM, nothing):
 
 def runGo(goFunc, data, jobId, flowId):
     try:
+        global evalTimestamp
+        evalTimestamp += '#StartRunGo${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
         goFunc(data)
     except Exception, msg:
         logging.warning('go thread of jobId {0} flowId {1} caught exception {2}'.format(jobId, flowId, msg))
@@ -301,7 +309,7 @@ def runGo(goFunc, data, jobId, flowId):
         print msg
         traceback.print_exc()
     finally:
-        pass
+        evalTimestamp += '#DoneRunGo${0:6f}${1}${2}'.format(time.time(), jobId, flowId)
 
 def NetworkToController(jobId, flowId):
     def push(x):
@@ -315,7 +323,10 @@ def NetworkToController(jobId, flowId):
             message.flowId = flowId
             message.sequence = sequence
             message.content = x
+            global evalTimestamp
+            evalTimestamp += '#StartNetToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
             NetToControllerSndSocket().sendMessage(message)
+            evalTimestamp += '#DoneNetToCtrl${0:6f}${1}${2}${3}'.format(time.time(), jobId, flowId, sequence)
     return freLib.FListener(push=push)
 
 def GetJsonFromUrl(url):

@@ -15,14 +15,16 @@ def query():
          Every(1000))
     return q
 
-def PrintLen(x):
-    print len(x)
+def DisplayStats(x):
+    print 'number of connections: {0}'.format(len(x))
     if x:
-        print x[0]
+        print 'the statistics are:'
+        for data in x:
+            print data
     return x
 
 def main():
     return (query() >>
-            MapStreamSet(PrintLen) >>
+            MapStreamSet(DisplayStats) >>
             MergeHosts() >>
-            MapStream(PrintLen))
+            MapStream(DisplayStats))

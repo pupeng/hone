@@ -106,10 +106,10 @@ def GenRateLimitPolicy(x):
     #     print 'Distributed Rate Limiting One Round'
     # return ruleset
 
-def DebugPrint(x):
-    for (hostID, timestamp, data) in x:
-        print 'hostID:{0}. timestamp:{1}. data:{2}'.format(hostID, timestamp, data)
-    print '******************************************'
+# def DebugPrint(x):
+#     for (hostID, timestamp, data) in x:
+#         print 'hostID:{0}. timestamp:{1}. data:{2}'.format(hostID, timestamp, data)
+#     print '******************************************'
 
 def main():
     return (query() >>
@@ -117,6 +117,5 @@ def main():
             MapStreamSet(LocalSum) >>
             ReduceStreamSet(EWMA, [None, time.time(), 100]) >>
             MergeHosts() >>
-            # Print(DebugPrint))
             MapStream(GenRateLimitPolicy) >>
             RegisterPolicy())

@@ -58,15 +58,17 @@ def ReduceList(f,init):
     return newFunc
 
 def RemoveNoneFromMergeStreams(newData, state):
-    (dataToRelase, oldData) = state
+    (dataToRelease, oldData) = state
     if (oldData[0] is None) and newData[0]:
         oldData[0] = newData[0]
     if (oldData[1] is None) and newData[1]:
         oldData[1] = newData[1]
     if oldData[0] and oldData[1]:
-        dataToRelase = oldData[:]
+        dataToRelease = oldData[:]
         oldData = [None, None]
-    return (dataToRelase, oldData)
+    else:
+        dataToRelease = [None, None]
+    return (dataToRelease, oldData)
 
 def GetDataToRelease(x):
     return x[0]
@@ -82,7 +84,10 @@ def MergeStreams(streams):
                 MapStream(GetDataToRelease) >>
                 FilterStream(FilterDataToRelease))
     else:
-        return freLib.Merge(streams[0], MergeStreams(streams[1:]))
+        return (freLib.Merge(streams[0], MergeStreams(streams[1:])) >>
+                ReduceStream(RemoveNoneFromMergeStreams, ([None, None], [None, None])) >>
+                MapStream(GetDataToRelease) >>
+                FilterStream(FilterDataToRelease))
     
 # Print_listener : string -> output channel -> L string
 def Print(g=None,s=sys.stdout):    

@@ -153,9 +153,9 @@ HoneTableTypes = {'HostConnection': ['app', 'srcHost', 'BytesWritten',
                   'SwitchStatus': ['switchId', 'portNumber', 'collisions', 'receiveBytes', 'receiveCRCErrors', 'receiveDropped', 'receiveErrors',
                                    'receiveFrameErrors', 'receiveOverrunErrors', 'receivePackets', 'transmitBytes', 'transmitDropped',
                                    'transmitErrors', 'transmitPackets', 'capacity', 'timestamp'],
-                  'HostRoute' : ['HostAId', 'HostBId', 'Path'],
+                  'Route' : ['HostAId', 'HostBId', 'Path'],
                   'AppStatus': ['hostId', 'app', 'cpu', 'memory'],
-                  'HostStatus': ['hostId', 'totalCPU', 'totalMemory']}
+                  'HostStatus': ['hostId', 'totalCPU', 'totalMemory', 'IP']}
 
 ''' job ID '''
 MaxJobId = 100

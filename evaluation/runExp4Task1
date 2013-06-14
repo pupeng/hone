@@ -5,8 +5,6 @@
 # found in the COPYRIGHT file.
 
 # runExp4Task1
-# start exp DRL on host
-# launch trafclient
 
 sudo service rsyslog stop
 
@@ -17,42 +15,36 @@ cd ../evaluation/ec2scripts
 ./adjustClock &> $HOME/clock.log
 echo clock synchronization done
 
-cd ../test_prog
-screen -S server -d -m ./startTrafserver
-
-cd ../ec2scripts
 ./startHoneAgent &> $HOME/agentCommand.log &
 echo HONE agent starts
 sleep 1m
 
-python startTrafclientToAll.py
-echo trafclient start
-sleep 80s
+port=$1
+./runTestProg server $port 100 &> $HOME/testProgCommand.log &
+echo connections start
+sleep 6m
 
-killall trafclient
 killall python
-sleep 30s
-screen -S server -X quit
+killall test_prog
 echo HONE agent stops
-echo trafclient stops
-echo trafserver stops
+echo connection stops
 
-#export EC2_KEYPAIR=home-keypair
-#export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem
-#export EC2_CERT=$HOME/.ssh/cert-ec2.pem
-#export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
-#
-#selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
-#selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
-#
-#controllerInstance=`ec2-describe-instances | grep controller | cut -f3`
-#controllerIP=`ec2-describe-instances $controllerInstance | grep INSTANCE | cut -f18`
-#echo $controllerIP
-#
-#cd ../../HostAgent/logs
-#file=`ls *.eval`
-#mv $file $selfname-temp.log
-#scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem $selfname-temp.log ubuntu@$controllerIP:~/hone/evaluation/exp5data
-#echo $selfname-temp.log transferred to controller
-#
+export EC2_KEYPAIR=home-keypair
+export EC2_PRIVATE_KEY=$HOME/.ssh/pk-ec2.pem
+export EC2_CERT=$HOME/.ssh/cert-ec2.pem
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
+
+selfinstance=`ec2metadata | grep instance-id | cut -d ' ' -f2`
+selfname=`ec2-describe-tags | grep $selfinstance | cut -f5`
+
+controllerInstance=`ec2-describe-instances | grep controller | cut -f3`
+controllerIP=`ec2-describe-instances $controllerInstance | grep INSTANCE | cut -f18`
+echo $controllerIP
+
+cd ../../HostAgent/logs
+file=`ls *.eval`
+mv $file $selfname-timestamp.log
+scp -o StrictHostKeyChecking=no -i $HOME/.ssh/home-keypair.pem $selfname-timestamp.log ubuntu@$controllerIP:~/hone/evaluation/exp4task1data
+echo $selfname-timestamp.log transferred to controller
+
 echo "done exp4 task1"

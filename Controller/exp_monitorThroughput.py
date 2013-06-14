@@ -14,7 +14,7 @@ K = 0.2
 def query():
     q = (Select(['app','srcHost', 'srcIP','srcPort','dstIP','dstPort','BytesSentOut','StartTimeSecs','ElapsedSecs','StartTimeMicroSecs','ElapsedMicroSecs']) *
          From('HostConnection') *
-         Where([('app', '==', 'trafclient')]) *
+         Where([('app', '==', 'test_prog')]) *
          Every(1000))
     return q
 

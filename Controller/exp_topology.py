@@ -17,6 +17,12 @@ def SwitchQuery():
             From('SwitchStatus') *
             Every(2000))
 
+def RouteQuery():
+    return (Select(['HostAId', 'HostBId', 'Path']) *
+            From('Route') *
+            Every(2000))
+
 def main():
-    stream = MergeStreams(LinkQuery(), SwitchQuery()) >> Print()
+    # stream = MergeStreams(LinkQuery(), SwitchQuery()) >> Print()
+    stream = RouteQuery() >> Print()
     return stream

@@ -114,10 +114,17 @@ def FormatHostInfoToDict(x):
         result[hostId] = ip
     return result
 
-# TODO
-def FindRoutesForHostPair(x):
+# local is stable
+def FindRoutesForHostPair(links):
+    links = links[0]
+    hosts = filter(lambda x : x[1] is None, links)
+    hosts.sort()
+    result = {}
+    for i in range(len(hosts)):
+        for j in range(i+1, len(hosts)):
+            result[(hosts[i], hosts[j])] = links
     # for each host pair, find all equal-cost routes between them
-    return x
+    return result
 
 def ReplaceHostIDwithHostIP(x):
     (hostInfoDict, hostPairRoutes) = x
@@ -129,12 +136,20 @@ def ReplaceHostIDwithHostIP(x):
         results[(hostAIp, hostBIp)] = routes
     return results
 
-# TODO
+# local is stable
 def Schedule(x):
     ((trafficMatrix, hostPairRoutes), elephantFlows) = x
+    ruleSet = []
+    for (sip, dip, sport, dport, _, _) in elephantFlows:
+        # placeholder
+        route = hostPairRoutes[(sip, dip)][0]
+        criterion = {'srcIp': sip, 'dstIp': dip}
+        action = {'forward':route}
+        rule = [criterion, action]
+        ruleSet.append(rule)
     # first: schedule elephant flows
     # second: for remaining flows in traffic matrix, randomly pick a route for them not interfering with elephants
-    return []
+    return ruleSet
 
 def main():
     elephantStream = (ElephantQuery() >>

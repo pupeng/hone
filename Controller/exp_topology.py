@@ -3,7 +3,7 @@
 # found in the COPYRIGHT file.
 
 # HONE application
-# Elephant flow detection and scheduling
+# Discover link up and down in the network, and build the current topology as a graph structure
 
 from hone_lib import *
 

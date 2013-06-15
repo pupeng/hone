@@ -1,5 +1,0 @@
-#! /bin/bash
-
-sudo service rsyslog stop
-
-trafserver -sn basic -rn ack tcp 9001

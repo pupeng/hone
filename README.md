@@ -25,6 +25,10 @@ Dependency:
 * Python Twisted 13.0.0
 
 Initial Setup:
+1. A
+2. B
+
+
 1. Insert HONE kernel module on host machine. The current kernel module is for
 HONE-enabled image only, since we have modified kernel NETLINK to make it work.
     enter HostAgent/kpsimple

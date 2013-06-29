@@ -2,7 +2,7 @@
 
 Programmable Host-Network Traffic Management from Princeton CS. 
 
-Project website: [http://hone.cs.princeton.edu/][hone]
+Project website: [http://hone.cs.princeton.edu/][hone]  
 I highly encourage you to visit our website. You can get an overview of the
 system, and find various management applications we have built. Those examples
 can give you a quick sense of what HONE can do, and how you will program on
@@ -28,7 +28,7 @@ Dependency:
 * ipaddr-py 2.1.10
 * Python Twisted 13.0.0
 
-Initial Setup:
+Setup steps:
 
 1.  Insert HONE kernel module on host machine. 
     The current kernel module is for HONE-enabled image only, since we have
@@ -37,7 +37,7 @@ Initial Setup:
         cd ~/hone/HostAgent/kpsimple
         sudo make up
 
-2.  Compile c++ implementation into python modules. 
+2.  Compile C++ implementation into python modules. 
 
         cd ~/hone/HostAgent
         ./swig_modules
@@ -49,7 +49,7 @@ Initial Setup:
 4.  Start the HONE controller.
 
         cd ~/hone/Controller
-        python hone_run.py *mgmtProgramName*
+        python hone_run.py mgmtProgramName
 
 5.  Start the HONE host agent.
 

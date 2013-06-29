@@ -3,6 +3,10 @@
 Programmable Host-Network Traffic Management from Princeton CS. 
 
 Project website: [http://hone.cs.princeton.edu/][hone]
+I highly encourage you to visit our website. You can get an overview of the
+system, and find various management applications we have built. Those examples
+can give you a quick sense of what HONE can do, and how you will program on
+HONE. 
 
 Author: Peng Sun
 
@@ -33,33 +37,27 @@ Initial Setup:
         cd ~/hone/HostAgent/kpsimple
         sudo make up
 
-2.  Compile c++ implementation into python modules
+2.  Compile c++ implementation into python modules. 
 
         cd ~/hone/HostAgent
         ./swig_modules
 
-Notes:
-1. Start the HONE Controller:
-    enter Controller directory
-    run: python hone_run.py mgmtProgram
+3.  Start network module (if necessary for your scenario). 
+    HONE interacts with the network devices via Floodlight. Please check out how
+    to install and start Floodlight on its [Getting-started page][floodlight]. 
 
-2. Start the HONE host agent:
-    remember to go through 'Initial Setup'
-    enter HostAgent
-    python agentRun.py controllerIP controllerPort
+4.  Start the HONE controller.
 
-3. If running on EC2
-    ec2scripts/startHoneAgent finds the EC2 internal IP of the
-    instance named hone-controller, and start HONE agent against it. 
+        cd ~/hone/Controller
+        python hone_run.py *mgmtProgramName*
 
-4. Log level:
-    change log level in Controller/hone_run.py and HostAgent/agentRun.py
-    All evaluation logs are info level
+5.  Start the HONE host agent.
 
-5. Network module:
-    first start floodlight controller to control the switches
-    Controller/hone_netModule.py contains functions to communicate with FL
+        cd ~/hone/HostAgent
+        python agentRun.py controllerIP controllerPort # default port is 6633 
+
 
 [hone]: http://hone.cs.princeton.edu/
 [ami]: https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-bd0a7dd4
 [vm]: http://hone.cs.princeton.edu/files/hone-vm.ova
+[floodlight]: http://www.projectfloodlight.org/getting-started/

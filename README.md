@@ -13,7 +13,7 @@ David Walker
 Public Amazon EC2 AMI:  
 [ami-bd0a7dd4][ami] (HONE-enabled Ubuntu Cloud Image 11.04)
 
-Public VirtualBox VM image:
+Public VirtualBox VM image:  
 [HONE VM image][vm]
 
 Dependency:
@@ -25,11 +25,10 @@ Dependency:
 * Python Twisted 13.0.0
 
 Initial Setup:
-1. Insert HONE kernel probe on host machine. 
-   The current kernel probe is for hone-enabled image only,
-   since we have modified kernel NETLINK to make it work. 
-     enter HostAgent/kpsimple
-     sudo make up
+1. Insert HONE kernel module on host machine. The current kernel module is for
+HONE-enabled image only, since we have modified kernel NETLINK to make it work.
+    enter HostAgent/kpsimple
+    sudo make up
 2. Compile c++ implementation to python modules
     enter HostAgent
     ./swig_modules

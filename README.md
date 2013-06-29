@@ -1,30 +1,28 @@
-hone
-====
+## HONE Project
 
-HONE Project
-Programmable Host-Network Traffic Management
-from Princeton CS. 
+Programmable Host-Network Traffic Management from Princeton CS. 
 
-Author:
-Peng Sun
+Project website: [http://hone.cs.princeton.edu/][hone]
 
-Contributors:
-Zhihong Xu, Lavanya Jose, Minlan Yu, 
-Jennifer Rexford, Michael J. Freedman, David Walker
+Author: Peng Sun
 
-Public Amazon EC2 AMI:
-ami-d92ebab0                   hone-enabled Ubuntu Cloud Image 11.04
+Contributors:  
+Zhihong Xu, Lavanya Jose, Minlan Yu, Jennifer Rexford, Michael J. Freedman,
+David Walker
+
+Public Amazon EC2 AMI:  
+[ami-bd0a7dd4][ami] (HONE-enabled Ubuntu Cloud Image 11.04)
 
 Public VirtualBox VM image:
-(publish soon)
+[HONE VM image][vm]
 
 Dependency:
-psutil                         0.7.0
-web10g kernel patch            3.2
-estats userland library        included with kernel patch 3.2
-Python                         2.7+
-ipaddr-py                      2.1.10
-twisted                        13.0.0
+* psutil 0.7.0
+* web10G kernel patch 3.2
+* estats userland library (included with web10G kernel patch 3.2)
+* Python 2.7+
+* ipaddr-py 2.1.10
+* Python Twisted 13.0.0
 
 Initial Setup:
 1. Insert HONE kernel probe on host machine. 
@@ -57,3 +55,7 @@ Notes:
 5. Network module:
     first start floodlight controller to control the switches
     Controller/hone_netModule.py contains functions to communicate with FL
+
+[hone]: http://hone.cs.princeton.edu/
+[ami]: https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-bd0a7dd4
+[vm]: http://hone.cs.princeton.edu/files/hone-vm.ova

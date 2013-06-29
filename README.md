@@ -29,9 +29,12 @@ Initial Setup:
 1.  Insert HONE kernel module on host machine. 
     The current kernel module is for HONE-enabled image only, since we have
     modified kernel NETLINK to make it work.
+
         cd ~/hone/HostAgent/kpsimple
         sudo make up
+
 2.  Compile c++ implementation into python modules
+
         cd ~/hone/HostAgent
         ./swig_modules
 

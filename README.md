@@ -54,7 +54,7 @@ Setup steps:
 5.  Start the HONE host agent.
 
         cd ~/hone/HostAgent
-        python agentRun.py controllerIP controllerPort # default port is 6633 
+        python agentRun.py controllerIP controllerPort # default port is 8866
 
 
 [hone]: http://hone.cs.princeton.edu/

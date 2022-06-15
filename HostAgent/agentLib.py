@@ -161,7 +161,7 @@ def AGG(attr):
 # send to controller
 def ToCtrl(jobID, flowId):
     def push(x):
-        if x or isinstance(x, (int,long,float,complex)):
+        if x and isinstance(x, (int,long,float,complex)):
             key = composeKey(jobID, flowId)
             sequence = agentManager.sourceJobTable[key].lastSequence
             message = HoneMessage()
@@ -180,7 +180,7 @@ def ToCtrl(jobID, flowId):
 
 def ToMiddle(jobId, flowId):
     def push(x):
-        if x or isinstance(x, (int,long,float,complex)):
+        if x and isinstance(x, (int,long,float,complex)):
             key = composeKey(jobId, flowId)
             if key in agentManager.sourceJobTable:
                 middleAddress = agentManager.sourceJobTable[key].middleAddress
